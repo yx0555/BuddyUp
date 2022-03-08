@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="src/assets/BuddyUpLogo.png" alt = "IDK WHY IS THIS IMAGE BROKEN HELP">
+    <img src="@/assets/BuddyUpLogo.png" alt = "Buddy Up Logo">
   </div>
 
   <h1>CREATE AN ACCOUNT</h1>
