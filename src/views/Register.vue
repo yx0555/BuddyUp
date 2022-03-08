@@ -76,14 +76,20 @@ export default {
         alert("Your passwords are not the same. Please key in your passwords again.")
       } else {
         try {
+          alert("We will be registering you: " + userFullName)
           const docRef = addDoc(collection(db, "Users"), {
             fullName: userFullName, username: userUsername, emailAddress: userEmail
           })
           console.log(docRef)
           document.getElementById('userRegistration').reset();
           // this.$emit("added")
-          createUserWithEmailAndPassword(auth, userEmail, userPassword);
-          alert("We will be registering you: " + userFullName)
+          createUserWithEmailAndPassword(auth, userEmail, userPassword)
+            .then(() => {
+              this.$router.push('/login')
+            })
+            .catch((error) => {
+              alert(error.message)
+            })};
           }
         catch(error) {
           console.error("Error adding document: ", error);
