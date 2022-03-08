@@ -40,12 +40,23 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
 const db = getFirestore(firebaseApp);
 
 export default {
+  
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
 
   methods: {
     checkValidityOfForm() {
+      const auth = getAuth()
       var userFullName = document.getElementById("fullName").value
       var userUsername = document.getElementById("username").value
       var userEmail = document.getElementById("emailAddress").value
@@ -64,7 +75,6 @@ export default {
       } else if (userPassword != userRepeatPassword) {
         alert("Your passwords are not the same. Please key in your passwords again.")
       } else {
-        alert("We will be registering you: " + userFullName)
         try {
           const docRef = addDoc(collection(db, "Users"), {
             fullName: userFullName, username: userUsername, emailAddress: userEmail
@@ -72,12 +82,14 @@ export default {
           console.log(docRef)
           document.getElementById('userRegistration').reset();
           // this.$emit("added")
-        }
+          createUserWithEmailAndPassword(auth, userEmail, userPassword);
+          alert("We will be registering you: " + userFullName)
+          }
         catch(error) {
           console.error("Error adding document: ", error);
         }
       }
-    }
+    } 
   }
 }
 </script>
