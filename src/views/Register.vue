@@ -3,7 +3,7 @@
     <img src="@/assets/BuddyUpLogo.png" alt = "Buddy Up Logo">
   </div>
 
-  <h1>CREATE AN ACCOUNT</h1>
+  <h1>CREATE AN ACCOUNT TEST TEST</h1>
 
   <div class = "container">
     <form id = "userRegistration">
