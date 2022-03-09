@@ -5,7 +5,7 @@
 
   <h1>CREATE AN ACCOUNT</h1>
 
-  <div class = "container">
+  <div class = "registerMainContainer">
     <form id = "userRegistration">
       <div class = "formli">
         <label for = "fullName">Full Name: </label>
@@ -40,12 +40,23 @@
 import firebaseApp from '../firebase.js';
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+
 const db = getFirestore(firebaseApp);
 
 export default {
+  
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
 
   methods: {
     checkValidityOfForm() {
+      const auth = getAuth()
       var userFullName = document.getElementById("fullName").value
       var userUsername = document.getElementById("username").value
       var userEmail = document.getElementById("emailAddress").value
@@ -66,18 +77,26 @@ export default {
       } else {
         alert("We will be registering you: " + userFullName)
         try {
-          const docRef = addDoc(collection(db, "Users"), {
-            fullName: userFullName, username: userUsername, emailAddress: userEmail
-          })
-          console.log(docRef)
-          document.getElementById('userRegistration').reset();
-          // this.$emit("added")
-        }
+          createUserWithEmailAndPassword(auth, userEmail, userPassword)
+            .then(() => {
+              this.$router.push('/login')
+              
+              const docRef = addDoc(collection(db, "Users"), {
+              fullName: userFullName, username: userUsername, emailAddress: userEmail
+              })
+              console.log(docRef)
+              document.getElementById('userRegistration').reset();
+              // this.$emit("added")'
+            })
+            .catch((error) => {
+              alert(error.message)
+            });
+          }
         catch(error) {
           console.error("Error adding document: ", error);
         }
       }
-    }
+    } 
   }
 }
 </script>
