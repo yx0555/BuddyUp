@@ -6,6 +6,7 @@ import MyCalendar from '@/views/MyCalendar.vue'
 import Profile from '@/views/Profile.vue'
 import Register from '@/views/Register.vue'
 import AboutUs from '@/views/AboutUs.vue'
+import IndivBuddies from '@/views/IndivBuddies.vue'
 
 const routes = [
     {
@@ -42,6 +43,11 @@ const routes = [
         path: '/aboutus',
         name: 'AboutUs',
         component: AboutUs
+    },
+    {
+        path: '/indivbuddies',
+        name: 'IndivBuddies',
+        component: IndivBuddies
     }
 ]
 

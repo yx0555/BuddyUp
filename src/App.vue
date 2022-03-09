@@ -1,4 +1,6 @@
 <template>
+  <router-link to="/">Home</router-link> |
+  <router-link to="/mybuddies">My Buddies</router-link> |
   <router-view/>
 </template>
 
