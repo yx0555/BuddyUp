@@ -5,7 +5,7 @@
 
   <h1>CREATE AN ACCOUNT</h1>
 
-  <div class = "container">
+  <div class = "registerMainContainer">
     <form id = "userRegistration">
       <div class = "formli">
         <label for = "fullName">Full Name: </label>
