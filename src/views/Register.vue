@@ -75,21 +75,22 @@ export default {
       } else if (userPassword != userRepeatPassword) {
         alert("Your passwords are not the same. Please key in your passwords again.")
       } else {
+        alert("We will be registering you: " + userFullName)
         try {
-          alert("We will be registering you: " + userFullName)
-          const docRef = addDoc(collection(db, "Users"), {
-            fullName: userFullName, username: userUsername, emailAddress: userEmail
-          })
-          console.log(docRef)
-          document.getElementById('userRegistration').reset();
-          // this.$emit("added")
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
               this.$router.push('/login')
+              
+              const docRef = addDoc(collection(db, "Users"), {
+              fullName: userFullName, username: userUsername, emailAddress: userEmail
+              })
+              console.log(docRef)
+              document.getElementById('userRegistration').reset();
+              // this.$emit("added")'
             })
             .catch((error) => {
               alert(error.message)
-            })};
+            });
           }
         catch(error) {
           console.error("Error adding document: ", error);
