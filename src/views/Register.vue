@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import NavBar from '../components/NavBar.vue'
 import firebaseApp from '../firebase.js';
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 // import { collection, addDoc } from "firebase/firestore";
@@ -44,6 +45,9 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default {
+  components: {
+    NavBar
+  },
   
   data() {
     return {

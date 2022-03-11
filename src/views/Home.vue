@@ -1,13 +1,21 @@
 <template>
-  <h1>Home Page</h1>
-  <br />
-  <h4>Upcoming Tasks:</h4>
-  <br />
-  <h4>Important Reminders:</h4>
+  <NavBar />
 </template>
 
 <script>
-export default {};
+import NavBar from '../components/NavBar.vue'
+
+export default {
+  components: {
+    NavBar
+  },
+
+  data() {
+    return{
+      refreshComp:0
+    }
+  }
+}
 </script>
 
 <style>

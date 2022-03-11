@@ -20,6 +20,9 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 
 export default {
+  components: {
+  },
+
   data() {
     return {
       form: {

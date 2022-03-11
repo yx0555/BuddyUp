@@ -1,5 +1,9 @@
 <template>
-  <h1>Update My Particulars</h1>
+  <NavBar />
+  
+  <div class = "title">
+    <h1>Update My Particulars</h1>
+  </div>
 
   <div class = "profileMainContainer">
     <div class = "leftDiv">
@@ -93,6 +97,7 @@
 </template>
 
 <script>
+import NavBar from '../components/NavBar.vue'
 import firebaseApp from '../firebase.js';
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -103,6 +108,9 @@ const auth = getAuth()
 var expanded = false;
 
 export default {
+  components: {
+    NavBar
+  },
 
   methods: {
     allLanguages() {
@@ -130,7 +138,6 @@ export default {
         expanded = false;
       }
     }
-  }
 }
 
 </script>
