@@ -25,13 +25,12 @@
 
         <div class = "signUp">
           <button id = "signUpButton" type="button" v-on:click="checkValidityOfForm()">Sign Up</button>
-        </div>  
+        </div>
 
       </div>
     </form>
     <div id="loginPromptRouter">
       <router-link to="/login">Have an account? Login here!</router-link>
-      <router-view/>
     </div>
   </div>
 </template>
@@ -39,10 +38,9 @@
 <script>
 import NavBar from '../components/NavBar.vue'
 import firebaseApp from '../firebase.js';
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+// import { collection, addDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-
 
 const db = getFirestore(firebaseApp);
 
@@ -85,10 +83,11 @@ export default {
             .then(() => {
               this.$router.push('/login')
               
-              const docRef = addDoc(collection(db, "Users"), {
-              fullName: userFullName, username: userUsername, emailAddress: userEmail
+              var uid = auth.currentUser.uid
+              setDoc(doc(db, "Users", uid), {
+                fullName: userFullName, username: userUsername, emailAddress: userEmail
               })
-              console.log(docRef)
+              // console.log(docRef)
               document.getElementById('userRegistration').reset();
               // this.$emit("added")'
             })
@@ -112,10 +111,6 @@ label {
   width: 150px;
   margin-right: 5px;
   text-align: right;
-}
-
-input {
-  size: 10;
 }
 
 #signUpButton {
