@@ -1,46 +1,54 @@
 <template>
   
   <h1>My Buddies Page</h1>
+  <br>
   <div class="row">
     <div class="column">
       <img id = "icon" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
+      <br><br><router-link to="/indivbuddies/1">Buddy 1</router-link>
     </div>
+
     <div class="column">
-      <img id = "icon" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
+      <img id = "icon2" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
+      <br><br> <router-link to="/indivbuddies/2">Buddy 2</router-link>
     </div>
+
     <div class="column">
-      <img id = "icon" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
+      <img id = "icon3" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
+      <br><br> <router-link to="/indivbuddies/2">Buddy 2</router-link>
     </div>
-
-    <div class="row">
-    <div class="column">
-    <br>
-      <router-link to="/indivbuddies">Buddy 1</router-link>
-    </div>
-    <div class="column"><br>
-      <router-link to="/indivbuddies">Buddy 2</router-link>
-      </div>
-    <div class="column"><br>
-      <router-link to="/indivbuddies">Buddy 3</router-link></div>
-    </div>
-    <br><br>
-    <button type="button"> Add a buddy </button>
-
-
-
   </div>
+
+  <div class="row">
+    <br>
+    <button id="addbutton" type="button" v-on:click="addbuddy()"> Add a buddy </button>
+  </div>
+  
 
 </template>
 
 <script>
 export default {
-
+  methods:{
+    addbuddy(){
+      var image = document.getElementById("icon");
+      image.src="@/assets/buddyicon.png";
+    }
+  }
 }
 </script>
 
 <style>
 #icon{
+    color:antiquewhite
+}
 
+#addbutton{
+  font-family: Helvetica;
+  background-color: lightpink ;
+  font-size: 15px;
+  border-radius: 5px;
+  
 }
 
 .column{
@@ -52,5 +60,7 @@ export default {
   display: table;
   clear: both;
 }
+
+
 
 </style>

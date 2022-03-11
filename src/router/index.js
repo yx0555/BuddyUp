@@ -45,7 +45,7 @@ const routes = [
         component: AboutUs
     },
     {
-        path: '/indivbuddies',
+        path: '/indivbuddies/:id',
         name: 'IndivBuddies',
         component: IndivBuddies
     }
