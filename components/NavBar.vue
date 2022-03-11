@@ -20,6 +20,13 @@
     </body>
 </template>
 
+<script>
+export default {
+    name: 'NavBar'
+};
+</script>
+
+
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
     @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
