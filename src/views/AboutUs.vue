@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <h1>About Us Page</h1>
   <br />
   <h2>Background</h2>
@@ -58,7 +59,12 @@
 </template>
 
 <script>
-export default {};
+import NavBar from "@/components/NavBar.vue";
+export default {
+  components: {
+    NavBar,
+  },
+};
 </script>
 
 <style>
