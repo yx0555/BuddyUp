@@ -1,5 +1,9 @@
 <template>
-  <h1>Update My Particulars</h1>
+  <NavBar />
+  
+  <div class = "title">
+    <h1>Update My Particulars</h1>
+  </div>
 
   <div class = "profileMainContainer">
     <div class = "leftDiv">
@@ -77,9 +81,11 @@
 </template>
 
 <script>
-
+import NavBar from '../components/NavBar.vue'
 export default {
-
+  components: {
+    NavBar
+  }
 }
 
 </script>

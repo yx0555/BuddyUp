@@ -6,24 +6,45 @@
             </div>
             <div class="topnav-right">
                 <img id = "usericon" src="@/assets/man.png" alt="usericon">
-                <button id="myprofilebtn">My Profile</button><br>
-                <button id="logoutbtn">Logout</button>
+                <button id="myprofilebtn" @click="goToProfile()">My Profile</button><br>
+                <button id="logoutbtn" @click="goToLogout()">Logout</button>
             </div>
         </div>
 
         <div class="sidebar">
-            <ul><button id="homepagebtn">Homepage</button></ul>
-            <ul><button id="mybuddiesbtn">My Buddies</button></ul>
-            <ul><button id="mycalendarbtn">My Calendar</button></ul>
-            <ul><button id="aboutusbtn">About Us</button></ul>
+            <ul><button id="homepagebtn" @click="goToHome()">Homepage</button></ul>
+            <ul><button id="mybuddiesbtn" @click="goToMyBuddies()">My Buddies</button></ul>
+            <ul><button id="mycalendarbtn" @click="goToMyCalendar()">My Calendar</button></ul>
+            <ul><button id="aboutusbtn" @click="goToAboutUs()">About Us</button></ul>
         </div>
     </body>
 </template>
 
 <script>
 export default {
-    name: 'NavBar'
-};
+    name: 'NavBar',
+    methods: {
+        goToProfile(){
+            this.$router.push('/profile');
+        },
+        goToLogout(){
+            this.$router.push('/login');
+        },
+        goToHome(){
+            this.$router.push('/home');
+        },
+        goToMyBuddies(){
+            this.$router.push('/mybuddies');
+        },
+        goToMyCalendar(){
+            this.$router.push('/mycalendar');
+        },
+        goToAboutUs(){
+            this.$router.push('/aboutus');
+        }
+
+    }
+}
 </script>
 
 
