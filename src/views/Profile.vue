@@ -138,36 +138,39 @@ export default {
         expanded = false;
       }
     }
+  }
 }
-
 </script>
 
 <style>
-h1 {
-  text-align: left;
+.profileMainContainer {
+  left: 30%;
+  right: 0;
 }
 
 .multiselect {
-  width: 200px;
+  /* width: 70%; */
   text-align: right;
 }
 .selectBox {
   position: relative;
 }
-.selectBox select {
+/* .selectBox select {
   width: 100%;
-}
+} */
 .overSelect {
   position: absolute;
-  left: 0;
+  /* left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 0; */
 }
 #checkboxes {
   display: none;
   border: 1px #dadada solid;
   text-align: left;
+  width: 70%;
+  left: 70%;
 }
 #checkboxes label {
   display: block;
@@ -180,8 +183,8 @@ h1 {
 
 
 #dummyUserIcon {
-  width: 25%;
-  height: 25%;
+  width: 15%;
+  height: 15%;
 }
 
 .profileMainContainer {
@@ -194,15 +197,17 @@ h1 {
 
 .leftDiv {
   position: left;
-  right: 70%;
+  right: 100%;
   border: #F07575;
   text-align: left;
+  padding: 0px 500px 0px 0px;
 }
 
 .rightDiv {
   position: right;
-  left: 30%;
+  left: 100%;
   border: #F07575;
-  text-align: right;
+  text-align: left;
+  padding: 0px 0px 0px 100px;
 }
 </style>

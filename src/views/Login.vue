@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <img src="@/assets/BuddyUpLogo.png" alt = "IDK WHY IS THIS IMAGE BROKEN HELP">
+    <img src="@/assets/BuddyUpLogo.png" alt = "Buddy Up Logo">
     <div>
       <form @submit.prevent="login">
         <h2>Login</h2>
-        <input type="email" placeholder="Email address..." v-model="email"/>
-        <input type="password" placeholder="password..." v-model="password"/>
+        <input type="email" placeholder="Email address..." v-model="email"/> <br>
+        <input type="password" placeholder="Password..." v-model="password"/> <br><br>
         <button type = "submit" v-on:click="submit()">Login</button>
 
       </form>
@@ -17,7 +17,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore";
-
 
 export default {
   components: {
