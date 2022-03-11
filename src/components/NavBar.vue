@@ -2,10 +2,10 @@
     <body>
         <div class="topnav">
             <div class="topnav-left">
-                <img id = "logo" src="./assets/BuddyUpLogo.png" alt="Logo">
+                <img id = "logo" src="@/assets/BuddyUpLogo.png" alt="Logo">
             </div>
             <div class="topnav-right">
-                <img id = "usericon" src="./assets/man.png" alt="usericon">
+                <img id = "usericon" src="@/assets/man.png" alt="usericon">
                 <button id="myprofilebtn">My Profile</button><br>
                 <button id="logoutbtn">Logout</button>
             </div>
