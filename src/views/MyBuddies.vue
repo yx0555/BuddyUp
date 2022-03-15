@@ -33,7 +33,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">Buddy 2</router-link>
+        <router-link to="/indivbuddies/2">Buddy 3</router-link>
       </div>
     </div>
 
