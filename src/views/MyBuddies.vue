@@ -15,7 +15,7 @@
 
     <div class="column">
       <img id = "icon3" src="@/assets/buddyicon.png" width="150" alt="Buddy Icon">
-      <br><br> <router-link to="/indivbuddies/2">Buddy 2</router-link>
+      <br><br> <router-link to="/indivbuddies/3">Buddy 3</router-link>
     </div>
   </div>
 
@@ -31,24 +31,26 @@
 export default {
   methods:{
     addbuddy(){
-      var image = document.getElementById("icon");
-      image.src="@/assets/buddyicon.png";
+      // var image = document.getElementById("icon");
+      // image.src="@/assets/man.png";
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+  @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
 #icon{
     color:antiquewhite
 }
 
 #addbutton{
-  font-family: Helvetica;
+  font-family: 'Montserrat';
   background-color: lightpink ;
   font-size: 15px;
   border-radius: 5px;
-  
 }
 
 .column{
