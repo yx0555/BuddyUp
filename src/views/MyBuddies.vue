@@ -36,7 +36,9 @@ export default {
   data() {
     return{
       refreshComp:0
-=======
+    }
+  },
+  
   methods:{
     addbuddy(){
       var image = document.getElementById("icon");

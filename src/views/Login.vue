@@ -1,5 +1,4 @@
 <template>
-  <NavBar />
   <div id="app">
     <img src="@/assets/BuddyUpLogo.png" alt = "IDK WHY IS THIS IMAGE BROKEN HELP">
     <div>
@@ -15,7 +14,6 @@
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // import firebaseApp from '../firebase.js';
 // import { getFirestore } from "firebase/firestore";
@@ -23,7 +21,6 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default {
   components: {
-    NavBar
   },
 
   data() {
