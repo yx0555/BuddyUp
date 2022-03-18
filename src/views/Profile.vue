@@ -1,109 +1,158 @@
 <template>
-  <div style="text-align: center" v-if="user">
+  <div style="text-align: center" v-if="user" v-on:load="loadParticulars()">
     <NavBar />
 
-    <div class="title">
-      <h1>Update My Particulars</h1>
+    <div class="displayProfileContainer">
+      <h1>My Profile</h1>
+      <img src="@/assets/man.png" style="width:100px; height:100px; border-radius:50%; border:4px solid #333"/>
+        <p style="text-align: center"> 
+          Name: <strong>{{user.region}}</strong><br>
+          Email: <strong>{{user.email}}</strong><br>
+          Uid: <strong>{{user.uid}}</strong><br>
+        </p>
     </div>
 
-    <div class="profileMainContainer">
-      <div class="leftDiv">
-        <img id="dummyUserIcon" src="@/assets/man.png" alt="Dummy User Icon" />
+    <div class="updateProfileContainer">
+      <h2>Update My Particulars</h2>
 
-        <!-- INSERT USERNAME OF USER -->
-      </div>
+      <form id="updateProfileDetails">
+        <div id="formOfDetails">
+          <!-- REGION -->
+          <label for="region" id="formFields"><strong>Region: </strong></label>
+          <select name="region" id="region">
+            <option value="">Select option</option>
+            <option value="north">North</option>
+            <option value="south">South</option>
+            <option value="east">East</option>
+            <option value="west">West</option>
+            <option value="central">Central</option>
+          </select>
+          <br><br>
 
-      <div class="rightDiv">
-        <form id="updateProfileDetails">
-          <div id="formOfDetails">
-            <!-- REGION -->
-            <label for="region" id="formFields">Region: </label>
-            <!-- Maybe can try using v-model instead -->
-            <select name="region" id="region">
-              <option value="">Please select one</option>
-              <option value="north">North</option>
-              <option value="south">South</option>
-              <option value="east">East</option>
-              <option value="west">West</option>
-              <option value="central">Central</option>
-            </select>
-            <br /><br />
-
-            <!-- LANGUAGES / DIALECTS -->
-            <label for="languages" id="formFields">
-              Languages/ Dialects:
-            </label>
-            <div class="multiselect">
-              <div class="selectBox" v-on:click="showCheckboxes()">
-                <select>
-                  <option value="">Select option(s)</option>
-                </select>
-                <div class="overSelect"></div>
-              </div>
-              <div id="checkboxes">
-                <label for="english">
-                  <input
-                    type="checkbox"
-                    id="english"
-                    value="english"
-                  />English</label
-                >
-
-                <label for="chinese">
-                  <input
-                    type="checkbox"
-                    id="chinese"
-                    value="chinese"
-                  />Chinese</label
-                >
-
-                <label for="malay">
-                  <input type="checkbox" id="malay" value="malay" />Malay</label
-                >
-                <label for="tamil">
-                  <input type="checkbox" id="tamil" value="tamil" />Tamil</label
-                >
-              </div>
+          <!-- LANGUAGES / DIALECTS -->
+          <label for="languages" id="languagesFields"><strong>Languages:</strong></label>
+          <div class="multiselect">
+            <div class="selectBox" v-on:click="showLanguageCheckboxes()">
+              <select>
+                <option value="">Select option(s)</option>
+              </select>
+              <div class="overSelect"></div>
             </div>
-            <br /><br />
-
-            <!-- GENDER PREFERENCES -->
-            <label for="genderPreferences" id="formFields"
-              >Buddy Gender Preferences:
-            </label>
-            <select name="genderPreferences" id="genderPreferences">
-              <option value="">Please select one</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="noPreferences">No Preferences</option>
-            </select>
-            <br /><br />
-
-            <!-- AVAILABILITY -->
-            <label for="availability" id="formFields">Availability: </label>
-            <select name="availability" id="availability">
-              <option value="">Please select one</option>
-              <optgroup label="Monday">
-                <option value="firstSlot">0800HRS - 1100HRS</option>
-                <option value="secondSlot">1100HRS - 1400HRS</option>
-                <option value="secondSlot">1400HRS - 1700HRS</option>
-                <option value="secondSlot">1700HRS - 2000HRS</option>
-              </optgroup>
-            </select>
-            <br /><br />
+            <div id="languageCheckboxes" style="display: none">
+              <label for="english">
+                <input class="languageCheckbox" type="checkbox" id="english" value="english">English</label>
+                <br>
+              <label for="chinese">
+                <input class="languageCheckbox" type="checkbox" id="chinese" value="chinese">Chinese</label>
+                <br>
+              <label for="malay">
+                <input class="languageCheckbox" type="checkbox" id="malay" value="malay">Malay</label>
+                <br>
+              <label for="tamil">
+                <input class="languageCheckbox" type="checkbox" id="tamil" value="tamil">Tamil</label>
+            </div>
           </div>
-        </form>
-        <!-- UPDATE BUTTON -->
-        <div class="update">
-          <button
-            id="updateButton"
-            type="button"
-            v-on:click="saveParticulars()"
-          >
-            Update
-          </button>
+          <br>
+
+          <!-- GENDER PREFERENCES -->
+          <label for="genderPreferences" id="formFields"><strong>Buddy Gender Preferences: </strong></label>
+          <select name="genderPreferences" id="genderPreferences">
+            <option value="">Select option</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="noPreferences">No Preferences</option>
+          </select>
+          <br><br>
+
+          <!-- AVAILABILITY -->
+          <label for="availability" id="availabilityFields"><strong>Availability:</strong></label>
+          <div class="multiselect">
+            <div class="selectBox" v-on:click="showAvailabilityCheckboxes()">
+              <select>
+                <option value="">Select option(s)</option>
+              </select>
+              <div class="overSelect"></div>
+            </div>
+            <div id="availabilityCheckboxes" style="display: none">
+                <h5>Monday</h5>
+                <label for="mon8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="mon8to11" value="mon8to11">0800HRS - 1100HRS</label><br>
+                <label for="mon11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="mon11to14" value="mon11to14">1100HRS - 1400HRS</label><br>
+                <label for="mon14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="mon14to17" value="mon14to17">1400HRS - 1700HRS</label><br>
+                <label for="mon17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="mon17to20" value="mon17to20">1700HRS - 2000HRS</label>
+
+                <h5>Tuesday</h5>
+                <label for="tues8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="tues8to11" value="tues8to11">0800HRS - 1100HRS</label><br>
+                <label for="tues11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="tues11to14" value="tues11to14">1100HRS - 1400HRS</label><br>
+                <label for="tues14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="tues14to17" value="tues14to17">1400HRS - 1700HRS</label><br>
+                <label for="tues17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="tues17to20" value="tues17to20">1700HRS - 2000HRS</label>
+
+                <h5>Wednesday</h5>
+                <label for="wed8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="wed8to11" value="wed8to11">0800HRS - 1100HRS</label><br>
+                <label for="wed11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="wed11to14" value="wed11to14">1100HRS - 1400HRS</label><br>
+                <label for="wed14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="wed14to17" value="wed14to17">1400HRS - 1700HRS</label><br>
+                <label for="wed17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="wed17to20" value="wed17to20">1700HRS - 2000HRS</label>
+
+                <h5>Thursday</h5>
+                <label for="thurs8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="thurs8to11" value="thurs8to11">0800HRS - 1100HRS</label><br>
+                <label for="thurs11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="thurs11to14" value="thurs11to14">1100HRS - 1400HRS</label><br>
+                <label for="thurs14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="thurs14to17" value="thurs14to17">1400HRS - 1700HRS</label><br>
+                <label for="thurs17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="thurs17to20" value="thurs17to20">1700HRS - 2000HRS</label>
+
+                <h5>Friday</h5>
+                <label for="fri8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="fri8to11" value="fri8to11">0800HRS - 1100HRS</label><br>
+                <label for="fri11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="fri11to14" value="fri11to14">1100HRS - 1400HRS</label><br>
+                <label for="fri14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="fri14to17" value="fri14to17">1400HRS - 1700HRS</label><br>
+                <label for="fri17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="fri17to20" value="fri17to20">1700HRS - 2000HRS</label>
+
+                <h5>Saturday</h5>
+                <label for="sat8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="sat8to11" value="sat8to11">0800HRS - 1100HRS</label><br>
+                <label for="sat11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="sat11to14" value="sat11to14">1100HRS - 1400HRS</label><br>
+                <label for="sat14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="sat14to17" value="sat14to17">1400HRS - 1700HRS</label><br>
+                <label for="sat17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="sat17to20" value="sat17to20">1700HRS - 2000HRS</label>
+
+                <h5>Sunday</h5>
+                <label for="sun8to11">
+                  <input class="availabilityCheckbox" type="checkbox" id="sun8to11" value="sun8to11">0800HRS - 1100HRS</label><br>
+                <label for="sun11to14">
+                  <input class="availabilityCheckbox" type="checkbox" id="sun11to14" value="sun11to14">1100HRS - 1400HRS</label><br>
+                <label for="sun14to17">
+                  <input class="availabilityCheckbox" type="checkbox" id="sun14to17" value="sun14to17">1400HRS - 1700HRS</label><br>
+                <label for="sun17to20">
+                  <input class="availabilityCheckbox" type="checkbox" id="sun17to20" value="sun17to20">1700HRS - 2000HRS</label>
+            </div>
+          </div>
+          <br>
         </div>
+      </form>
+      <!-- UPDATE BUTTON -->
+      <div class="update">
+        <button id="updateButton" type="button" v-on:click="saveParticulars()">Update</button>
       </div>
+      <br>
     </div>
   </div>
 </template>
@@ -140,45 +189,80 @@ export default {
   },
 
   methods: {
-    allLanguages() {
-      // var userEnglish = document.querySelector('#english').checked
-      // var userChinese = document.querySelector('#chinese').checked
-    },
+    // async loadParticulars() {
+    //   var loadUid = auth.currentUser.uid;
+    //   console.log(loadUid)
+    //   const snapshot = await getDoc(doc(db, "Users", loadUid));
+    //   var region = snapshot.data().region;
+    //   console.log(region)
+    //   // var languages = snapshot.data().languages;
+    //   // var genderPref = snapshot.data().genderPref;
+    //   // var availability = snapshot.data().availability;
+    // },
 
     saveParticulars() {
+      // REGION
       var userRegion = document.getElementById("region").value;
-      var userGenderPreferences =
-        document.getElementById("genderPreferences").value;
-      var uid = auth.currentUser.uid;
-      updateDoc(doc(db, "Users", uid), {
+      // LANGUAGES / DIALECTS
+      var userCheckedLanguages = new Array();
+      var checkedLanguageBoxes = document.getElementsByClassName('languageCheckbox');
+      for(var i=0; checkedLanguageBoxes[i]; i++) {
+        if (checkedLanguageBoxes[i].checked) {
+          userCheckedLanguages.push(checkedLanguageBoxes[i].value);
+        }
+      }
+      // GENDER PREFERENCES
+      var userGenderPreferences = document.getElementById("genderPreferences").value;
+      // AVAILABILITY
+      var userCheckedAvailability = new Array();
+      var checkedAvailabilityBoxes = document.getElementsByClassName('availabilityCheckbox');
+      for(var j=0; checkedAvailabilityBoxes[j]; j++) {
+        if (checkedAvailabilityBoxes[j].checked) {
+          userCheckedAvailability.push(checkedAvailabilityBoxes[j].value);
+        }
+      }
+
+      var saveUid = auth.currentUser.uid;
+      updateDoc(doc(db, "Users", saveUid), {
         region: userRegion,
+        languages: userCheckedLanguages,
         genderPref: userGenderPreferences,
+        availability: userCheckedAvailability
       });
+
+      alert("Update your particulars?")
+      this.loadParticulars();
     },
 
-    showCheckboxes() {
-      var checkboxes = document.getElementById("checkboxes");
+    showLanguageCheckboxes() {
+      var languageCheckboxes = document.getElementById("languageCheckboxes");
       if (!expanded) {
-        checkboxes.style.display = "block";
+        languageCheckboxes.style.display = "block";
         expanded = true;
       } else {
-        checkboxes.style.display = "none";
+        languageCheckboxes.style.display = "none";
         expanded = false;
       }
     },
+
+    showAvailabilityCheckboxes() {
+      var availabilityCheckboxes = document.getElementById("availabilityCheckboxes");
+      if (!expanded) {
+        availabilityCheckboxes.style.display = "block";
+        expanded = true;
+      } else {
+        availabilityCheckboxes.style.display = "none";
+        expanded = false;
+      }
+    }
   },
 };
 </script>
 
 <style>
-.profileMainContainer {
-  left: 30%;
-  right: 0;
-}
-
 .multiselect {
   /* width: 70%; */
-  text-align: right;
+  text-align: center;
 }
 .selectBox {
   position: relative;
@@ -193,46 +277,21 @@ export default {
   top: 0;
   bottom: 0; */
 }
-#checkboxes {
-  display: none;
-  border: 1px #dadada solid;
-  text-align: left;
-  width: 70%;
-  left: 70%;
-}
-#checkboxes label {
-  display: block;
-}
-#checkboxes label:hover {
-  background-color: #f07575;
+
+
+
+.displayProfileContainer{
+  margin-left: 210px;
 }
 
-#dummyUserIcon {
-  width: 15%;
-  height: 15%;
-}
-
-.profileMainContainer {
-  margin: auto;
-  width: 50%;
-  height: 100%;
+.updateProfileContainer {
+  margin-left: 210px;
   border: 5px solid #f07575;
-  padding: 10px;
 }
 
-.leftDiv {
-  position: left;
-  right: 100%;
-  border: #f07575;
-  text-align: left;
-  padding: 0px 500px 0px 0px;
-}
-
-.rightDiv {
-  position: right;
-  left: 100%;
-  border: #f07575;
-  text-align: left;
-  padding: 0px 0px 0px 100px;
+#updateButton {
+  background-color: #F07575;
+  border-radius: 4px;
+  cursor: pointer;
 }
 </style>
