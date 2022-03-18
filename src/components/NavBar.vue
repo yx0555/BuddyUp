@@ -75,7 +75,6 @@ export default {
   background-color: #f07575;
   text-align: right;
   flex-grow: 1;
-  display: align;
 }
 
 .topnav {
