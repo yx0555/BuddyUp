@@ -21,46 +21,11 @@
             <!-- Maybe can try using v-model instead -->
             <select name="region" id="region">
               <option value="">Please select one</option>
-              <option value="01">
-                Raffles Place, Cecil, Marina, People's Park
-              </option>
-              <option value="02">Anson, Tanjong Pagar</option>
-              <option value="03">Queenstown, Tiong Bahru</option>
-              <option value="04">Telok Blangah, Harbourfront</option>
-              <option value="05">
-                Pasir Panjang, Hong Leong Garden, Clementi New Town
-              </option>
-              <option value="06">High Street, Beach Road (part)</option>
-              <option value="07">Middle Road, Golden Mile</option>
-              <option value="08">Little India</option>
-              <option value="09">Orchard, Cairnhill, River Valley</option>
-              <option value="10">
-                Ardmore, Bukit Timah, Holland Road, Tanglin
-              </option>
-              <option value="11">Watten Estate, Novena, Thomson</option>
-              <option value="12">Balestier, Toa Payoh, Serangoon</option>
-              <option value="13">Macpherson, Braddell</option>
-              <option value="14">Geylang, Eunos</option>
-              <option value="15">Katong, Joo Chiat, Amber Road</option>
-              <option value="16">
-                Bedok, Upper East Coast, Eastwood, Kew Drive
-              </option>
-              <option value="17">Loyang, Changi</option>
-              <option value="18">Tampines, Pasir Ris</option>
-              <option value="19">Serangoon Garden, Hougang, Punggol</option>
-              <option value="20">Bishan, Ang Mo Kio</option>
-              <option value="21">
-                Upper Bukit Timah, Clementi Park, Ulu Pandan
-              </option>
-              <option value="22">Jurong</option>
-              <option value="23">
-                Hillview, Dairy Farm, Bukit Panjang, Choa Chu Kang
-              </option>
-              <option value="24">Lim Chu Kang, Tengah</option>
-              <option value="25">Kranji, Woodgrove</option>
-              <option value="26">Upper Thomson, Springleaf</option>
-              <option value="27">Yishun, Sembawang</option>
-              <option value="28">Seletar</option>
+              <option value="north">North</option>
+              <option value="south">South</option>
+              <option value="east">East</option>
+              <option value="west">West</option>
+              <option value="central">Central</option>
             </select>
             <br /><br />
 
@@ -93,10 +58,8 @@
                 >
 
                 <label for="malay">
-                  <input type="checkbox" id="malay" value="malay" />Behasa
-                  Melayu</label
+                  <input type="checkbox" id="malay" value="malay" />Malay</label
                 >
-
                 <label for="tamil">
                   <input type="checkbox" id="tamil" value="tamil" />Tamil</label
                 >
@@ -172,6 +135,9 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+      } else {
+        alert("you must be logged in to view this page")
+        this.$router.push("/")
       }
     });
   },

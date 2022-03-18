@@ -55,6 +55,11 @@ const routes = [
     name: "NotFound",
     component: NotFound,
   },
+  {
+    path: "",
+    name: "Login",
+    component: Login,
+  },
 ];
 
 const router = createRouter({

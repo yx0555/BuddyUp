@@ -11,7 +11,9 @@
           width="150"
           alt="Buddy Icon"
         />
-        <br /><br /><router-link to="/indivbuddies/1">Buddy 1</router-link>
+        <br /><br /><router-link id="buddy1" to="/indivbuddies/1"
+          >Buddy 1</router-link
+        >
       </div>
 
       <div class="column">
@@ -48,11 +50,19 @@
 
 <script>
 import NavBar from "../components/NavBar.vue";
-// import firebaseApp from "../firebase.js";
-// import { getFirestore } from "firebase/firestore";
+import firebaseApp from "../firebase.js";
+import {
+  getFirestore,
+  getDoc,
+  getDocs,
+  collection,
+  query,
+  doc,
+} from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-// const db = getFirestore(firebaseApp);
+const db = getFirestore(firebaseApp);
+const auth = getAuth();
 
 export default {
   components: {
@@ -60,9 +70,20 @@ export default {
   },
 
   methods: {
-    addbuddy() {
-      var image = document.getElementById("icon");
-      image.src = "@/assets/buddyicon.png";
+    async addbuddy() {
+      // var image = document.getElementById("icon");
+      // image.src = "@/assets/buddyicon.png";
+      var uid = auth.currentUser.uid;
+      const snapshot = await getDoc(doc(db, "Users", uid));
+      var genderPref = snapshot.data().genderPref;
+      var region = snapshot.data().region;
+
+      const querySnap = await getDocs(query(collection(db, "Buddies")));
+      querySnap.forEach((doc) => {
+        if (doc.data().gender == genderPref && doc.data().region == region) {
+          document.getElementById("buddy1").innerHTML = doc.data().buddyName;
+        }
+      });
     },
   },
 
@@ -77,6 +98,9 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+      } else {
+        alert("you must be logged in to view this page")
+        this.$router.push("/")
       }
     });
   },
