@@ -1,15 +1,19 @@
 <template>
   <div style="text-align: center" v-if="user">
     <NavBar />
-    <h1>My Calendar Page</h1>
+    <h3>Page Not Found !!</h3>
+    <h4>Please click on the available options</h4>
+    <br />
   </div>
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import NavBar from "@/components/NavBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
+  name: "NotFound",
+
   components: {
     NavBar,
   },
@@ -25,9 +29,6 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
-      } else {
-        alert("you must be logged in to view this page")
-        this.$router.push("/")
       }
     });
   },
