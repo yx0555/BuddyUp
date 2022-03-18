@@ -60,7 +60,6 @@ import {
   doc,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 const db = getFirestore(firebaseApp);
 const auth = getAuth();
 
@@ -107,13 +106,19 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 #icon {
   color: antiquewhite;
 }
 
+.column{
+  font-family: "Montserrat";
+}
+
 #addbutton {
-  font-family: Helvetica;
+  font-family: "Montserrat";
   background-color: lightpink;
   font-size: 15px;
   border-radius: 5px;
