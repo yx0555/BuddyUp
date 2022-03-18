@@ -75,6 +75,7 @@ export default {
   background-color: #f07575;
   text-align: right;
   flex-grow: 1;
+  display: align;
 }
 
 .topnav {
@@ -146,7 +147,7 @@ export default {
 }
 
 #usericon {
-  text-align: left;
+  align-content: center;
   height: 50px;
   width: 50px;
 }

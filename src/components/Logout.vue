@@ -35,4 +35,13 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+#btn{
+  border-radius: 5px;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+
 </style>
