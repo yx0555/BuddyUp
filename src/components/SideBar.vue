@@ -5,10 +5,10 @@
                 <img id="logo" src="@/assets/BuddyUpLogo.png" alt="Logo" />
             </ul>
             <ul>
-                <button id="myprofilebtn" @click="goToProfile()" >Profile</button>
+                <button id="homepagebtn" @click="goToHome()">Homepage</button>
             </ul>
             <ul>
-                <button id="homepagebtn" @click="goToHome()">Homepage</button>
+                <button id="myprofilebtn" @click="goToProfile()" >My Profile</button>
             </ul>
             <ul>
                 <button id="mybuddiesbtn" @click="goToMyBuddies()">My Buddies</button>
@@ -29,11 +29,11 @@
 export default {
     name: "SideBar",
     methods: {
-        goToProfile() {
-        this.$router.push("/profile");
-        },
         goToHome() {
         this.$router.push("/home");
+        },
+        goToProfile() {
+        this.$router.push("/profile");
         },
         goToMyBuddies() {
         this.$router.push("/mybuddies");
