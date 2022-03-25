@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align: center" v-if="user" v-on:load="loadParticulars()">
+  <div style="text-align: center" v-if="user">
     <NavBar />
 
     <div class="displayProfileContainer">
@@ -189,21 +189,25 @@ export default {
         this.$router.push("/")
       }
     });
+
+    // BUGGY HELP
+    // async function loadPreferences() {
+    //   // var uid = auth.currentUser.uid;
+    //   const snapshot = await getDoc(doc(db, "Users", "iCrmHNJbs3SbmUxqe4EN8uYL24M2"));
+    //   var region = snapshot.data().region;
+    //   var languages = snapshot.data().region;
+    //   var genderPref = snapshot.data().genderPref;
+    //   var availability = snapshot.data().availability;
+    //   this.user.region = region;
+    //   this.user.languages = languages;
+    //   this.user.genderPref = genderPref;
+    //   this.user.availability = availability;
+    // }
+    // loadPreferences()
   },
 
   methods: {
-    // async loadParticulars() {
-    //   var loadUid = auth.currentUser.uid;
-    //   console.log(loadUid)
-    //   const snapshot = await getDoc(doc(db, "Users", loadUid));
-    //   var region = snapshot.data().region;
-    //   console.log(region)
-    //   // var languages = snapshot.data().languages;
-    //   // var genderPref = snapshot.data().genderPref;
-    //   // var availability = snapshot.data().availability;
-    // },
-
-    saveParticulars() {
+    async saveParticulars() {
       // REGION
       var userRegion = document.getElementById("region").value;
       // LANGUAGES / DIALECTS
@@ -225,16 +229,16 @@ export default {
         }
       }
 
-      var saveUid = auth.currentUser.uid;
-      updateDoc(doc(db, "Users", saveUid), {
+      var uid = auth.currentUser.uid;
+      updateDoc(doc(db, "Users", uid), {
         region: userRegion,
         languages: userCheckedLanguages,
         genderPref: userGenderPreferences,
         availability: userCheckedAvailability
       });
 
-      alert("Update your particulars?")
-      this.loadParticulars();
+      alert("Your particulars have been updated!")
+      document.getElementById('updateProfileDetails').reset();
     },
 
     showLanguageCheckboxes() {
@@ -264,24 +268,15 @@ export default {
 
 <style>
 .multiselect {
-  /* width: 70%; */
   text-align: center;
 }
 .selectBox {
   position: relative;
 }
-/* .selectBox select {
-  width: 100%;
-} */
+
 .overSelect {
   position: absolute;
-  /* left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0; */
 }
-
-
 
 .displayProfileContainer{
   margin-left: 210px;
