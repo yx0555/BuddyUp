@@ -39,9 +39,14 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
 #btn{
-  border-radius: 5px;
   font-family: "Montserrat";
-  font-size: 12px;
+  font-size: 13px;
+  color: #ffffff;
+  background-color: #f07575;
+  border: none;
+  text-decoration: underline;
+  margin-top: 45px;
+  margin-right: 8px;
 }
 
 </style>

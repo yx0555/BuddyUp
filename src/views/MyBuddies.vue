@@ -1,6 +1,7 @@
 <template>
-  <div style="text-align: center" v-if="user">
+  <div class="page" style="text-align: center" v-if="user">
     <NavBar />
+    <SideBar />
     <h1>My Buddies Page</h1>
     <br />
     <div class="row">
@@ -50,6 +51,7 @@
 
 <script>
 import NavBar from "../components/NavBar.vue";
+import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
 import {
   getFirestore,
@@ -66,6 +68,7 @@ const auth = getAuth();
 export default {
   components: {
     NavBar,
+    SideBar,
   },
 
   methods: {
@@ -109,19 +112,28 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
+.page {
+  margin-left: 200px;
+}
+
 #icon {
   color: antiquewhite;
 }
 
 .column{
   font-family: "Montserrat";
+  color: #000000;
 }
 
 #addbutton {
   font-family: "Montserrat";
-  background-color: lightpink;
+  background-color: #ABE6E9;
   font-size: 15px;
+  font-weight: 500;
   border-radius: 5px;
+  border: none;
+  padding: 8px;
 }
 
 .column {

@@ -1,6 +1,7 @@
 <template>
-  <div style="text-align: center" v-if="user" v-on:load="loadParticulars()">
+  <div class="page" style="text-align: center" v-if="user" v-on:load="loadParticulars()">
     <NavBar />
+    <SideBar />
 
     <div class="displayProfileContainer">
       <h1>My Profile</h1>
@@ -159,6 +160,7 @@
 
 <script>
 import NavBar from "../components/NavBar.vue";
+import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -171,6 +173,7 @@ var expanded = false;
 export default {
   components: {
     NavBar,
+    SideBar
   },
 
   data() {
@@ -262,7 +265,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.page {
+  margin-left: 200px;
+}
+
 .multiselect {
   /* width: 70%; */
   text-align: center;
@@ -281,20 +288,23 @@ export default {
   bottom: 0; */
 }
 
-
-
 .displayProfileContainer{
-  margin-left: 210px;
+  margin-left: 50px;
 }
 
 .updateProfileContainer {
-  margin-left: 210px;
+  margin-left: 50px;
   border: 5px solid #f07575;
 }
 
 #updateButton {
-  background-color: #F07575;
-  border-radius: 4px;
+  background-color: #ABE6E9;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-weight: 600;
   cursor: pointer;
 }
 </style>
