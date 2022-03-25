@@ -7,9 +7,10 @@
       <h1>My Profile</h1>
       <img src="@/assets/man.png" style="width:100px; height:100px; border-radius:50%; border:4px solid #333"/>
         <p style="text-align: center"> 
-          Name: <strong>{{user.region}}</strong><br>
-          Email: <strong>{{user.email}}</strong><br>
-          Uid: <strong>{{user.uid}}</strong><br>
+          Region: <strong>{{this.region}}</strong><br>
+          Languages: <strong>{{this.languages}}</strong><br>
+          Buddy Gender Preferences: <strong>{{this.buddyGenderPreference}}</strong><br>
+          Availability: <strong>{{this.availability}}</strong><br>
         </p>
     </div>
 
@@ -162,7 +163,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
-import { getFirestore, updateDoc, doc } from "firebase/firestore";
+import { getFirestore, updateDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
@@ -179,6 +180,10 @@ export default {
   data() {
     return {
       user: false,
+      region: "test",
+      languages: "test",
+      buddyGenderPreference: "test",
+      availability: "test"
     };
   },
 
@@ -187,26 +192,32 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+        var uid = user.uid;
+        const docRef = getDoc(doc(db, "Users", uid));
+
+        docRef.then(function(snapshot) {
+          const region = snapshot.data().region;
+          console.log("DEBUGGING: " + region)
+          // const languages = snapshot.data().languages;
+          // const genderPref = snapshot.data().genderPref;
+          // const availability = snapshot.data().availability;
+        })
+
+        // const snapshot = getDoc(doc(db, "Users", uid));
+        // var region = snapshot.data().region;
+        // var languages = snapshot.data().region;
+        // var genderPref = snapshot.data().genderPref;
+        // var availability = snapshot.data().availability;
+        // this.user.region = region;
+        // this.user.languages = languages;
+        // this.user.genderPref = genderPref;
+        // this.user.availability = availability;
+
       } else {
         alert("you must be logged in to view this page")
         this.$router.push("/")
       }
     });
-
-    // BUGGY HELP
-    // async function loadPreferences() {
-    //   // var uid = auth.currentUser.uid;
-    //   const snapshot = await getDoc(doc(db, "Users", "iCrmHNJbs3SbmUxqe4EN8uYL24M2"));
-    //   var region = snapshot.data().region;
-    //   var languages = snapshot.data().region;
-    //   var genderPref = snapshot.data().genderPref;
-    //   var availability = snapshot.data().availability;
-    //   this.user.region = region;
-    //   this.user.languages = languages;
-    //   this.user.genderPref = genderPref;
-    //   this.user.availability = availability;
-    // }
-    // loadPreferences()
   },
 
   methods: {
