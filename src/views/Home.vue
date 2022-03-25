@@ -1,16 +1,19 @@
 <template>
-  <div style="text-align: center" v-if="user">
+  <div class="page" style="text-align: center" v-if="user">
     <NavBar />
+    <SideBar/>
   </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
+import SideBar from "../components/SideBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
     NavBar,
+    SideBar,
   },
 
   data() {
@@ -35,4 +38,7 @@ export default {
 </script>
 
 <style>
+.page {
+  margin-left: 200px;
+}
 </style>

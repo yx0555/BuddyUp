@@ -1,17 +1,20 @@
 <template>
-  <div style="text-align: center" v-if="user">
+  <div class="page" style="text-align: center" v-if="user">
     <NavBar />
+    <SideBar />
     <h1>My Calendar Page</h1>
   </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
+import SideBar from "../components/SideBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
     NavBar,
+    SideBar,
   },
 
   data() {
@@ -34,5 +37,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.page {
+  margin-left: 200px;
+}
 </style>
