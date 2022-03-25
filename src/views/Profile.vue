@@ -7,9 +7,10 @@
       <h1>My Profile</h1>
       <img src="@/assets/man.png" style="width:100px; height:100px; border-radius:50%; border:4px solid #333"/>
         <p style="text-align: center"> 
-          Name: <strong>{{user.region}}</strong><br>
-          Email: <strong>{{user.email}}</strong><br>
-          Uid: <strong>{{user.uid}}</strong><br>
+          Region: <strong>{{this.region}}</strong><br>
+          Languages: <strong>{{this.languages}}</strong><br>
+          Buddy Gender Preferences: <strong>{{this.buddyGenderPreferences}}</strong><br>
+          Availability: <strong>{{this.availability}}</strong><br>
         </p>
     </div>
 
@@ -151,7 +152,7 @@
       </form>
       <!-- UPDATE BUTTON -->
       <div class="update">
-        <button id="updateButton" type="button" v-on:click="saveParticulars()">Update</button>
+        <button id="updateButton" type="button" v-on:click="saveParticulars(), reloadPage()">Update</button>
       </div>
       <br>
     </div>
@@ -162,7 +163,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
-import { getFirestore, updateDoc, doc } from "firebase/firestore";
+import { getFirestore, updateDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
@@ -179,6 +180,10 @@ export default {
   data() {
     return {
       user: false,
+      region: "",
+      languages: "",
+      buddyGenderPreferences: "",
+      availability: ""
     };
   },
 
@@ -187,6 +192,21 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+        var uid = user.uid;
+        const docRef = getDoc(doc(db, "Users", uid));
+
+        var vm = this;
+
+        docRef.then(function(snapshot) {
+          const region = snapshot.data().region;
+          vm.region = region;
+          const languages = snapshot.data().languages;
+          vm.languages = languages;
+          const buddyGenderPreferences = snapshot.data().genderPref;
+          vm.buddyGenderPreferences = buddyGenderPreferences;
+          const availability = snapshot.data().availability;
+          vm.availability = availability;
+        })
       } else {
         alert("you must be logged in to view this page")
         this.$router.push("/")
@@ -195,18 +215,7 @@ export default {
   },
 
   methods: {
-    // async loadParticulars() {
-    //   var loadUid = auth.currentUser.uid;
-    //   console.log(loadUid)
-    //   const snapshot = await getDoc(doc(db, "Users", loadUid));
-    //   var region = snapshot.data().region;
-    //   console.log(region)
-    //   // var languages = snapshot.data().languages;
-    //   // var genderPref = snapshot.data().genderPref;
-    //   // var availability = snapshot.data().availability;
-    // },
-
-    saveParticulars() {
+    async saveParticulars() {
       // REGION
       var userRegion = document.getElementById("region").value;
       // LANGUAGES / DIALECTS
@@ -228,16 +237,16 @@ export default {
         }
       }
 
-      var saveUid = auth.currentUser.uid;
-      updateDoc(doc(db, "Users", saveUid), {
+      var uid = auth.currentUser.uid;
+      updateDoc(doc(db, "Users", uid), {
         region: userRegion,
         languages: userCheckedLanguages,
         genderPref: userGenderPreferences,
         availability: userCheckedAvailability
       });
 
-      alert("Update your particulars?")
-      this.loadParticulars();
+      alert("Your particulars have been updated!")
+      // document.getElementById('updateProfileDetails').reset();
     },
 
     showLanguageCheckboxes() {
@@ -260,6 +269,10 @@ export default {
         availabilityCheckboxes.style.display = "none";
         expanded = false;
       }
+    },
+
+    reloadPage() {
+      window.location.reload();
     }
   },
 };
@@ -271,21 +284,14 @@ export default {
 }
 
 .multiselect {
-  /* width: 70%; */
   text-align: center;
 }
 .selectBox {
   position: relative;
 }
-/* .selectBox select {
-  width: 100%;
-} */
+
 .overSelect {
   position: absolute;
-  /* left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0; */
 }
 
 .displayProfileContainer{

@@ -1,32 +1,67 @@
 <template>
   <div id="app">
-    <img src="@/assets/BuddyUpLogo.png" alt = "Buddy Up Logo">
+    <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
   </div>
 
   <h1>CREATE AN ACCOUNT</h1>
 
-  <div class = "registerMainContainer">
-    <form id = "userRegistration">
-      <div class = "formli">
-        <label for = "fullName">Full Name: </label>
-        <input type = "text" id = "fullName" required = "" placeholder = "Enter your Full Name"> <br><br>
+  <div class="registerMainContainer">
+    <form id="userRegistration">
+      <div class="formli">
+        <label for="fullName">Full Name: </label>
+        <input
+          type="text"
+          id="fullName"
+          required=""
+          placeholder="Enter your Full Name"
+        />
+        <br /><br />
 
-        <label for = "username">Username: </label>
-        <input type = "text" id = "username" required = "" placeholder = "Enter your Username"> <br><br>
+        <label for="username">Username: </label>
+        <input
+          type="text"
+          id="username"
+          required=""
+          placeholder="Enter your Username"
+        />
+        <br /><br />
 
-        <label for = "emailAddress">Email Address: </label>
-        <input type = "email" id = "emailAddress" required = "" placeholder = "Enter your Email"> <br><br>
+        <label for="emailAddress">Email Address: </label>
+        <input
+          type="email"
+          id="emailAddress"
+          required=""
+          placeholder="Enter your Email"
+        />
+        <br /><br />
 
-        <label for = "password">Password: </label>
-        <input type = "password" id = "password" required = "" placeholder = "Enter your Password"> <br><br>
+        <label for="password">Password: </label>
+        <input
+          type="password"
+          id="password"
+          required=""
+          placeholder="Enter your Password"
+        />
+        <br /><br />
 
-        <label for = "repeatPassword">Repeat Password: </label>
-        <input type = "password" id = "repeatPassword" required = "" placeholder = "Enter Password again"> <br><br>
+        <label for="repeatPassword">Repeat Password: </label>
+        <input
+          type="password"
+          id="repeatPassword"
+          required=""
+          placeholder="Enter Password again"
+        />
+        <br /><br />
 
-        <div class = "signUp">
-          <button id = "signUpButton" type="button" v-on:click="checkValidityOfForm()">Sign Up</button>
+        <div class="signUp">
+          <button
+            id="signUpButton"
+            type="button"
+            v-on:click="checkValidityOfForm()"
+          >
+            Sign Up
+          </button>
         </div>
-
       </div>
     </form>
     <div id="loginPromptRouter">
@@ -36,69 +71,78 @@
 </template>
 
 <script>
-import firebaseApp from '../firebase.js';
+import firebaseApp from "../firebase.js";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 // import { collection, addDoc } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
 
-export default {  
+export default {
   name: "Register",
-  
+
   data() {
-    return {
-      email: '',
-      password: '',
-    };
-  },
+      return {
+        email: "",
+        password: "",
+      };
+    },
 
   methods: {
     checkValidityOfForm() {
-      const auth = getAuth()
-      var userFullName = document.getElementById("fullName").value
-      var userUsername = document.getElementById("username").value
-      var userEmail = document.getElementById("emailAddress").value
-      var userPassword = document.getElementById("password").value
-      var userRepeatPassword = document.getElementById("repeatPassword").value
+      const auth = getAuth();
+      var userFullName = document.getElementById("fullName").value;
+      var userUsername = document.getElementById("username").value;
+      var userEmail = document.getElementById("emailAddress").value;
+      var userPassword = document.getElementById("password").value;
+      var userRepeatPassword = document.getElementById("repeatPassword").value;
       if (userFullName == "") {
         alert("Please key in your Full Name");
       } else if (userUsername == "") {
         alert("Please key in a username");
       } else if (userEmail == "") {
-        alert("Please key in your Email Address")
+        alert("Please key in your Email Address");
       } else if (userPassword == "") {
         alert("Please key in a password");
       } else if (userRepeatPassword == "") {
-        alert("Please key in your password again")
+        alert("Please key in your password again");
       } else if (userPassword != userRepeatPassword) {
-        alert("Your passwords are not the same. Please key in your passwords again.")
+        alert(
+          "Your passwords are not the same. Please key in your passwords again."
+        );
       } else {
-        alert("We will be registering you: " + userFullName)
+        alert("We will be registering you: " + userFullName);
         try {
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
-              this.$router.push('/login')
-              
-              var uid = auth.currentUser.uid
+              this.$router.push("/login");
+
+              var uid = auth.currentUser.uid;
               setDoc(doc(db, "Users", uid), {
-                fullName: userFullName, username: userUsername, emailAddress: userEmail
-              })
+                fullName: userFullName,
+                username: userUsername,
+                emailAddress: userEmail,
+                buddyID1: "",
+                buddyName1: "",
+                buddyID2: "",
+                buddyName2: "",
+                buddyID3: "",
+                buddyName3: "",
+              });
               // console.log(docRef)
-              document.getElementById('userRegistration').reset();
+              document.getElementById("userRegistration").reset();
               // this.$emit("added")'
             })
             .catch((error) => {
-              alert(error.message)
+              alert(error.message);
             });
-          }
-        catch(error) {
+        } catch (error) {
           console.error("Error adding document: ", error);
         }
       }
-    } 
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -114,12 +158,12 @@ label {
 }
 
 #signUpButton {
-  background-color: #F07575;
+  background-color: #f07575;
   border-radius: 4px;
   cursor: pointer;
 }
 
 #nav {
-  padding: 30px
+  padding: 30px;
 }
 </style>
