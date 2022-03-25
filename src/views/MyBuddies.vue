@@ -35,7 +35,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">Buddy 3</router-link>
+        <router-link to="/indivbuddies/$.id">Buddy 3</router-link>
       </div>
     </div>
 
@@ -76,11 +76,15 @@ export default {
       const snapshot = await getDoc(doc(db, "Users", uid));
       var genderPref = snapshot.data().genderPref;
       var region = snapshot.data().region;
+    
 
       const querySnap = await getDocs(query(collection(db, "Buddies")));
       querySnap.forEach((doc) => {
         if (doc.data().gender == genderPref && doc.data().region == region) {
           document.getElementById("buddy1").innerHTML = doc.data().buddyName;
+          this.buddyid_data = doc.id;
+        } else {
+          this.buddyid_data = "None";
         }
       });
     },
@@ -102,6 +106,7 @@ export default {
         this.$router.push("/")
       }
     });
+    this.buddyid_data=this.$route.params.id;
   },
 };
 </script>

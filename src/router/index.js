@@ -9,6 +9,10 @@ import AboutUs from "@/views/AboutUs.vue";
 import IndivBuddies from "@/views/IndivBuddies.vue";
 import NotFound from "@/views/NotFound.vue";
 
+IndivBuddies = {
+  template: '<div>IndivBuddies {{$route.params.id }}</div>',
+}
+
 const routes = [
   {
     path: "/login",
