@@ -7,9 +7,10 @@
       <h1>My Profile</h1>
       <img src="@/assets/man.png" style="width:100px; height:100px; border-radius:50%; border:4px solid #333"/>
         <p style="text-align: center"> 
-          Name: <strong>{{user.region}}</strong><br>
-          Email: <strong>{{user.email}}</strong><br>
-          Uid: <strong>{{user.uid}}</strong><br>
+          Region: <strong>{{this.region}}</strong><br>
+          Languages: <strong>{{this.languages}}</strong><br>
+          Buddy Gender Preferences: <strong>{{this.buddyGenderPreference}}</strong><br>
+          Availability: <strong>{{this.availability}}</strong><br>
         </p>
     </div>
 
@@ -162,7 +163,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
-import { getFirestore, updateDoc, doc } from "firebase/firestore";
+import { getFirestore, updateDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
@@ -179,6 +180,10 @@ export default {
   data() {
     return {
       user: false,
+      region: "test",
+      languages: "test",
+      buddyGenderPreference: "test",
+      availability: "test"
     };
   },
 
@@ -187,6 +192,27 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+        var uid = user.uid;
+        const docRef = getDoc(doc(db, "Users", uid));
+
+        docRef.then(function(snapshot) {
+          const region = snapshot.data().region;
+          console.log("DEBUGGING: " + region)
+          // const languages = snapshot.data().languages;
+          // const genderPref = snapshot.data().genderPref;
+          // const availability = snapshot.data().availability;
+        })
+
+        // const snapshot = getDoc(doc(db, "Users", uid));
+        // var region = snapshot.data().region;
+        // var languages = snapshot.data().region;
+        // var genderPref = snapshot.data().genderPref;
+        // var availability = snapshot.data().availability;
+        // this.user.region = region;
+        // this.user.languages = languages;
+        // this.user.genderPref = genderPref;
+        // this.user.availability = availability;
+
       } else {
         alert("you must be logged in to view this page")
         this.$router.push("/")
@@ -195,18 +221,7 @@ export default {
   },
 
   methods: {
-    // async loadParticulars() {
-    //   var loadUid = auth.currentUser.uid;
-    //   console.log(loadUid)
-    //   const snapshot = await getDoc(doc(db, "Users", loadUid));
-    //   var region = snapshot.data().region;
-    //   console.log(region)
-    //   // var languages = snapshot.data().languages;
-    //   // var genderPref = snapshot.data().genderPref;
-    //   // var availability = snapshot.data().availability;
-    // },
-
-    saveParticulars() {
+    async saveParticulars() {
       // REGION
       var userRegion = document.getElementById("region").value;
       // LANGUAGES / DIALECTS
@@ -228,16 +243,16 @@ export default {
         }
       }
 
-      var saveUid = auth.currentUser.uid;
-      updateDoc(doc(db, "Users", saveUid), {
+      var uid = auth.currentUser.uid;
+      updateDoc(doc(db, "Users", uid), {
         region: userRegion,
         languages: userCheckedLanguages,
         genderPref: userGenderPreferences,
         availability: userCheckedAvailability
       });
 
-      alert("Update your particulars?")
-      this.loadParticulars();
+      alert("Your particulars have been updated!")
+      document.getElementById('updateProfileDetails').reset();
     },
 
     showLanguageCheckboxes() {
@@ -271,21 +286,14 @@ export default {
 }
 
 .multiselect {
-  /* width: 70%; */
   text-align: center;
 }
 .selectBox {
   position: relative;
 }
-/* .selectBox select {
-  width: 100%;
-} */
+
 .overSelect {
   position: absolute;
-  /* left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0; */
 }
 
 .displayProfileContainer{
