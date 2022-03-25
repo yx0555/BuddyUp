@@ -9,7 +9,7 @@
         <p style="text-align: center"> 
           Region: <strong>{{this.region}}</strong><br>
           Languages: <strong>{{this.languages}}</strong><br>
-          Buddy Gender Preferences: <strong>{{this.buddyGenderPreference}}</strong><br>
+          Buddy Gender Preferences: <strong>{{this.buddyGenderPreferences}}</strong><br>
           Availability: <strong>{{this.availability}}</strong><br>
         </p>
     </div>
@@ -152,7 +152,7 @@
       </form>
       <!-- UPDATE BUTTON -->
       <div class="update">
-        <button id="updateButton" type="button" v-on:click="saveParticulars()">Update</button>
+        <button id="updateButton" type="button" v-on:click="saveParticulars(), reloadPage()">Update</button>
       </div>
       <br>
     </div>
@@ -180,10 +180,10 @@ export default {
   data() {
     return {
       user: false,
-      region: "test",
-      languages: "test",
-      buddyGenderPreference: "test",
-      availability: "test"
+      region: "",
+      languages: "",
+      buddyGenderPreferences: "",
+      availability: ""
     };
   },
 
@@ -195,24 +195,18 @@ export default {
         var uid = user.uid;
         const docRef = getDoc(doc(db, "Users", uid));
 
+        var vm = this;
+
         docRef.then(function(snapshot) {
           const region = snapshot.data().region;
-          console.log("DEBUGGING: " + region)
-          // const languages = snapshot.data().languages;
-          // const genderPref = snapshot.data().genderPref;
-          // const availability = snapshot.data().availability;
+          vm.region = region;
+          const languages = snapshot.data().languages;
+          vm.languages = languages;
+          const buddyGenderPreferences = snapshot.data().genderPref;
+          vm.buddyGenderPreferences = buddyGenderPreferences;
+          const availability = snapshot.data().availability;
+          vm.availability = availability;
         })
-
-        // const snapshot = getDoc(doc(db, "Users", uid));
-        // var region = snapshot.data().region;
-        // var languages = snapshot.data().region;
-        // var genderPref = snapshot.data().genderPref;
-        // var availability = snapshot.data().availability;
-        // this.user.region = region;
-        // this.user.languages = languages;
-        // this.user.genderPref = genderPref;
-        // this.user.availability = availability;
-
       } else {
         alert("you must be logged in to view this page")
         this.$router.push("/")
@@ -252,7 +246,7 @@ export default {
       });
 
       alert("Your particulars have been updated!")
-      document.getElementById('updateProfileDetails').reset();
+      // document.getElementById('updateProfileDetails').reset();
     },
 
     showLanguageCheckboxes() {
@@ -275,6 +269,10 @@ export default {
         availabilityCheckboxes.style.display = "none";
         expanded = false;
       }
+    },
+
+    reloadPage() {
+      window.location.reload();
     }
   },
 };
