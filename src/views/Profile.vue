@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="text-align: center" v-if="user" v-on:load="loadParticulars()">
+  <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
 
@@ -152,7 +152,7 @@
       </form>
       <!-- UPDATE BUTTON -->
       <div class="update">
-        <button id="updateButton" type="button" v-on:click="saveParticulars(), reloadPage()">Update</button>
+        <button id="updateButton" type="button" v-on:click="saveParticulars(callback)">Update</button>
       </div>
       <br>
     </div>
@@ -215,7 +215,7 @@ export default {
   },
 
   methods: {
-    async saveParticulars() {
+    saveParticulars() {
       // REGION
       var userRegion = document.getElementById("region").value;
       // LANGUAGES / DIALECTS
@@ -246,7 +246,6 @@ export default {
       });
 
       alert("Your particulars have been updated!")
-      // document.getElementById('updateProfileDetails').reset();
     },
 
     showLanguageCheckboxes() {
@@ -271,9 +270,9 @@ export default {
       }
     },
 
-    reloadPage() {
-      window.location.reload();
-    }
+    // reloadPage() {
+    //   window.location.reload();
+    // }
   },
 };
 </script>
