@@ -1,7 +1,9 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
-    <SideBar/>
+    <SideBar />
+    <h3>Upcoming Tasks</h3>
+    <h3>Important Reminders</h3>
   </div>
 </template>
 
@@ -29,8 +31,8 @@ export default {
       if (user) {
         this.user = user;
       } else {
-        alert("you must be logged in to view this page")
-        this.$router.push("/")
+        alert("you must be logged in to view this page");
+        this.$router.push("/");
       }
     });
   },
