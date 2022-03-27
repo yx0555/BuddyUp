@@ -12,9 +12,8 @@
           width="150"
           alt="Buddy Icon"
         />
-        <br /><br /><router-link id="buddy1" to="/indivbuddies/1"
-          >Buddy 1</router-link
-        >
+        <br /><br />
+        <router-link to="/indivbuddies/1">{{ this.buddyName1 }}</router-link>
       </div>
 
       <div class="column">
@@ -25,7 +24,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">Buddy 2</router-link>
+        <router-link to="/indivbuddies/2">{{ this.buddyName2 }}</router-link>
       </div>
 
       <div class="column">
@@ -36,7 +35,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">Buddy 3</router-link>
+        <router-link to="/indivbuddies/2">{{ this.buddyName3 }}</router-link>
       </div>
     </div>
 
@@ -76,6 +75,7 @@ export default {
     async addbuddy() {
       // var image = document.getElementById("icon");
       // image.src = "@/assets/buddyicon.png";
+
       var uid = auth.currentUser.uid;
       const snapshot = await getDoc(doc(db, "Users", uid));
       var genderPref = snapshot.data().genderPref;
@@ -87,11 +87,11 @@ export default {
       var buddy3 = snapshot.data().buddyID3;
 
       var x;
-      if (buddy1 == "") {
+      if (buddy1 == "" || buddy1 == null) {
         x = 1;
-      } else if (buddy2 == "") {
+      } else if (buddy2 == "" || buddy2 == null) {
         x = 2;
-      } else if (buddy3 == "") {
+      } else if (buddy3 == "" || buddy3 == null) {
         x = 3;
       } else {
         alert("Maximum number of buddies reached");
@@ -103,77 +103,66 @@ export default {
       try {
         querySnap.forEach((d) => {
           if (
-            d.data().gender == genderPref &&
+            (d.data().gender == genderPref || genderPref == "noPreferences") &&
             d.data().region == region &&
-            d.data().userID == "" &&
-            languageArray.includes(d.data().language) &&
-            x == 1
+            (d.data().userID == "" || d.data().userID == null) &&
+            languageArray.includes(d.data().language)
           ) {
-            console.log(d.id);
-            updateDoc(doc(db, "Buddies", d.id), {
-              userID: uid,
-            });
-            updateDoc(doc(db, "Users", uid), {
-              buddyID1: d.id,
-              buddyName1: d.data().buddyName,
-            });
-            document.getElementById("buddy1").innerHTML = d.data().buddyName;
-            alert(d.data().buddyName + " is your new buddy");
-            available = true;
-            throw "Break";
-          } else if (
-            d.data().gender == genderPref &&
-            d.data().region == region &&
-            d.data().userID == "" &&
-            languageArray.includes(d.data().language) &&
-            x == 2
-          ) {
-            console.log(d.id);
-            updateDoc(doc(db, "Buddies", d.id), {
-              userID: uid,
-            });
-            updateDoc(doc(db, "Users", uid), {
-              buddyID2: d.id,
-              buddyName2: d.data().buddyName,
-            });
-            document.getElementById("buddy2").innerHTML = d.data().buddyName;
-            alert(d.data().buddyName + " is your new buddy");
-            available = true;
-            throw "Break";
-          } else if (
-            d.data().gender == genderPref &&
-            d.data().region == region &&
-            d.data().userID == "" &&
-            languageArray.includes(d.data().language) &&
-            x == 3
-          ) {
-            console.log(d.id);
-            updateDoc(doc(db, "Buddies", d.id), {
-              userID: uid,
-            });
-            updateDoc(doc(db, "Users", uid), {
-              buddyID3: d.id,
-              buddyName3: d.data().buddyName,
-            });
-            document.getElementById("buddy3").innerHTML = d.data().buddyName;
-            alert(d.data().buddyName + " is your new buddy");
-            available = true;
-            throw "Break";
+            if (x == 1) {
+              updateDoc(doc(db, "Buddies", d.id), {
+                userID: uid,
+              });
+              updateDoc(doc(db, "Users", uid), {
+                buddyID1: d.id,
+                buddyName1: d.data().buddyName,
+              });
+              alert(d.data().buddyName + " is your new buddy");
+              available = true;
+              throw "Break";
+            } else if (x == 2) {
+              updateDoc(doc(db, "Buddies", d.id), {
+                userID: uid,
+              });
+              updateDoc(doc(db, "Users", uid), {
+                buddyID2: d.id,
+                buddyName2: d.data().buddyName,
+              });
+              alert(d.data().buddyName + " is your new buddy");
+              available = true;
+              throw "Break";
+            } else if (x == 3) {
+              updateDoc(doc(db, "Buddies", d.id), {
+                userID: uid,
+              });
+              updateDoc(doc(db, "Users", uid), {
+                buddyID3: d.id,
+                buddyName3: d.data().buddyName,
+              });
+              alert(d.data().buddyName + " is your new buddy");
+              available = true;
+              throw "Break";
+            }
           }
         });
       } catch (e) {
         if (e !== "Break") throw e;
       } finally {
-        if (available == false) {
+        if (x != null && available == false) {
           alert("No Buddies Available");
         }
       }
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
     },
   },
 
   data() {
     return {
       user: false,
+      buddyName1: "",
+      buddyName2: "",
+      buddyName3: "",
     };
   },
 
@@ -182,6 +171,19 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+        var uid = user.uid;
+        const docRef = getDoc(doc(db, "Users", uid));
+
+        var vm = this;
+
+        docRef.then(function (snapshot) {
+          const name1 = snapshot.data().buddyName1;
+          vm.buddyName1 = name1;
+          const name2 = snapshot.data().buddyName2;
+          vm.buddyName2 = name2;
+          const name3 = snapshot.data().buddyName3;
+          vm.buddyName3 = name3;
+        });
       } else {
         alert("you must be logged in to view this page");
         this.$router.push("/");
