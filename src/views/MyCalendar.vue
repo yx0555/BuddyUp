@@ -3,11 +3,8 @@
     <NavBar />
     <SideBar />
     <h1>My Calendar Page</h1>
+    <Calendar />
   </div>
-  <!-- <div id="app"></div> -->
-  <!-- <div class = "calendar">
-    <FullCalendar :options="calendarOptions" />
-  </div> -->
 
 </template>
 
@@ -15,10 +12,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-// import '@fullcalendar/core/vdom';
-// import FullCalendar from '@fullcalendar/vue';
-// import dayGridPlugin from '@fullcalendar/daygrid';
-// import interactionPlugin from '@fullcalendar/interaction';
+import Calendar from "../components/Calendar.vue";
 
 export default {
   name: "MyCalendar",
@@ -26,19 +20,13 @@ export default {
   components: {
     NavBar,
     SideBar,
-    // FullCalendar
+    Calendar,
   },
 
   data() {
     return {
       user: false,
-    };
-    // return {
-    //   calendarOptions: {
-    //     plugins: [ dayGridPlugin, interactionPlugin ],
-    //     initialView: 'dayGridMonth',
-    //   }
-    // }
+    }
   },
 
   mounted() {
