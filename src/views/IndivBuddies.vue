@@ -19,11 +19,17 @@
     </div>
 
   </div>
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login :route="'indivbuddies/' + this.$routes.params.id" />
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
+import Login from "../components/Login.vue";
+
 // import firebaseApp from "../firebase.js";
 // import {
 //   getFirestore,
@@ -41,6 +47,7 @@ export default {
   components: {
     NavBar,
     SideBar,
+    Login,
   },
 
   data() {
@@ -64,7 +71,7 @@ export default {
     }
    },
 
-  mounted() {
+  beforeMount() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {

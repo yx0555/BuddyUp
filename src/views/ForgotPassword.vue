@@ -37,6 +37,7 @@
       </form>
     </article>
   </section>
+  <router-link to="/"> Go back to login </router-link>
 </template>
 
 
