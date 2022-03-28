@@ -79,12 +79,14 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default {
+  name: "Register",
+
   data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
+      return {
+        email: "",
+        password: "",
+      };
+    },
 
   methods: {
     checkValidityOfForm() {
