@@ -25,7 +25,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name: 'IndivBuddies', params: {id:this.buddyID2}}">{{this.buddyName2}}</router-link>
+        <router-link to="/indivbuddies/2">{{ this.buddyName2 }}</router-link>
       </div>
 
       <div class="column">
@@ -36,7 +36,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name: 'IndivBuddies', params: {id:this.buddyID3}}">{{this.buddyName3}}</router-link>
+        <router-link to="/indivbuddies/2">{{ this.buddyName3 }}</router-link>
       </div>
     </div>
 
@@ -160,9 +160,6 @@ export default {
   data() {
     return {
       user: false,
-      buddyID1:null,
-      buddyID2:null,
-      buddyID3:null,
       buddyName1: "",
       buddyName2: "",
       buddyName3: "",
@@ -176,17 +173,14 @@ export default {
         this.user = user;
         var uid = user.uid;
         const docRef = getDoc(doc(db, "Users", uid));
+
         var vm = this;
-       
+
         docRef.then(function (snapshot) {
           const name1 = snapshot.data().buddyName1;
           vm.buddyName1 = name1;
-          const id1 = snapshot.data().buddyID1;
-          vm.buddyID1 = id1;
-
           const name2 = snapshot.data().buddyName2;
           vm.buddyName2 = name2;
-
           const name3 = snapshot.data().buddyName3;
           vm.buddyName3 = name3;
         });
