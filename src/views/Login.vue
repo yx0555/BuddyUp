@@ -9,6 +9,8 @@
         <button type = "submit" v-on:click="submit()">Login</button>
 
       </form>
+      <router-link to = "/register"> Register here! </router-link>
+      <router-link to = "/forgotpassword"> Forgot password</router-link>
     </div>
   </div>
 </template>
