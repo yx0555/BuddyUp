@@ -120,17 +120,6 @@ export default {
                 fullName: userFullName,
                 username: userUsername,
                 emailAddress: userEmail,
-                buddyID1: "",
-                buddyName1: "",
-                buddyID2: "",
-                buddyName2: "",
-                buddyID3: "",
-                buddyName3: "",
-                region:"",
-                languages: "",
-                genderPref: "",
-                availability:[]
-
               });
               // console.log(docRef)
               document.getElementById("userRegistration").reset();

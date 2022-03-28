@@ -3,7 +3,7 @@
     <NavBar />
     <SideBar />
     <div>
-      <h1>Buddy {{ $route.params.id }} Visitations</h1>
+      <h1>Buddy {{$route.params.id}} Visitations</h1>
       <table id="visitationtable" align="center">
         <tr>
         <th> Date </th>

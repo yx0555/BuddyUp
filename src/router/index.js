@@ -6,7 +6,7 @@ import MyCalendar from "@/views/MyCalendar.vue";
 import Profile from "@/views/Profile.vue";
 import Register from "@/views/Register.vue";
 import AboutUs from "@/views/AboutUs.vue";
-// import IndivBuddies from "@/views/IndivBuddies.vue";
+import IndivBuddies from "@/views/IndivBuddies.vue";
 import NotFound from "@/views/NotFound.vue";
 
 
@@ -49,7 +49,7 @@ const routes = [
   {
     path: "/indivbuddies/:id",
     name: "IndivBuddies",
-    component:()=> import("@/views/IndivBuddies.vue"),
+    component: IndivBuddies,
   },
   {
     path: "/:catchAll(.*)",
