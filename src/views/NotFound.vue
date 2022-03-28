@@ -5,6 +5,10 @@
     <h4>Please click on the available options</h4>
     <br />
   </div>
+  <div v-else>
+    <h3>Page Not Found !!</h3>
+    <router-link to="/"> Go to login</router-link>
+  </div>
 </template>
 
 <script>
