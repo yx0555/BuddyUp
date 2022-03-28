@@ -54,6 +54,5 @@ export default {
 
 <style scoped>
 #app {
-  margin-left: 200px;
 }
 </style>
