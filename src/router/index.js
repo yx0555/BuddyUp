@@ -6,12 +6,9 @@ import MyCalendar from "@/views/MyCalendar.vue";
 import Profile from "@/views/Profile.vue";
 import Register from "@/views/Register.vue";
 import AboutUs from "@/views/AboutUs.vue";
-import IndivBuddies from "@/views/IndivBuddies.vue";
+// import IndivBuddies from "@/views/IndivBuddies.vue";
 import NotFound from "@/views/NotFound.vue";
 
-IndivBuddies = {
-  template: '<div>IndivBuddies {{$route.params.id }}</div>',
-}
 
 const routes = [
   {
@@ -52,7 +49,7 @@ const routes = [
   {
     path: "/indivbuddies/:id",
     name: "IndivBuddies",
-    component: IndivBuddies,
+    component:()=> import("@/views/IndivBuddies.vue"),
   },
   {
     path: "/:catchAll(.*)",
@@ -70,5 +67,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+
 
 export default router;

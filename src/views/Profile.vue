@@ -238,6 +238,7 @@ export default {
       }
 
       var uid = auth.currentUser.uid;
+      console.log(userRegion)
       updateDoc(doc(db, "Users", uid), {
         region: userRegion,
         languages: userCheckedLanguages,

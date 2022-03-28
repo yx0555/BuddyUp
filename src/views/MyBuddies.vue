@@ -12,8 +12,8 @@
           width="150"
           alt="Buddy Icon"
         />
-        <br /><br /><router-link id="buddy1" to="/indivbuddies/1"
-          >Buddy 1</router-link
+        <br /><br /><router-link id="buddy1" 
+        to="{name: 'IndivBuddies', params: {id: this.buddy1id}}">Buddy 1</router-link
         >
       </div>
 
@@ -36,7 +36,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">Buddy 3</router-link>
+        <router-link to="/indivbuddies/3">Buddy 3</router-link>
       </div>
     </div>
 
@@ -85,6 +85,7 @@ export default {
       var buddy1 = snapshot.data().buddyID1;
       var buddy2 = snapshot.data().buddyID2;
       var buddy3 = snapshot.data().buddyID3;
+      this.buddy1id = buddy1;
 
       var x;
       if (buddy1 == "") {
@@ -173,6 +174,7 @@ export default {
   data() {
     return {
       user: false,
+      buddy1id: null,
     };
   },
 

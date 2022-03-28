@@ -3,7 +3,7 @@
     <NavBar />
     <SideBar />
     <div>
-      <h1>Buddy's {{this.buddyId }} Visitations</h1>
+      <h1>Buddy {{ $route.params.id }} Visitations</h1>
       <table id="visitationtable" align="center">
         <tr>
         <th> Date </th>
@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      buddyId: this.$route.params.id,
+      buddyId: null,
       user: false,
     };
   },
@@ -74,6 +74,7 @@ export default {
         this.$router.push("/")
       }
     });
+    this.buddyId = this.$route.params.id;
   },
 };
 </script>

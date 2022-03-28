@@ -126,6 +126,11 @@ export default {
                 buddyName2: "",
                 buddyID3: "",
                 buddyName3: "",
+                region:"",
+                languages: "",
+                genderPref: "",
+                availability:[]
+
               });
               // console.log(docRef)
               document.getElementById("userRegistration").reset();
