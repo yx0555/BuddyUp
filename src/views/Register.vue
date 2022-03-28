@@ -115,7 +115,7 @@ export default {
         try {
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
-              this.$router.push("/home");
+              this.$router.push("/");
 
               var uid = auth.currentUser.uid;
               setDoc(doc(db, "Users", uid), {

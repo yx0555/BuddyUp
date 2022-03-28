@@ -60,17 +60,23 @@
       social and health outcomes for the elderly.
     </p>
   </div>
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login route="aboutus" />
+  </div>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import SideBar from "@/components/SideBar.vue";
+import NavBar from "../components/NavBar.vue";
+import SideBar from "../components/SideBar.vue";
+import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
     NavBar,
     SideBar,
+    Login,
   },
 
   data() {

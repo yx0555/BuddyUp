@@ -5,12 +5,16 @@
     <h1>My Calendar Page</h1>
     <Calendar />
   </div>
-
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login route="mycalendar" />
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
+import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Calendar from "../components/Calendar.vue";
 
@@ -20,24 +24,22 @@ export default {
   components: {
     NavBar,
     SideBar,
-    Calendar,
+    Login,
   },
 
   data() {
     return {
       user: false,
-    }
+      loading: false,
+    };
   },
 
-  mounted() {
+  beforeCreate() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
-      } else {
-        alert("you must be logged in to view this page")
-        this.$router.push("/")
-      }
+      } 
     });
   },
 };
