@@ -1,10 +1,8 @@
 <template>
-<!-- <Calendar />
-<DatePicker v-model="date" />   -->
-	<div id="app">
+	<div id="calendar">
 		<h1>My Calendar</h1>
 		<calendar-view
-			:show-date="showDate"
+			:show-date="showDate" 
 			class="theme-default holiday-us-traditional holiday-us-official">
 			<template #header="{ headerProps }">
 				<calendar-view-header
@@ -16,29 +14,15 @@
 </template>
 
 <script>
-// import { Calendar } from 'v-calendar';
-// import 'v-calendar/dist/style.css';
-
-// export default {
-//     components: {
-//         Calendar,
-//         // DatePicker,
-//     },
-//     data() {
-//         return {
-//         date: new Date(),
-//         };
-//     },
-// }
 	import { CalendarView, CalendarViewHeader } from "vue-simple-calendar"
 
 	import "vue-simple-calendar/dist/style.css"
 	// // The next two lines are optional themes
-	// import "..relative-path-to-node_modules/vue-simple-calendar/static/css/default.css"
-	// import "..relative-path-to-node_modules/vue-simple-calendar/static/css/holidays-us.css"
+	import "vue-simple-calendar/static/css/default.css"
+	// import "vue-simple-calendar/static/css/holidays-us.css"
 
 	export default {
-		name: 'app',
+		name: 'calendar',
 		data: function() {
 			return { showDate: new Date() }
 		},
@@ -55,12 +39,18 @@
 </script>
 
 <style scoped>
-	#app {
+	#calendar {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		color: #2c3e50;
+		color: #94273f;
 		height: 67vh;
 		width: 90vw;
-		margin-left: auto;
+		margin-left: 75px;
 		margin-right: auto;
+	}
+
+	#cv-wrapper {
+		height: 100%;
+		width: 100%;
+		margin-right: 50px;
 	}
 </style>

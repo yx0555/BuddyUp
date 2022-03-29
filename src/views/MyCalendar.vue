@@ -2,7 +2,7 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <h1>My Calendar Page</h1>
+    <!-- <h1>My Calendar Page</h1> -->
     <Calendar />
   </div>
 
