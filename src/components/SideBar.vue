@@ -30,7 +30,7 @@ export default {
     name: "SideBar",
     methods: {
         goToHome() {
-        this.$router.push("/home");
+        this.$router.push("/");
         },
         goToProfile() {
         this.$router.push("/profile");

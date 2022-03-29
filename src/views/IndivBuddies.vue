@@ -2,38 +2,22 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <div>
-      <h1>Buddy's {{this.buddyId }} Visitations</h1>
-      <table id="visitationtable" align="center">
-        <tr>
-        <th> Date </th>
-        <th> Start Time </th>
-        <th> End Time </th>
-        <th> Remarks </th>
-        </tr>
-      </table>
-    </div>
-    <div class="buttons">
-      <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">Request Buddy's details</button>
-      <button id="addvisitationbutton" type="button" v-on:click="addvisitation()">Add a new visitation</button>
-    </div>
-
+    <AddLog :buddynumber="buddynumber" @added="change" />
+    <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
+  </div>
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login :route="'indivbuddies/' + this.$routes.params.id" />
   </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
-// import firebaseApp from "../firebase.js";
-// import {
-//   getFirestore,
-//   getDoc,
-//   doc,
-
-// } from "firebase/firestore";
+import AddLog from "../components/AddLog.vue";
+import Login from "../components/Login.vue"
+import LogDisplay from "../components/LogDisplay.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-// const db = getFirestore(firebaseApp);
-// const auth = getAuth();
 
 export default {
   name: "IndivBuddies",
@@ -41,30 +25,27 @@ export default {
   components: {
     NavBar,
     SideBar,
+    AddLog,
+    LogDisplay,
+    Login,
   },
 
   data() {
     return {
-      buddyId: this.$route.params.id,
       user: false,
+      refreshComp:0,
+      buddynumber : this.$route.params.id,
     };
   },
 
-   methods: {
-    async requestdetails() {
-      alert("Details of the buddy will be sent to your registered email")
+  methods: {
+    change(){
+      this.refreshComp+=1;
     },
-
-    async addvisitation(){
-      // var uid = auth.currentUser.uid;
-      // const snapshot = await getDoc(doc(db, "Buddies", this.buddyId));
-      // var buddy
+},
 
 
-    }
-   },
-
-  mounted() {
+  beforeMount() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -82,45 +63,19 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-.page {
-  margin-left: 200px;
-}
-
-#visitationtable{
-  position: relative;
-  font-family: "Montserrat";
-  font-size: 15px;
-  border-collapse: collapse;
-  width:70%;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #2c3e50;
+  margin-top: 30px;
 }
-
-th, td{
-    border: 1px solid #dddddd;
-    text-align: center;
-    padding: 8px;
-}
-
-.buttons{
-  position: absolute;
-  bottom: 10%;   
-  display: inline;
-}
-
-
-#requestdetailsbutton{
-  border-radius: 5px;
-  font-family: "Montserrat";
-  background-color: #ABE6E9;
-  font-size: 15px;
-  margin-right: 5px;
-}
-
-#addvisitationbutton{
-  border-radius: 5px;
-  font-family: "Montserrat";
-  background-color: #ABE6E9;
-  font-size: 15px;
+#bg{
+  display: block;
+  margin-left:auto;
+  margin-right: auto;
+  width:60%;
 }
 
 </style>

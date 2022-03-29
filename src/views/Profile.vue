@@ -158,12 +158,17 @@
       <br>
     </div>
   </div>
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login route="profile" />
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
+import Login from "../components/Login.vue";
 import { getFirestore, updateDoc, doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -176,6 +181,7 @@ export default {
   components: {
     NavBar,
     SideBar,
+    Login,
   },
 
   data() {
@@ -208,9 +214,6 @@ export default {
           const availability = snapshot.data().availability;
           vm.availability = availability;
         });
-      } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
       }
     });
   },
@@ -239,6 +242,7 @@ export default {
       }
 
       var uid = auth.currentUser.uid;
+      console.log(userRegion)
       updateDoc(doc(db, "Users", uid), {
         region: userRegion,
         languages: userCheckedLanguages,

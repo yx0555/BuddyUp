@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
-import Login from "@/views/Login.vue";
+import Login from "@/components/Login.vue";
 import MyBuddies from "@/views/MyBuddies.vue";
 import MyCalendar from "@/views/MyCalendar.vue";
 import Profile from "@/views/Profile.vue";
@@ -16,11 +16,11 @@ const routes = [
     name: "Login",
     component: Login,
   },
-  {
-    path: "/home",
-    name: "Home",
-    component: Home,
-  },
+  // {
+  //   path: "/home",
+  //   name: "Home",
+  //   component: Home,
+  // },
   {
     path: "/mybuddies",
     name: "MyBuddies",
@@ -57,9 +57,9 @@ const routes = [
     component: NotFound,
   },
   {
-    path: "",
-    name: "Login",
-    component: Login,
+    path: "/",
+    name: "Home",
+    component: Home,
   },
   {
     path: "/forgotpassword",
@@ -72,5 +72,7 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+
 
 export default router;
