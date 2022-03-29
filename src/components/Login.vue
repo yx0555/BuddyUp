@@ -10,8 +10,12 @@
         <br /><br />
         <button type="submit" v-on:click="submit()">Login</button>
       </form>
-      <router-link to="/register"> Register here! </router-link>
-      <router-link to="/forgotpassword"> Forgot password</router-link>
+      <p>
+        <router-link to="/forgotpassword"> Forgot password </router-link>
+      </p>
+      <p>
+        <router-link to="/register"> Do not have an account? Register here! </router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -64,6 +68,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
+p {
+  text-align: center;
 }
 </style>
