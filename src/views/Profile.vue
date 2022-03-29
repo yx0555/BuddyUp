@@ -1,29 +1,19 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
-    <SideBar />
+    <NavBar/>
+    <SideBar/>
 
     <div class="displayProfileContainer">
       <h1>My Profile</h1>
-      <img
-        src="@/assets/man.png"
-        style="
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          border: 4px solid #333;
-        "
-      />
+      <img src="@/assets/man.png" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #333"/>
+
       <p style="text-align: center">
-        Region: <strong>{{ this.region }}</strong
-        ><br />
-        Languages: <strong>{{ this.languages }}</strong
-        ><br />
-        Buddy Gender Preferences:
-        <strong>{{ this.buddyGenderPreferences }}</strong
-        ><br />
-        Availability: <strong>{{ this.availability }}</strong
-        ><br />
+        <strong>{{ this.fullName }}</strong>
+        <br><br>
+        Region: <strong>{{ this.region }}</strong><br>
+        Languages: <strong>{{ this.languages }}</strong><br>
+        Buddy Gender Preferences: <strong>{{ this.buddyGenderPreferences }}</strong><br>
+        Availability: <strong>{{ this.availability }}</strong><br>
       </p>
     </div>
 
@@ -42,12 +32,10 @@
             <option value="west">West</option>
             <option value="central">Central</option>
           </select>
-          <br /><br />
+          <br><br>
 
           <!-- LANGUAGES / DIALECTS -->
-          <label for="languages" id="languagesFields"
-            ><strong>Languages:</strong></label
-          >
+          <label for="languages" id="languagesFields"><strong>Languages:</strong></label>
           <div class="multiselect">
             <div class="selectBox" v-on:click="showLanguageCheckboxes()">
               <select>
@@ -62,50 +50,45 @@
                   type="checkbox"
                   id="english"
                   value="english"
-                />English</label
-              >
-              <br />
+                />English</label>
+              <br>
               <label for="chinese">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="chinese"
                   value="chinese"
-                />Chinese</label
-              >
-              <br />
+                />Chinese</label>
+              <br>
               <label for="malay">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="malay"
                   value="malay"
-                />Malay</label
-              >
-              <br />
+                />Malay</label>
+              <br>
               <label for="tamil">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="tamil"
                   value="tamil"
-                />Tamil</label
-              >
+                />Tamil</label>
             </div>
           </div>
-          <br />
+          <br>
 
           <!-- GENDER PREFERENCES -->
           <label for="genderPreferences" id="formFields"
-            ><strong>Buddy Gender Preferences: </strong></label
-          >
+            ><strong>Buddy Gender Preferences: </strong></label>
           <select name="genderPreferences" id="genderPreferences">
             <option value="">Select option</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="noPreferences">No Preferences</option>
           </select>
-          <br /><br />
+          <br><br>
 
           <!-- AVAILABILITY -->
           <label for="availability" id="availabilityFields"
@@ -372,7 +355,7 @@
   </div>
   <div v-else>
     <h1>You must be logged in to view this page</h1>
-    <Login route="profile" />
+    <Login route="profile"/>
   </div>
 </template>
 
@@ -399,6 +382,7 @@ export default {
   data() {
     return {
       user: false,
+      fullName: "",
       region: "",
       languages: "",
       buddyGenderPreferences: "",
@@ -417,6 +401,9 @@ export default {
         var vm = this;
 
         docRef.then(function (snapshot) {
+          const fullName = snapshot.data().fullName;
+          vm.fullName = fullName;
+
           const region = snapshot.data().region;
           vm.region = region;
           const languages = snapshot.data().languages;
