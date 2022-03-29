@@ -5,12 +5,17 @@
     <AddLog :buddynumber="buddynumber" @added="change" />
     <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
   </div>
+  <div v-else>
+    <h1> You must be logged in to view this page </h1>
+    <Login :route="'indivbuddies/' + this.$routes.params.id" />
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import AddLog from "../components/AddLog.vue";
+import Login from "../components/Login.vue"
 import LogDisplay from "../components/LogDisplay.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -22,6 +27,7 @@ export default {
     SideBar,
     AddLog,
     LogDisplay,
+    Login,
   },
 
   data() {
@@ -38,11 +44,15 @@ export default {
     },
 },
 
-  mounted(){
-    const auth= getAuth();
-    onAuthStateChanged(auth,(user)=>{
-      if(user){
-        this.user=user;
+
+  beforeMount() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        alert("you must be logged in to view this page")
+        this.$router.push("/")
       }
     });
   },

@@ -79,12 +79,14 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 const db = getFirestore(firebaseApp);
 
 export default {
+  name: "Register",
+
   data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
+      return {
+        email: "",
+        password: "",
+      };
+    },
 
   methods: {
     checkValidityOfForm() {
@@ -113,7 +115,7 @@ export default {
         try {
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
-              this.$router.push("/login");
+              this.$router.push("/");
 
               var uid = auth.currentUser.uid;
               setDoc(doc(db, "Users", uid), {

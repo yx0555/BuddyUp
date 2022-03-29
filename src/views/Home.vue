@@ -5,17 +5,23 @@
     <h3>Upcoming Tasks</h3>
     <h3>Important Reminders</h3>
   </div>
+  <div v-else>
+    <Login route="" />
+  </div>
+
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
+import Login from "../components/Login.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
     NavBar,
     SideBar,
+    Login
   },
 
   data() {
@@ -25,14 +31,11 @@ export default {
     };
   },
 
-  mounted() {
+  beforeMount() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
-      } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
       }
     });
   },

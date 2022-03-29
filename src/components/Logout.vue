@@ -49,4 +49,8 @@ export default {
   margin-right: 8px;
 }
 
+#btn:hover{
+  font-weight: bold;
+}
+
 </style>

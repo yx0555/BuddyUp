@@ -46,12 +46,18 @@
       </button>
     </div>
   </div>
+  <div v-else>
+    <h1> you must be logged in to view this page </h1>
+    <Login route="mybuddies" />
+  </div>
 </template>
 
 <script>
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
+import Login from "../components/Login.vue"
+
 import {
   getFirestore,
   getDoc,
@@ -69,6 +75,7 @@ export default {
   components: {
     NavBar,
     SideBar,
+    Login,
   },
 
   methods: {
@@ -169,7 +176,7 @@ export default {
     };
   },
 
-  mounted() {
+  beforeMount() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -185,9 +192,6 @@ export default {
           const name3 = snapshot.data().buddyName3;
           vm.buddyName3 = name3;
         });
-      } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
       }
     });
   },
