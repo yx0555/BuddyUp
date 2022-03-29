@@ -151,6 +151,7 @@ input:hover{
   font-family: "Montserrat";
   background-color: #abe6e9;
   font-size: 15px;
+  padding: 2px;
 }
 
 </style>

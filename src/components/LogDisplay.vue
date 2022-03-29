@@ -13,12 +13,10 @@
         </tr>
       </table>
     </div>
-
-    <div class="buttons">
-      <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">
-        Request Buddy's details
-      </button>
-    </div>
+    
+    <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">
+      Request Buddy's details
+    </button>
   </div>
 </template>
 
@@ -97,11 +95,14 @@ export default {
 
             var bu = document.createElement("button")
             bu.innerHTML="Delete"
+            bu.style.backgroundColor = "#abe6e9"
+            bu.style.borderRadius = "5px"
+            bu.style.fontFamily = "Montserrat"
+      
             bu.onclick = function(){
                 deletevisitation(docs.id)
             };
             cell6.appendChild(bu)
-
             ind += 1;
         });
     }
@@ -131,7 +132,6 @@ export default {
   margin-left: 0px;
 }
 
-
 h1,h2{
     text-align:center;
     background-color: #f5a4a4;
@@ -148,24 +148,20 @@ h1,h2{
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width: 95%;
+  width:95%;
   text-align: center;
   margin-bottom: 20px;
-  overflow: scroll;
 }
 
+tr:nth-child(even){
+    background-color: #e3edee;
+}
 
 th,
-td {
+tr {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
-}
-
-.buttons {
-  align-content: top;
-  bottom: 70%;
-  display: inline;
 }
 
 #requestdetailsbutton {
@@ -173,6 +169,7 @@ td {
   font-family: "Montserrat";
   background-color: #abe6e9;
   font-size: 15px;
+  padding: 3px;
 }
 
 </style>

@@ -16,7 +16,7 @@ import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import Calendar from "../components/Calendar.vue";
+// import Calendar from "../components/Calendar.vue";
 
 export default {
   name: "MyCalendar",
