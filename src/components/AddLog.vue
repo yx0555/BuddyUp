@@ -7,25 +7,20 @@
           <label for="date"> Date:</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
-
           <label for="starttime">Start Time:</label>
-          <input type="number" id="starttime" required="" placeholder="0000 HR" v-model="b"/><br /><br />
-
+          <input type="number" id="starttime" required="" placeholder="0000HR(HHMM)" v-model="b"/><br /><br />
           <label for="endtime">End Time:</label>
-          <input type="number" id="endtime" required="" placeholder="0000 HR" v-model="c"/><br /><br />
-
+          <input type="number" id="endtime" required="" placeholder="0000HR(HHMM)" v-model="c"/><br /><br />
           <label for="remarks">Remarks:</label>
           <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="d"/><br /><br />
-
-          <div class="save">
+        <div class="save">
             <button id="savebutton" type="button" v-on:click="savetofs()">
-              Save
+                Save
             </button>
-          </div>
+        </div>
         </div>
       </form>
     </div>
-
   </div>
 </template>
 
@@ -74,25 +69,26 @@ export default {
 
    methods: {
     async savetofs() {
-      if (!(this.a == "" || this.b == "" || this.c == "")){
-        if (this.b!=this.c) {
-          //Date and time cannot be empty
-          try {
-            var uid = auth.currentUser.uid;
-            const docRef = await addDoc(collection(db, "Visitations"), {
-              date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
-            });
-            console.log(docRef);
-            const addRef = doc(db, "Buddies", this.buddyId);
-            await updateDoc(addRef, {
-              visitationID: arrayUnion(docRef.id),
-            });
-            document.getElementById("myform").reset();
-            this.$emit("added");
-          } catch (error) {
-            console.error("Error adding document: ", error);
-          }
-        } else alert("Start and end time cannot be the same!");
+      if (!(String(this.a) == "" || String(this.b) == "" || String(this.c) == "")){
+        if (this.b>=0 && this.c>=0 && String(this.b).length==4 && String(this.c).length==4){
+            if (this.b!=this.c) {
+            //Date and time cannot be empty
+            try {
+                var uid = auth.currentUser.uid;
+                const docRef = await addDoc(collection(db, "Visitations"), {
+                date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
+                });
+                console.log(docRef);
+                const addRef = doc(db, "Buddies", this.buddyId);
+                await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
+                document.getElementById("myform").reset();
+                this.$emit("added");
+                alert("Visitation has been added")
+            } catch (error) {
+                console.error("Error adding document: ", error);
+            }
+            } else alert("Start and end time cannot be the same!");
+        } else alert("Please enter a valid time")
       } else alert("Cannot take empty values. Please enter the values");
     },
   
@@ -108,7 +104,6 @@ export default {
   margin-left: 0px;
 }
 
-
 h1,h2{
     text-align:center;
     background-color: #f5a4a4;
@@ -121,24 +116,41 @@ h1,h2{
     font-family: "Montserrat"
 }
 
-
-th,
-td {
-  border: 1px solid #dddddd;
-  text-align: center;
-  padding: 8px;
+.formli{
+    display: inline-block;
+    text-align: left;
 }
 
-.buttons {
-  align-content: top;
-  bottom: 70%;
-  display: inline;
+form{
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
+
+label {
+    display: inline-block;
+    width:100px;
+    text-align: right;
+}
+
+input {
+    width: 150px
+}
+
+input:hover{
+    box-shadow: 3px 3px #dddddd;
+    border-radius: 2px;
+}
+
+.save{
+    text-align: center;
 }
 
 #savebutton {
   border-radius: 5px;
   font-family: "Montserrat";
   background-color: #abe6e9;
-  font-size: 13px;
+  font-size: 15px;
 }
+
 </style>

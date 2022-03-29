@@ -107,10 +107,9 @@ export default {
     }
     //Delete from firebase
     async function deletevisitation(visitationID){
-      var vm = this;
       alert("You are going to delete this visitation log")
       await deleteDoc(doc(db, "Visitations", visitationID))
-      await updateDoc(doc(db,"Buddies",vm.buddyId),{
+      await updateDoc(doc(db,"Buddies", vm.buddyId),{
         visitationID: arrayRemove(visitationID)
       });
       let tb=document.getElementById("visitationtable")
@@ -146,13 +145,12 @@ h1,h2{
 }
 
 #visitationtable {
-  position: relative;
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width: 100%;
+  width: 95%;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   overflow: scroll;
 }
 
@@ -174,13 +172,7 @@ td {
   border-radius: 5px;
   font-family: "Montserrat";
   background-color: #abe6e9;
-  font-size: 13px;
+  font-size: 15px;
 }
 
-#savebutton {
-  border-radius: 5px;
-  font-family: "Montserrat";
-  background-color: #abe6e9;
-  font-size: 13px;
-}
 </style>
