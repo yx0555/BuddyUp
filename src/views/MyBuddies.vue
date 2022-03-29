@@ -13,8 +13,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name: 'IndivBuddies', params: {id: this.buddyID1}}">{{this.buddyName1}}</router-link>
-        <!-- <router-link to="/indivbuddies/1"> {{ this.buddyName1 }} </router-link> -->
+        <router-link :to="{name:'IndivBuddies', params: { id: 1 }}">{{this.buddyName1}}</router-link>
       </div>
 
       <div class="column">
@@ -25,7 +24,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">{{ this.buddyName2 }}</router-link>
+        <router-link :to="{name: 'IndivBuddies', params: { id: 2 }}">{{this.buddyName2}}</router-link>
       </div>
 
       <div class="column">
@@ -36,7 +35,7 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link to="/indivbuddies/2">{{ this.buddyName3 }}</router-link>
+        <router-link :to="{name: 'IndivBuddies', params: { id: 3 }}">{{this.buddyName3}}</router-link>
       </div>
     </div>
 
@@ -99,6 +98,7 @@ export default {
       }
 
       var available = false;
+
       const querySnap = await getDocs(query(collection(db, "Buddies")));
       try {
         querySnap.forEach((d) => {
@@ -163,6 +163,9 @@ export default {
       buddyName1: "",
       buddyName2: "",
       buddyName3: "",
+      buddyID1: "",
+      buddyID2: "",
+      buddyID3: "",
     };
   },
 
@@ -173,12 +176,10 @@ export default {
         this.user = user;
         var uid = user.uid;
         const docRef = getDoc(doc(db, "Users", uid));
-
         var vm = this;
-
-        docRef.then(function (snapshot) {
+        docRef.then(function (snapshot) {          
           const name1 = snapshot.data().buddyName1;
-          vm.buddyName1 = name1;
+          vm.buddyName1 = name1; 
           const name2 = snapshot.data().buddyName2;
           vm.buddyName2 = name2;
           const name3 = snapshot.data().buddyName3;

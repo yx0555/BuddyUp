@@ -9,7 +9,6 @@ import AboutUs from "@/views/AboutUs.vue";
 import IndivBuddies from "@/views/IndivBuddies.vue";
 import NotFound from "@/views/NotFound.vue";
 
-
 const routes = [
   {
     path: "/login",
