@@ -26,7 +26,18 @@
           <button
             type="submit"
             @click="sendEmail"
-            class="bg-green-500 px-4 py-2 rounded text-white border border-green-600 transition duration-500 ease-in-out hover:bg-green-600"
+            class="
+              bg-green-500
+              px-4
+              py-2
+              rounded
+              text-white
+              border border-green-600
+              transition
+              duration-500
+              ease-in-out
+              hover:bg-green-600
+            "
           >
             <transition name="fade" mode="out-in">
               <span v-if="!emailSending">Send</span>
@@ -46,15 +57,15 @@
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 export default {
-    name: "ForgotPassword",
-    
-    data() {
-        return {
-            email: "",
-            error: null,
-            emailSending: false,
-        }
-    },
+  name: "ForgotPassword",
+
+  data() {
+    return {
+      email: "",
+      error: null,
+      emailSending: false,
+    };
+  },
   methods: {
     sendEmail() {
       if (!this.email) {
@@ -63,20 +74,19 @@ export default {
       }
       this.error = null;
       this.emailSending = true;
-      const auth = getAuth()
+      const auth = getAuth();
       sendPasswordResetEmail(auth, this.email)
         .then(() => {
           this.emailSending = false;
         })
-        .catch(error => {
+        .catch((error) => {
           this.emailSending = false;
           this.error = error.message;
         });
     },
   },
-}
+};
 </script>
 
 <style>
-
 </style>
