@@ -6,7 +6,7 @@
     <Calendar />
   </div>
   <div v-else>
-    <h1> You must be logged in to view this page </h1>
+    <h1>You must be logged in to view this page</h1>
     <Login route="mycalendar" />
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
     NavBar,
     SideBar,
     Login,
+    Calendar,
   },
 
   data() {
@@ -39,7 +40,7 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
-      } 
+      }
     });
   },
 };
@@ -53,7 +54,4 @@ export default {
 body {
   margin: 0;
 }
-
-
-
 </style>
