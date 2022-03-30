@@ -182,7 +182,7 @@ export default {
     };
   },
 
-  beforeMount() {
+  mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -198,6 +198,9 @@ export default {
           const name3 = snapshot.data().buddyName3;
           vm.buddyName3 = name3;
         });
+      } else {
+        alert("you must be logged in to view this page");
+        this.$router.push("/");
       }
     });
   },
