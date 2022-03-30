@@ -17,6 +17,11 @@
     <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">
       Request Buddy's details
     </button>
+
+    <button id="deletebuddybutton" type="button" v-on:click="deletebuddy()">
+      Delete this buddy
+    </button>
+
   </div>
 </template>
 
@@ -38,8 +43,35 @@ export default {
   methods: {
     async requestdetails() {
       alert("Details of the buddy will be sent to your registered email");
-    }
+    },
 
+    async deletebuddy(){
+      alert("This buddy is deleted") //May want to change to confirmation alert
+      const auth = getAuth();
+      const uid = auth.currentUser.uid;
+      const userDocRef = (doc(db, "Users", uid));
+      console.log("buddynumber"+this.buddynumber)
+      if(this.buddynumber == 1){
+        await updateDoc(userDocRef,{
+          buddyID1:"",
+          buddyName1:"",
+      });
+      } 
+      else if(this.buddynumber == 2){
+        await updateDoc(userDocRef,{
+          buddyID2:"",
+          buddyName2:"",
+      });
+      } 
+      else if(this.buddynumber == 3){
+        await updateDoc(userDocRef,{
+          buddyID3:"",
+          buddyName3:"",
+      });
+      } 
+      this.$router.push('/mybuddies');
+
+    },
   },
 
   mounted() {   
@@ -171,5 +203,15 @@ tr {
   font-size: 15px;
   padding: 3px;
 }
+
+#deletebuddybutton {
+  border-radius: 5px;
+  font-family: "Montserrat";
+  background-color: #ff4949;
+  font-size: 15px;
+  padding: 3px;
+  margin-left: 20px;
+}
+
 
 </style>

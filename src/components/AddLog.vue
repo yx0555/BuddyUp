@@ -1,16 +1,16 @@
 <template>
   <div class="page" style="text-align: center">
     <div class="Addvisitation">
-      <form id="myform">
+      <form id="myform" autocomplete="off">
         <h2>Log a new visitation</h2>
         <div class="formli">
           <label for="date"> Date:</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
           <label for="starttime">Start Time:</label>
-          <input type="number" id="starttime" required="" placeholder="0000HR(HHMM)" v-model="b"/><br /><br />
+          <input type="time" id="starttime" required="" v-model="b"/><br /><br />
           <label for="endtime">End Time:</label>
-          <input type="number" id="endtime" required="" placeholder="0000HR(HHMM)" v-model="c"/><br /><br />
+          <input type="time" id="endtime" required="" v-model="c"/><br /><br />
           <label for="remarks">Remarks:</label>
           <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="d"/><br /><br />
         <div class="save">
@@ -70,25 +70,23 @@ export default {
    methods: {
     async savetofs() {
       if (!(String(this.a) == "" || String(this.b) == "" || String(this.c) == "")){
-        if (this.b>=0 && this.c>=0 && String(this.b).length==4 && String(this.c).length==4){
-            if (this.b!=this.c) {
-            //Date and time cannot be empty
-            try {
-                var uid = auth.currentUser.uid;
-                const docRef = await addDoc(collection(db, "Visitations"), {
-                date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
-                });
-                console.log(docRef);
-                const addRef = doc(db, "Buddies", this.buddyId);
-                await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
-                document.getElementById("myform").reset();
-                this.$emit("added");
-                alert("Visitation has been added")
-            } catch (error) {
-                console.error("Error adding document: ", error);
-            }
-            } else alert("Start and end time cannot be the same!");
-        } else alert("Please enter a valid time")
+          if (this.b!=this.c) {
+          //Date and time cannot be empty
+          try {
+              var uid = auth.currentUser.uid;
+              const docRef = await addDoc(collection(db, "Visitations"), {
+              date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
+              });
+              console.log(docRef);
+              const addRef = doc(db, "Buddies", this.buddyId);
+              await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
+              document.getElementById("myform").reset();
+              this.$emit("added");
+              alert("Visitation has been added")
+          } catch (error) {
+              console.error("Error adding document: ", error);
+          }
+        } else alert("Start and end time cannot be the same!");
       } else alert("Cannot take empty values. Please enter the values");
     },
   
