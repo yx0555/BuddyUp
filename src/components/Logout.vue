@@ -38,7 +38,7 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-#btn{
+#btn {
   font-family: "Montserrat";
   font-size: 13px;
   color: #ffffff;
@@ -49,8 +49,7 @@ export default {
   margin-right: 8px;
 }
 
-#btn:hover{
+#btn:hover {
   font-weight: bold;
 }
-
 </style>

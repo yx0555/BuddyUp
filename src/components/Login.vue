@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-    <img src="@/assets/BuddyUpLogo.png" alt = "Buddy Up Logo">
+    <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
     <div>
       <form @submit.prevent="login">
         <h2>Login</h2>
-        <input type="email" placeholder="Email address..." v-model="email"/> <br>
-        <input type="password" placeholder="Password..." v-model="password"/> <br><br>
-        <button type = "submit" v-on:click="submit()">Login</button>
-
+        <input type="email" placeholder="Email address..." v-model="email" />
+        <br />
+        <input type="password" placeholder="Password..." v-model="password" />
+        <br /><br />
+        <button type="submit" v-on:click="submit()">Login</button>
       </form>
-      <router-link to = "/register"> Register here! </router-link>
-      <router-link to = "/forgotpassword"> Forgot password</router-link>
+      <p>
+        <router-link to="/forgotpassword"> Forgot password </router-link>
+      </p>
+      <p>
+        <router-link to="/register"> Do not have an account? Register here! </router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -24,7 +29,7 @@ export default {
   name: "Login",
 
   props: {
-    route: String
+    route: String,
   },
 
   data() {
@@ -32,40 +37,38 @@ export default {
       form: {
         email: "",
         password: "",
-      }
-    }
+      },
+    };
   },
 
   methods: {
     submit() {
-      let route = this.route
-      if (!this.route){
-        route = "/"
+      let route = this.route;
+      if (!this.route) {
+        route = "/";
       }
       const auth = getAuth();
       signInWithEmailAndPassword(auth, this.email, this.password)
         .then(() => {
-        // Signed in 
-        console.log("signed in successfully")
-        this.$router.push(route)
-        // ...
-      })
-      .catch((error) => {
-        alert(error.message)
-      });
+          // Signed in
+          console.log("signed in successfully");
+          this.$router.push(route);
+          // ...
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     },
 
-    mounted(){
-      console.log("the current router is:" + this.route)
-    }
-  }
-
-  
-
-}
+    mounted() {
+      console.log("the current router is:" + this.route);
+    },
+  },
+};
 </script>
 
 <style scoped>
-#app {
+p {
+  text-align: center;
 }
 </style>
