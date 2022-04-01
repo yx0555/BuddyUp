@@ -25,6 +25,7 @@ export default {
     NavBar,
     SideBar,
     Login,
+    Calendar,
   },
 
   data() {

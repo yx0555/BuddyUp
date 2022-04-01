@@ -53,6 +53,8 @@
 </template>
 
 <script>
+//TODO try switching the if-elses around for template, might work better, anyways everything is loading
+
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
@@ -93,6 +95,8 @@ export default {
       var buddy2 = snapshot.data().buddyID2;
       var buddy3 = snapshot.data().buddyID3;
 
+      
+
       var x;
       if (buddy1 == "" || buddy1 == null) {
         x = 1;
@@ -122,6 +126,7 @@ export default {
               updateDoc(doc(db, "Users", uid), {
                 buddyID1: d.id,
                 buddyName1: d.data().buddyName,
+                buddy1VisitationSlot: snapshot.data().availability[0]
               });
               alert(d.data().buddyName + " is your new buddy");
               available = true;
@@ -133,6 +138,8 @@ export default {
               updateDoc(doc(db, "Users", uid), {
                 buddyID2: d.id,
                 buddyName2: d.data().buddyName,
+                buddy2VisitationSlot: snapshot.data().availability[1]
+
               });
               alert(d.data().buddyName + " is your new buddy");
               available = true;
@@ -144,6 +151,7 @@ export default {
               updateDoc(doc(db, "Users", uid), {
                 buddyID3: d.id,
                 buddyName3: d.data().buddyName,
+                buddy3VisitationSlot: snapshot.data().availability[2]
               });
               alert(d.data().buddyName + " is your new buddy");
               available = true;
