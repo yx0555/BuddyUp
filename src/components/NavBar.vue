@@ -1,10 +1,10 @@
 <template>
-    <div class="topnav">
-      <!-- <div class="topnav-left">
+  <div class="topnav">
+    <!-- <div class="topnav-left">
         <img id="logo" src="@/assets/BuddyUpLogo.png" alt="Logo" />
       </div> -->
-        <Logout />
-    </div>
+    <Logout />
+  </div>
 </template>
 
 <script>
@@ -28,5 +28,4 @@ export default {
   width: 100%;
   height: 65px;
 }
-
 </style>

@@ -1,9 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router/index.js'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router/index.js";
 // import { SetupCalendar } from 'v-calendar';
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).mount("#app");
 
 // const app = createApp(App)
 // app.use(SetupCalendar, {})

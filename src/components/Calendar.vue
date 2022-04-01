@@ -140,10 +140,4 @@
 		margin-left: 75px;
 		margin-right: auto;
 	}
-
-	#cv-wrapper {
-		height: 100%;
-		width: 100%;
-		margin-right: 50px;
-	}
 </style>

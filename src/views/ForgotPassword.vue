@@ -1,5 +1,6 @@
 <template>
   <section>
+    <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
     <h1 class="text-center mb-4 font-bold text-lg">Forgot Password</h1>
     <article class="md:w-1/3 p-5 border rounded bg-gray-100 mx-auto">
       <transition name="fade">
@@ -12,21 +13,33 @@
       </transition>
       <form @submit.prevent>
         <div class="mb-4">
-          <label for="email" class="font-bold text-gray-700">Email</label>
+          <label for="email" class="font-bold text-gray-700">Email: </label>
           <input
             type="email"
-            placeholder="joe@bloggs.com"
+            placeholder="Enter a registered email address"
             v-model="email"
             id="email"
             class="bg-white px-4 py-2 border rounded w-full"
             required
           />
         </div>
+        <br>
         <div class="mb-4">
           <button
             type="submit"
             @click="sendEmail"
-            class="bg-green-500 px-4 py-2 rounded text-white border border-green-600 transition duration-500 ease-in-out hover:bg-green-600"
+            class="
+              bg-green-500
+              px-4
+              py-2
+              rounded
+              text-white
+              border border-green-600
+              transition
+              duration-500
+              ease-in-out
+              hover:bg-green-600
+            "
           >
             <transition name="fade" mode="out-in">
               <span v-if="!emailSending">Send</span>
@@ -37,6 +50,7 @@
       </form>
     </article>
   </section>
+  <br>
   <router-link to="/"> Go back to login </router-link>
 </template>
 
@@ -46,15 +60,15 @@
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 
 export default {
-    name: "ForgotPassword",
-    
-    data() {
-        return {
-            email: "",
-            error: null,
-            emailSending: false,
-        }
-    },
+  name: "ForgotPassword",
+
+  data() {
+    return {
+      email: "",
+      error: null,
+      emailSending: false,
+    };
+  },
   methods: {
     sendEmail() {
       if (!this.email) {
@@ -63,20 +77,19 @@ export default {
       }
       this.error = null;
       this.emailSending = true;
-      const auth = getAuth()
+      const auth = getAuth();
       sendPasswordResetEmail(auth, this.email)
         .then(() => {
           this.emailSending = false;
         })
-        .catch(error => {
+        .catch((error) => {
           this.emailSending = false;
           this.error = error.message;
         });
     },
   },
-}
+};
 </script>
 
 <style>
-
 </style>

@@ -6,7 +6,7 @@
     <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
   </div>
   <div v-else>
-    <h1> You must be logged in to view this page </h1>
+    <h1>You must be logged in to view this page</h1>
     <Login :route="'indivbuddies/' + this.$routes.params.id" />
   </div>
 </template>
@@ -15,7 +15,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import AddLog from "../components/AddLog.vue";
-import Login from "../components/Login.vue"
+import Login from "../components/Login.vue";
 import LogDisplay from "../components/LogDisplay.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -33,17 +33,16 @@ export default {
   data() {
     return {
       user: false,
-      refreshComp:0,
-      buddynumber : this.$route.params.id,
+      refreshComp: 0,
+      buddynumber: this.$route.params.id,
     };
   },
 
   methods: {
-    change(){
-      this.refreshComp+=1;
+    change() {
+      this.refreshComp += 1;
     },
-},
-
+  },
 
   beforeMount() {
     const auth = getAuth();
@@ -51,8 +50,8 @@ export default {
       if (user) {
         this.user = user;
       } else {
-        alert("you must be logged in to view this page")
-        this.$router.push("/")
+        alert("you must be logged in to view this page");
+        this.$router.push("/");
       }
     });
   },
@@ -63,19 +62,6 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 30px;
-}
-#bg{
-  display: block;
-  margin-left:auto;
-  margin-right: auto;
-  width:60%;
-}
+
 
 </style>

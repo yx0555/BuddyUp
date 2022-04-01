@@ -8,7 +8,7 @@ import Register from "@/views/Register.vue";
 import AboutUs from "@/views/AboutUs.vue";
 import IndivBuddies from "@/views/IndivBuddies.vue";
 import NotFound from "@/views/NotFound.vue";
-import ForgotPassword from "@/views/ForgotPassword.vue"
+import ForgotPassword from "@/views/ForgotPassword.vue";
 
 const routes = [
   {
@@ -65,14 +65,12 @@ const routes = [
     path: "/forgotpassword",
     name: "ForgotPassword",
     component: ForgotPassword,
-  }
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
-
 
 export default router;

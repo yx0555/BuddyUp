@@ -13,7 +13,9 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name:'IndivBuddies', params: { id: 1 }}">{{this.buddyName1}}</router-link>
+        <router-link :to="{ name: 'IndivBuddies', params: { id: 1 } }">{{
+          this.buddyName1
+        }}</router-link>
       </div>
 
       <div class="column">
@@ -24,7 +26,9 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name: 'IndivBuddies', params: { id: 2 }}">{{this.buddyName2}}</router-link>
+        <router-link :to="{ name: 'IndivBuddies', params: { id: 2 } }">{{
+          this.buddyName2
+        }}</router-link>
       </div>
 
       <div class="column">
@@ -35,7 +39,9 @@
           alt="Buddy Icon"
         />
         <br /><br />
-        <router-link :to="{name: 'IndivBuddies', params: { id: 3 }}">{{this.buddyName3}}</router-link>
+        <router-link :to="{ name: 'IndivBuddies', params: { id: 3 } }">{{
+          this.buddyName3
+        }}</router-link>
       </div>
     </div>
 
@@ -47,7 +53,7 @@
     </div>
   </div>
   <div v-else>
-    <h1> you must be logged in to view this page </h1>
+    <h1>you must be logged in to view this page</h1>
     <Login route="mybuddies" />
   </div>
 </template>
@@ -56,7 +62,7 @@
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
-import Login from "../components/Login.vue"
+import Login from "../components/Login.vue";
 
 import {
   getFirestore,
@@ -176,7 +182,7 @@ export default {
     };
   },
 
-  beforeMount() {
+  mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -184,14 +190,17 @@ export default {
         var uid = user.uid;
         const docRef = getDoc(doc(db, "Users", uid));
         var vm = this;
-        docRef.then(function (snapshot) {          
+        docRef.then(function (snapshot) {
           const name1 = snapshot.data().buddyName1;
-          vm.buddyName1 = name1; 
+          vm.buddyName1 = name1;
           const name2 = snapshot.data().buddyName2;
           vm.buddyName2 = name2;
           const name3 = snapshot.data().buddyName3;
           vm.buddyName3 = name3;
         });
+      } else {
+        alert("you must be logged in to view this page");
+        this.$router.push("/");
       }
     });
   },
