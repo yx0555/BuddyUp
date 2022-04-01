@@ -22,8 +22,6 @@
       Delete this buddy
     </button>
 
-<<<<<<< HEAD
-=======
     <div class="buttons">
       <button
         id="requestdetailsbutton"
@@ -33,7 +31,6 @@
         Request Buddy's details
       </button>
     </div>
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
   </div>
 </template>
 
@@ -67,7 +64,6 @@ export default {
     async requestdetails() {
       alert("Details of the buddy will be sent to your registered email");
     },
-<<<<<<< HEAD
 
     async deletebuddy(){
       alert("This buddy is deleted") //May want to change to confirmation alert
@@ -96,8 +92,6 @@ export default {
       this.$router.push('/mybuddies');
 
     },
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
   },
 
   mounted() {
@@ -155,7 +149,6 @@ export default {
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
 
-<<<<<<< HEAD
             var bu = document.createElement("button")
             bu.innerHTML="Delete"
             bu.style.backgroundColor = "#abe6e9"
@@ -167,25 +160,14 @@ export default {
             };
             cell6.appendChild(bu)
             ind += 1;
-        });
-=======
+    
         cell1.innerHTML = ind;
         cell2.innerHTML = date;
         cell3.innerHTML = startTime;
         cell4.innerHTML = endTime;
         cell5.innerHTML = remarks;
         cell6.innerHTML = "";
-
-        var bu = document.createElement("button");
-        bu.innerHTML = "Delete";
-        bu.onclick = function () {
-          deletevisitation(docs.id);
-        };
-        cell6.appendChild(bu);
-
-        ind += 1;
       });
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
     }
     //Delete from firebase
     async function deletevisitation(visitationID) {
@@ -212,18 +194,6 @@ export default {
   margin-left: 0px;
 }
 
-<<<<<<< HEAD
-h1,h2{
-    text-align:center;
-    background-color: #f5a4a4;
-    font-size:1.5em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight:bold;
-    font-family: "Montserrat"
-=======
 h1,
 h2 {
   text-align: center;
@@ -235,7 +205,6 @@ h2 {
   margin-inline-end: 0px;
   font-weight: bold;
   font-family: "Montserrat";
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 }
 
 #visitationtable {
@@ -247,13 +216,10 @@ h2 {
   margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 tr:nth-child(even){
     background-color: #e3edee;
 }
 
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 th,
 tr {
   border: 1px solid #dddddd;
@@ -268,7 +234,6 @@ tr {
   font-size: 15px;
   padding: 3px;
 }
-<<<<<<< HEAD
 
 #deletebuddybutton {
   border-radius: 5px;
@@ -280,6 +245,4 @@ tr {
 }
 
 
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 </style>
