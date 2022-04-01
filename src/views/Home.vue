@@ -9,13 +9,14 @@
   <div v-else>
     <Login route="" />
   </div>
+
 </template>
 
 <script>
 import firebaseApp from "../firebase.js";
 import NavBar from "../components/NavBar.vue";
 import SideBar from "../components/SideBar.vue";
-import Login from "../components/Login.vue";
+import Login from "../components/Login.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getFirestore,
@@ -28,7 +29,7 @@ export default {
   components: {
     NavBar,
     SideBar,
-    Login,
+    Login
   },
 
   data() {
@@ -40,12 +41,13 @@ export default {
     };
   },
 
-  beforeCreate() {
+  mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
         this.uid = user.uid;
+        this.upcomingVisits = []
         // this.upcomingVisits = this.generateUpcomingVisits();
 
         const db = getFirestore(firebaseApp);
@@ -131,7 +133,7 @@ export default {
           console.log(buddyArray)
 
           buddyArray.forEach((buddy)=>{
-            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " : visit " + buddy.name);
+            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " " + buddy.visitDate.getHours() + "00 : visit " + buddy.name);
           })
 
           let list = document.getElementById("taskList");
