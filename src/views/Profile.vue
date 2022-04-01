@@ -137,46 +137,46 @@
               >
 
               <h5>Tuesday</h5>
-              <label for="tues8to11">
+              <label for="tue08to11">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="tues8to11"
-                  value="tues8to11"
+                  id="tue08to11"
+                  value="tue08to11"
                 />0800HRS - 1100HRS</label
               ><br />
-              <label for="tues11to14">
+              <label for="tue11to14">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="tues11to14"
-                  value="tues11to14"
+                  id="tue11to14"
+                  value="tue11to14"
                 />1100HRS - 1400HRS</label
               ><br />
-              <label for="tues14to17">
+              <label for="tue14to17">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="tues14to17"
-                  value="tues14to17"
+                  id="tue14to17"
+                  value="tue14to17"
                 />1400HRS - 1700HRS</label
               ><br />
-              <label for="tues17to20">
+              <label for="tue17to20">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="tues17to20"
-                  value="tues17to20"
+                  id="tue17to20"
+                  value="tue17to20"
                 />1700HRS - 2000HRS</label
               >
-
+              
               <h5>Wednesday</h5>
-              <label for="wed8to11">
+              <label for="wed08to11">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="wed8to11"
-                  value="wed8to11"
+                  id="wed08to11"
+                  value="wed08to11"
                 />0800HRS - 1100HRS</label
               ><br />
               <label for="wed11to14">
@@ -205,46 +205,46 @@
               >
 
               <h5>Thursday</h5>
-              <label for="thurs8to11">
+              <label for="thu08to11">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="thurs8to11"
-                  value="thurs8to11"
+                  id="thu08to11"
+                  value="thu08to11"
                 />0800HRS - 1100HRS</label
               ><br />
-              <label for="thurs11to14">
+              <label for="thu11to14">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="thurs11to14"
-                  value="thurs11to14"
+                  id="thu11to14"
+                  value="thu11to14"
                 />1100HRS - 1400HRS</label
               ><br />
-              <label for="thurs14to17">
+              <label for="thu14to17">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="thurs14to17"
-                  value="thurs14to17"
+                  id="thu14to17"
+                  value="thu14to17"
                 />1400HRS - 1700HRS</label
               ><br />
-              <label for="thurs17to20">
+              <label for="thu17to20">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="thurs17to20"
-                  value="thurs17to20"
+                  id="thu17to20"
+                  value="thu17to20"
                 />1700HRS - 2000HRS</label
               >
 
               <h5>Friday</h5>
-              <label for="fri8to11">
+              <label for="fri08to11">
                 <input
                   class="availabilityCheckbox"
                   type="checkbox"
-                  id="fri8to11"
-                  value="fri8to11"
+                  id="fri08to11"
+                  value="fri08to11"
                 />0800HRS - 1100HRS</label
               ><br />
               <label for="fri11to14">
