@@ -104,7 +104,6 @@ export default {
         if (vm.buddynumber == 1) {
           vm.buddyName = snapshot.data().buddyName1;
           vm.buddyId = snapshot.data().buddyID1;
-          console.log("This runs first");
         } else if (vm.buddynumber == 2) {
           vm.buddyName = snapshot.data().buddyName2;
           vm.buddyId = snapshot.data().buddyID2;
@@ -116,11 +115,8 @@ export default {
       display2();
     }
     async function display2() {
-      console.log("this runs second");
       const uid = auth.currentUser.uid;
       let ind = 1;
-      console.log("buddyid" + vm.buddyId);
-      console.log("userid" + uid);
       const vRef = collection(db, "Visitations");
       const q = query(
         vRef,
@@ -146,24 +142,25 @@ export default {
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
 
-        var bu = document.createElement("button")
-        bu.innerHTML="Delete"
-        bu.style.backgroundColor = "#abe6e9"
-        bu.style.borderRadius = "5px"
-        bu.style.fontFamily = "Montserrat"
-  
-        bu.onclick = function(){
-            deletevisitation(docs.id)
-        };
-        cell6.appendChild(bu)
-        ind += 1;
-    
         cell1.innerHTML = ind;
         cell2.innerHTML = date;
         cell3.innerHTML = startTime;
         cell4.innerHTML = endTime;
         cell5.innerHTML = remarks;
         cell6.innerHTML = "";
+
+        var bu = document.createElement("button")
+        bu.innerHTML="Delete"
+        bu.style.backgroundColor = "#abe6e9"
+        bu.style.borderRadius = "5px"
+        bu.style.fontFamily = "Montserrat"
+        bu.onclick = function(){
+            deletevisitation(docs.id)
+        };
+        cell6.appendChild(bu)
+        ind += 1;
+    
+  
       });
     }
     //Delete from firebase
