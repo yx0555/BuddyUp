@@ -2,7 +2,7 @@
   <div class="page" style="text-align: center">
     <div class="Addvisitation">
       <form id="myform" autocomplete="off">
-        <h2>Log a new visitation</h2>
+        <h2>Log a new visitation</h2> <br>
         <div class="formli">
           <label for="date"> Date:</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>

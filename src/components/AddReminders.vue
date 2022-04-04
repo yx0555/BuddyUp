@@ -30,17 +30,44 @@ import {
   doc,
   arrayUnion,
   updateDoc,
+  getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const db = getFirestore(firebaseApp);
 const auth = getAuth();
 
 export default {
+  props: ["buddynumber"],
   data() {
     return {
       a: "",
       b: "",
+      buddyId: "",
+      buddyName: "",
     };
+  },
+
+  mounted() {
+    var vm = this;
+    const auth = getAuth();
+    //UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
+    async function display() {
+      var uid = auth.currentUser.uid;
+      const docRef = getDoc(doc(db, "Users", uid));
+      docRef.then(function (snapshot) {
+        if (vm.buddynumber == 1) {
+          vm.buddyName = snapshot.data().buddyName1;
+          vm.buddyId = snapshot.data().buddyID1;
+        } else if (vm.buddynumber == 2) {
+          vm.buddyName = snapshot.data().buddyName2;
+          vm.buddyId = snapshot.data().buddyID2;
+        } else {
+          vm.buddyName = snapshot.data().buddyName3;
+          vm.buddyId = snapshot.data().buddyID3;
+        }
+      });
+    }
+    display();
   },
 
   methods: {
@@ -49,11 +76,11 @@ export default {
           //Date and time cannot be empty
           try {
               var uid = auth.currentUser.uid;
-              const docRef = await addDoc(collection(db, "Reminders"), {
-              date: this.a, reminder: this.b, userID: uid,
-              });
               const addRef = doc(db, "Users", uid);
-              await updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
+              const docRef =  await addDoc(collection(db, "Reminders"), {
+                  date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId,
+                  });
+                  updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
               this.a = this.b = ""
               this.$emit("added");
               alert("Reminder has been added")

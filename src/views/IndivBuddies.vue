@@ -2,7 +2,7 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <AddReminders/>
+    <AddReminders :buddynumber="buddynumber" @added="change"/>
     <div class="container">
       <div class="flex-child left">
         <AddLog :buddynumber="buddynumber" @added="change" />
