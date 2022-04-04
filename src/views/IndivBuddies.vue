@@ -2,6 +2,7 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
+    <AddReminders/>
     <div class="container">
       <div class="flex-child left">
         <AddLog :buddynumber="buddynumber" @added="change" />
@@ -23,6 +24,7 @@ import SideBar from "../components/SideBar.vue";
 import AddLog from "../components/AddLog.vue";
 import Login from "../components/Login.vue";
 import LogDisplay from "../components/LogDisplay.vue";
+import AddReminders from "../components/AddReminders.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -34,6 +36,7 @@ export default {
     AddLog,
     LogDisplay,
     Login,
+    AddReminders,
   },
 
   data() {

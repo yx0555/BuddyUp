@@ -85,7 +85,6 @@ export default {
               const docRef = await addDoc(collection(db, "Visitations"), {
               date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
               });
-              console.log(docRef);
               const addRef = doc(db, "Buddies", this.buddyId);
               await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
               this.a = this.b = this.c = this.d = ""
