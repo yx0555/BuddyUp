@@ -2,12 +2,18 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <AddLog :buddynumber="buddynumber" @added="change" />
-    <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
+    <div class="container">
+      <div class="flex-child left">
+        <AddLog :buddynumber="buddynumber" @added="change" />
+      </div>
+      <div class="flex-child right"> 
+        <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
+      </div>
+    </div>
   </div>
   <div v-else>
     <h1>You must be logged in to view this page</h1>
-    <Login :route="'indivbuddies/' + this.$routes.params.id" />
+    <Login :route="'indivbuddies/' + this.$route.params.id" />
   </div>
 </template>
 
@@ -62,6 +68,16 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
+.container{
+  display:flex;
+}
 
+.flex-child {
+    flex: 0.49;
+}  
+
+.right{
+  margin-right: 40px;
+}
 
 </style>

@@ -38,6 +38,7 @@ import {
   arrayRemove,
   query,
   where,
+  orderBy,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const db = getFirestore(firebaseApp);
@@ -63,7 +64,6 @@ export default {
       const userDocRef = (doc(db, "Users", uid));
       const docSnap = await getDoc(userDocRef);
       var buddyid = "";
-
       if(this.buddynumber == 1){
         buddyid = docSnap.data().buddyID1;
         await updateDoc(userDocRef,{
@@ -85,7 +85,9 @@ export default {
           buddyName3:"",
       });
       } 
-      await updateDoc(doc(db,"Buddies",buddyid),""); // delete userid from buddyid
+      await updateDoc(doc(db,"Buddies",buddyid),{
+        userID:"",
+      }); // delete userid from buddyid
       this.$router.push('/mybuddies');
 
     },
@@ -121,7 +123,9 @@ export default {
       const q = query(
         vRef,
         where("buddyID", "==", vm.buddyId),
-        where("userID", "==", uid)
+        where("userID", "==", uid),
+        orderBy("date"),
+        orderBy("startTime","asc")
       );
       const querySnapshot = await getDocs(q);
 
@@ -154,6 +158,7 @@ export default {
         bu.style.backgroundColor = "#abe6e9"
         bu.style.borderRadius = "5px"
         bu.style.fontFamily = "Montserrat"
+        bu.style.cursor = "pointer"
         bu.onclick = function(){
             deletevisitation(docs.id)
         };
@@ -205,7 +210,7 @@ h2 {
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width:95%;
+  width:100%;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -227,6 +232,7 @@ tr {
   background-color: #abe6e9;
   font-size: 15px;
   padding: 3px;
+  cursor: pointer;
 }
 
 #deletebuddybutton {
@@ -236,6 +242,7 @@ tr {
   font-size: 15px;
   padding: 3px;
   margin-left: 20px;
+  cursor: pointer;
 }
 
 

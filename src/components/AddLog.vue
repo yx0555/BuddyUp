@@ -5,26 +5,14 @@
         <h2>Log a new visitation</h2>
         <div class="formli">
           <label for="date"> Date:</label>
-          <input
-            type="date"
-            id="date"
-            required=""
-            placeholder="DD/MM/YYYY"
-            v-model="a"
-          />
+          <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
           <label for="starttime">Start Time:</label>
           <input type="time" id="starttime" required="" v-model="b"/><br /><br />
           <label for="endtime">End Time:</label>
           <input type="time" id="endtime" required="" v-model="c"/><br /><br />
           <label for="remarks">Remarks:</label>
-          <input
-            type="text"
-            id="remarks"
-            required=""
-            placeholder="Eg. Bring item"
-            v-model="d"
-          /><br /><br />
+          <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="d"/><br /><br />
           <div class="save">
             <button id="savebutton" type="button" v-on:click="savetofs()">
               Save
@@ -100,7 +88,7 @@ export default {
               console.log(docRef);
               const addRef = doc(db, "Buddies", this.buddyId);
               await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
-              document.getElementById("myform").reset();
+              this.a = this.b = this.c = this.d = ""
               this.$emit("added");
               alert("Visitation has been added")
           } catch (error) {
@@ -118,7 +106,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
 .page {
-  margin-left: 0px;
+  margin-left: 40px;
 }
 
 h1,
@@ -128,10 +116,15 @@ h2 {
   font-size: 1.5em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   font-weight: bold;
   font-family: "Montserrat";
+}
+
+h2{
+  display:inline-flex;
+  text-align: center;
+  background-color: #f5a4a4;
+  padding:0px 20px 0px 20px
 }
 
 .formli {
@@ -170,5 +163,6 @@ input:hover {
   background-color: #abe6e9;
   font-size: 15px;
   padding: 2px;
+  cursor: pointer;
 }
 </style>
