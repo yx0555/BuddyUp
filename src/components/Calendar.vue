@@ -37,7 +37,11 @@
 	import {
 		getFirestore,
 		getDoc,
-		doc
+		doc,
+		collection,
+		query,
+		where,
+		getDocs
 	} from "firebase/firestore";
 	import firebaseApp from "../firebase.js";
 
@@ -49,6 +53,12 @@
 		items = []
 	}
 
+	class Reminder {
+		date = new Date();
+		buddy = "";
+		title = "";
+	}
+
 	
 
 	export default {
@@ -56,12 +66,6 @@
 		
 		data() {
 			return {
-				items: [
-				{
-					id: "e1",
-					startDate: this.thisMonth(15, 18, 30),
-				},
-				],
 				user: false,
 				uid: "",
 				showDate: new Date(),
@@ -213,6 +217,39 @@
 						})
 						console.log(vm.state.items)
 					});
+
+
+					const docRef2 = collection(db, "Reminders");
+					const q = query(
+					docRef2,
+					where("userID","==", user.uid)
+					);
+					const querySnapshot = getDocs(q);
+
+					querySnapshot.then(function (reminderArray) {
+						const finalArray = []
+						console.log(reminderArray)
+						reminderArray.forEach((r) =>{
+							const currReminder = new Reminder();
+							currReminder.date = new Date(r.data().date);
+							currReminder.buddy = r.data().buddyName;
+							currReminder.title = r.data().reminder;
+							finalArray.push(currReminder);
+						})
+
+						var currId = 1;
+						finalArray.forEach((r)=>{
+							const startDate = r.date;
+							startDate.setHours(0);
+							console.log("reminder startDate: " + startDate);
+							vm.state.items.push({
+								id: "r" + currId.toString(),
+								startDate: startDate,
+								title: r.title + " (" + r.buddy + ")",
+								style: "font-size:small"
+							})
+						})
+					})
 				}
 			});
 		},
