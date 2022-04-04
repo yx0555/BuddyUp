@@ -22,15 +22,6 @@
       Delete this buddy
     </button>
 
-    <div class="buttons">
-      <button
-        id="requestdetailsbutton"
-        type="button"
-        v-on:click="requestdetails()"
-      >
-        Request Buddy's details
-      </button>
-    </div>
   </div>
 </template>
 
@@ -70,25 +61,31 @@ export default {
       const auth = getAuth();
       const uid = auth.currentUser.uid;
       const userDocRef = (doc(db, "Users", uid));
-      console.log("buddynumber"+this.buddynumber)
+      const docSnap = await getDoc(userDocRef);
+      var buddyid = "";
+
       if(this.buddynumber == 1){
+        buddyid = docSnap.data().buddyID1;
         await updateDoc(userDocRef,{
           buddyID1:"",
           buddyName1:"",
-      });
+        });
       } 
       else if(this.buddynumber == 2){
+        buddyid = docSnap.data().buddyID2;
         await updateDoc(userDocRef,{
           buddyID2:"",
           buddyName2:"",
       });
       } 
       else if(this.buddynumber == 3){
+        buddyid = docSnap.data().buddyID3;
         await updateDoc(userDocRef,{
           buddyID3:"",
           buddyName3:"",
       });
       } 
+      await updateDoc(doc(db,"Buddies",buddyid),""); // delete userid from buddyid
       this.$router.push('/mybuddies');
 
     },
@@ -149,17 +146,17 @@ export default {
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
 
-            var bu = document.createElement("button")
-            bu.innerHTML="Delete"
-            bu.style.backgroundColor = "#abe6e9"
-            bu.style.borderRadius = "5px"
-            bu.style.fontFamily = "Montserrat"
-      
-            bu.onclick = function(){
-                deletevisitation(docs.id)
-            };
-            cell6.appendChild(bu)
-            ind += 1;
+        var bu = document.createElement("button")
+        bu.innerHTML="Delete"
+        bu.style.backgroundColor = "#abe6e9"
+        bu.style.borderRadius = "5px"
+        bu.style.fontFamily = "Montserrat"
+  
+        bu.onclick = function(){
+            deletevisitation(docs.id)
+        };
+        cell6.appendChild(bu)
+        ind += 1;
     
         cell1.innerHTML = ind;
         cell2.innerHTML = date;
