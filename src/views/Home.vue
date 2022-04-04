@@ -5,6 +5,7 @@
     <h3>Upcoming Tasks</h3>
     <ul id="taskList"></ul>
     <h3>Important Reminders</h3>
+    <ul id="reminderList"></ul>
   </div>
   <div v-else>
     <Login route="" />
@@ -21,7 +22,11 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getFirestore,
   getDoc,
-  doc
+  doc,
+  query,
+  where,
+  getDocs,
+  collection
 } from "firebase/firestore";
 
 
@@ -37,6 +42,7 @@ export default {
       refreshComp: 0,
       user: false,
       upcomingVisits: [],
+      reminders: [],
       uid : ""
     };
   },
@@ -53,6 +59,14 @@ export default {
         const db = getFirestore(firebaseApp);
         const docRef = getDoc(doc(db, "Users", this.uid));
         var vm = this;
+        
+        const docRef2 = collection(db, "Reminders");
+        const q = query(
+          docRef2,
+          where("userID","==", user.uid)
+        );
+        const querySnapshot = getDocs(q);
+
 
         docRef.then(function (snapshot) {
           const buddy1 = {name:"", visitDate:new Date()};
@@ -149,7 +163,24 @@ export default {
             list.appendChild(li)
           }
         });
-
+        
+        querySnapshot.then(function (reminderArray) {
+          console.log(reminderArray)
+          reminderArray.forEach((r) =>{
+            vm.reminders.push(new Date(r.data().date).toDateString() + " : " + r.data().reminder + " (" + r.data().buddyName + ")");
+          })
+          let list2 = document.getElementById("reminderList");
+          vm.reminders.forEach((reminder)=>{
+            let li = document.createElement("li");
+            li.innerText = reminder;
+            list2.appendChild(li) ;
+          })
+          if (vm.reminders.length == 0) {
+            let li = document.createElement("li")
+            li.innerText = "no reminders"
+            list2.appendChild(li)
+          }
+        })
       }
     });
 
