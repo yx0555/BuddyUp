@@ -2,7 +2,7 @@
   <div class="page" style="text-align: center">
     <div class="Addvisitation">
       <form id="myform" autocomplete="off">
-        <h2>Log a new visitation</h2> <br>
+        <h2>Log new visitation</h2> 
         <div class="formli">
           <label for="date"> Date:</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
@@ -104,15 +104,11 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-.page {
-  margin-left: 40px;
-}
-
 h1,
 h2 {
   text-align: center;
   background-color: #f5a4a4;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   font-weight: bold;
@@ -120,10 +116,9 @@ h2 {
 }
 
 h2{
-  display:inline-flex;
   text-align: center;
   background-color: #f5a4a4;
-  padding:0px 20px 0px 20px
+  /* padding:0px 60px 0px 60px */
 }
 
 .formli {

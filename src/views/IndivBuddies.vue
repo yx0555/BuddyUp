@@ -2,15 +2,19 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <AddReminders :buddynumber="buddynumber" @added="change"/>
     <div class="container">
-      <div class="flex-child left">
+    <div class = "row">
+      <div class="column left">
+        <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
         <AddLog :buddynumber="buddynumber" @added="change" />
       </div>
-      <div class="flex-child right"> 
+
+      <div class="column right"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
       </div>
+      </div>
     </div>
+
   </div>
   <div v-else>
     <h1>You must be logged in to view this page</h1>
@@ -44,6 +48,7 @@ export default {
       user: false,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
+      isModalVisible: false,
     };
   },
 
@@ -71,16 +76,35 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
+
+.column {
+  float: right;
+}
+
+.right {
+  width: 60%;
+}
+
+.left {
+  width: 40%;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width:1000px) {
+  .column {
+    width: 100%;
+  }
+}
+
 .container{
-  display:flex;
+  display: grid;
+  grid-template-columns: auto auto;
+
 }
-
-.flex-child {
-    flex: 0.49;
-}  
-
-.right{
-  margin-right: 40px;
-}
-
 </style>

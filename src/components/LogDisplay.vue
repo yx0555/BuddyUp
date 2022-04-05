@@ -1,18 +1,16 @@
 <template>
   <div class="page" style="text-align: center">
-    <div class="Visitationlist">
       <h2>{{ this.buddyName }}'s Visitations</h2>
       <table id="visitationtable" align="center">
         <tr>
-          <th>S.No</th>
+          <th>No.</th>
           <th>Date</th>
           <th>Start Time</th>
           <th>End Time</th>
           <th>Remarks</th>
-          <th>Options</th>
+          <th>Delete</th>
         </tr>
       </table>
-    </div>
     
     <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">
       Request Buddy's details
@@ -154,7 +152,7 @@ export default {
         cell6.innerHTML = "";
 
         var bu = document.createElement("button")
-        bu.innerHTML="Delete"
+        bu.innerHTML="X"
         bu.style.backgroundColor = "#abe6e9"
         bu.style.borderRadius = "5px"
         bu.style.fontFamily = "Montserrat"
@@ -185,12 +183,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
 .page {
-  margin-left: 0px;
+  margin-left:120px;
 }
 
 h1,
@@ -210,7 +208,7 @@ h2 {
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width:100%;
+  width: 100%;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -219,8 +217,20 @@ tr:nth-child(even){
     background-color: #e3edee;
 }
 
-th,
-tr {
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+
+td{
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;

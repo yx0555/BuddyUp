@@ -1,10 +1,9 @@
 <template>
   <div class="page" style="text-align: center">
-    <div class="Addreminder">
       <form id="myform" autocomplete="off">
-        <h2>Add a new reminder</h2>
+        <h2>Set reminder</h2>
         <div class="formli">
-          <label for="date"> Set reminder for:</label>
+          <label for="date"> Date:</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
           <label for="remarks">Reminder:</label>
@@ -16,7 +15,6 @@
           </div>
         </div>
       </form>
-    </div>
   </div>
 </template>
 
@@ -78,7 +76,7 @@ export default {
               var uid = auth.currentUser.uid;
               const addRef = doc(db, "Users", uid);
               const docRef =  await addDoc(collection(db, "Reminders"), {
-                  date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId,
+                  date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId, buddyName: this.buddyName,
                   });
                   updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
               this.a = this.b = ""
@@ -97,11 +95,14 @@ export default {
 
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
 h1,
 h2 {
   text-align: center;
   background-color: #f5a4a4;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-block-start: 0.67em;
   margin-block-end: 0.67em;
   font-weight: bold;
@@ -109,10 +110,14 @@ h2 {
 }
 
 h2{
-  display:inline-flex;
   text-align: center;
   background-color: #f5a4a4;
-  padding:0px 20px 0px 20px
+  /* padding:0px 95px 0px 95px */
+}
+
+.formli {
+  display: inline-block;
+  text-align: left;
 }
 
 form {
@@ -122,17 +127,30 @@ form {
 }
 
 label {
-  display: inline;
+  display: inline-block;
   width: 100px;
   text-align: right;
 }
 
 input {
-  width: 150px;
+  width: 130px;
 }
 
 input:hover {
   box-shadow: 3px 3px #dddddd;
   border-radius: 2px;
+}
+
+.save {
+  text-align: center;
+}
+
+#savebutton {
+  border-radius: 5px;
+  font-family: "Montserrat";
+  background-color: #abe6e9;
+  font-size: 15px;
+  padding: 2px;
+  cursor: pointer;
 }
 </style>
