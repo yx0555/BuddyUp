@@ -52,7 +52,7 @@ export default {
 
   methods: {
     async requestdetails() {
-      alert("Details of the buddy will be sent to your registered email");
+      alert("We have sent the details of your buddy to your registered email!");
     },
 
     async deletebuddy(){
@@ -96,7 +96,7 @@ export default {
     var vm = this;
     display();
 
-    //UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
+    // UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
     async function display() {
       const uid = auth.currentUser.uid;
       const snapshot = await getDoc(doc(db, "Users", uid));
