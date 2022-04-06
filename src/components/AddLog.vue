@@ -31,8 +31,8 @@ import {
   addDoc,
   collection,
   doc,
-  arrayUnion,
-  updateDoc,
+  // arrayUnion,
+  // updateDoc,
   getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -82,11 +82,11 @@ export default {
           //Date and time cannot be empty
           try {
               var uid = auth.currentUser.uid;
-              const docRef = await addDoc(collection(db, "Visitations"), {
+              await addDoc(collection(db, "Visitations"), {
               date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
               });
-              const addRef = doc(db, "Buddies", this.buddyId);
-              await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
+              // const addRef = doc(db, "Buddies", this.buddyId);
+              // await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
               this.a = this.b = this.c = this.d = ""
               this.$emit("added");
               alert("Visitation has been added")

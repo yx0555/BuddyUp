@@ -33,7 +33,7 @@ import {
   getDocs,
   getDoc,
   deleteDoc,
-  arrayRemove,
+  // arrayRemove,
   query,
   where,
   orderBy,
@@ -53,38 +53,56 @@ export default {
       alert("We have sent the details of your buddy to your registered email!");
     },
     async deletebuddy(){
-      alert("This buddy is deleted") //May want to change to confirmation alert
-      const auth = getAuth();
-      const uid = auth.currentUser.uid;
-      const userDocRef = (doc(db, "Users", uid));
-      const docSnap = await getDoc(userDocRef);
-      var buddyid = "";
-      if(this.buddynumber == 1){
-        buddyid = docSnap.data().buddyID1;
-        await updateDoc(userDocRef,{
-          buddyID1:"",
-          buddyName1:"",
+      if (confirm("Do you want to delete this buddy? This action cannot be undone.")==true){
+        const auth = getAuth();
+        const uid = auth.currentUser.uid;
+        const userDocRef = (doc(db, "Users", uid));
+        const docSnap = await getDoc(userDocRef);
+        var buddyid = "";
+        if(this.buddynumber == 1){
+          buddyid = docSnap.data().buddyID1;
+          await updateDoc(userDocRef,{
+            buddyID1:"",
+            buddyName1:"",
+          });
+        } 
+        else if(this.buddynumber == 2){
+          buddyid = docSnap.data().buddyID2;
+          await updateDoc(userDocRef,{
+            buddyID2:"",
+            buddyName2:"",
         });
-      } 
-      else if(this.buddynumber == 2){
-        buddyid = docSnap.data().buddyID2;
-        await updateDoc(userDocRef,{
-          buddyID2:"",
-          buddyName2:"",
-      });
-      } 
-      else if(this.buddynumber == 3){
-        buddyid = docSnap.data().buddyID3;
-        await updateDoc(userDocRef,{
-          buddyID3:"",
-          buddyName3:"",
-      });
-      } 
-      await updateDoc(doc(db,"Buddies",buddyid),{
-        userID:"",
-      }); // delete userid from buddyid
-      this.$router.push('/mybuddies');
-    },
+        } 
+        else if(this.buddynumber == 3){
+          buddyid = docSnap.data().buddyID3;
+          await updateDoc(userDocRef,{
+            buddyID3:"",
+            buddyName3:"",
+        });
+        } 
+        await updateDoc(doc(db,"Buddies",buddyid),{
+          userID:"",
+        }); // delete userid from buddyid
+
+        //Delete visitations
+        const vRef = collection(db, "Visitations");
+        const q = query(vRef, where("buddyID", "==", buddyid));
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((document) => {
+          deleteDoc(doc(db, "Visitations", document.id));
+        });
+
+        //Delete reminders
+        const remRef = collection(db, "Reminders");
+        const remq = query(remRef, where("buddyID", "==", buddyid));
+        const remqSnapshot = await getDocs(remq);
+        remqSnapshot.forEach((document) => {
+          deleteDoc(doc(db, "Reminders", document.id));
+        });
+
+        this.$router.push('/mybuddies');
+      }
+    } 
   },
   mounted() {
     const auth = getAuth();
@@ -158,16 +176,17 @@ export default {
     }
     //Delete from firebase
     async function deletevisitation(visitationID) {
-      alert("You are going to delete this visitation log");
-      await deleteDoc(doc(db, "Visitations", visitationID));
-      await updateDoc(doc(db, "Buddies", vm.buddyId), {
-        visitationID: arrayRemove(visitationID),
-      });
-      let tb = document.getElementById("visitationtable");
-      while (tb.rows.length > 1) {
-        tb.deleteRow(1);
+      if (confirm("Do you want to delete this visitation log?")==true){
+        await deleteDoc(doc(db, "Visitations", visitationID));
+        // await updateDoc(doc(db, "Buddies", vm.buddyId), {
+        //   visitationID: arrayRemove(visitationID),
+        // });
+        let tb = document.getElementById("visitationtable");
+        while (tb.rows.length > 1) {
+          tb.deleteRow(1);
+        }
+        display();
       }
-      display();
     }
   },
 };

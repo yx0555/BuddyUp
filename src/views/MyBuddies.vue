@@ -99,9 +99,7 @@ export default {
 
       var buddy1 = snapshot.data().buddyID1;
       var buddy2 = snapshot.data().buddyID2;
-      var buddy3 = snapshot.data().buddyID3;
-
-      
+      var buddy3 = snapshot.data().buddyID3;   
 
       var x;
       if (buddy1 == "" || buddy1 == null) {
