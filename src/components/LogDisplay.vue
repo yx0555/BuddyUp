@@ -22,18 +22,6 @@
       Delete this buddy
     </button>
 
-<<<<<<< HEAD
-=======
-    <div class="buttons">
-      <button
-        id="requestdetailsbutton"
-        type="button"
-        v-on:click="requestdetails()"
-      >
-        Request Buddy's details
-      </button>
-    </div>
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
   </div>
 </template>
 
@@ -50,10 +38,10 @@ import {
   arrayRemove,
   query,
   where,
+  orderBy,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const db = getFirestore(firebaseApp);
-
 export default {
   props: ["buddynumber"],
   data() {
@@ -62,49 +50,48 @@ export default {
       buddyName: "",
     };
   },
-
   methods: {
     async requestdetails() {
       alert("Details of the buddy will be sent to your registered email");
     },
-<<<<<<< HEAD
-
     async deletebuddy(){
       alert("This buddy is deleted") //May want to change to confirmation alert
       const auth = getAuth();
       const uid = auth.currentUser.uid;
       const userDocRef = (doc(db, "Users", uid));
-      console.log("buddynumber"+this.buddynumber)
+      const docSnap = await getDoc(userDocRef);
+      var buddyid = "";
       if(this.buddynumber == 1){
+        buddyid = docSnap.data().buddyID1;
         await updateDoc(userDocRef,{
           buddyID1:"",
           buddyName1:"",
-      });
+        });
       } 
       else if(this.buddynumber == 2){
+        buddyid = docSnap.data().buddyID2;
         await updateDoc(userDocRef,{
           buddyID2:"",
           buddyName2:"",
       });
       } 
       else if(this.buddynumber == 3){
+        buddyid = docSnap.data().buddyID3;
         await updateDoc(userDocRef,{
           buddyID3:"",
           buddyName3:"",
       });
       } 
+      await updateDoc(doc(db,"Buddies",buddyid),{
+        userID:"",
+      }); // delete userid from buddyid
       this.$router.push('/mybuddies');
-
     },
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
   },
-
   mounted() {
     const auth = getAuth();
     var vm = this;
     display();
-
     //UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
     async function display() {
       const uid = auth.currentUser.uid;
@@ -113,7 +100,6 @@ export default {
         if (vm.buddynumber == 1) {
           vm.buddyName = snapshot.data().buddyName1;
           vm.buddyId = snapshot.data().buddyID1;
-          console.log("This runs first");
         } else if (vm.buddynumber == 2) {
           vm.buddyName = snapshot.data().buddyName2;
           vm.buddyId = snapshot.data().buddyID2;
@@ -125,19 +111,17 @@ export default {
       display2();
     }
     async function display2() {
-      console.log("this runs second");
       const uid = auth.currentUser.uid;
       let ind = 1;
-      console.log("buddyid" + vm.buddyId);
-      console.log("userid" + uid);
       const vRef = collection(db, "Visitations");
       const q = query(
         vRef,
         where("buddyID", "==", vm.buddyId),
-        where("userID", "==", uid)
+        where("userID", "==", uid),
+        orderBy("date"),
+        orderBy("startTime","asc")
       );
       const querySnapshot = await getDocs(q);
-
       //Inserting data into the table
       querySnapshot.forEach((docs) => {
         let yy = docs.data();
@@ -147,45 +131,32 @@ export default {
         var startTime = yy.startTime;
         var endTime = yy.endTime;
         var remarks = yy.remarks;
-
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-
-<<<<<<< HEAD
-            var bu = document.createElement("button")
-            bu.innerHTML="Delete"
-            bu.style.backgroundColor = "#abe6e9"
-            bu.style.borderRadius = "5px"
-            bu.style.fontFamily = "Montserrat"
-      
-            bu.onclick = function(){
-                deletevisitation(docs.id)
-            };
-            cell6.appendChild(bu)
-            ind += 1;
-        });
-=======
         cell1.innerHTML = ind;
         cell2.innerHTML = date;
         cell3.innerHTML = startTime;
         cell4.innerHTML = endTime;
         cell5.innerHTML = remarks;
         cell6.innerHTML = "";
-
-        var bu = document.createElement("button");
-        bu.innerHTML = "Delete";
-        bu.onclick = function () {
-          deletevisitation(docs.id);
+        var bu = document.createElement("button")
+        bu.innerHTML="Delete"
+        bu.style.backgroundColor = "#abe6e9"
+        bu.style.borderRadius = "5px"
+        bu.style.fontFamily = "Montserrat"
+        bu.style.cursor = "pointer"
+        bu.onclick = function(){
+            deletevisitation(docs.id)
         };
-        cell6.appendChild(bu);
-
+        cell6.appendChild(bu)
         ind += 1;
+    
+  
       });
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
     }
     //Delete from firebase
     async function deletevisitation(visitationID) {
@@ -207,23 +178,9 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
-
 .page {
   margin-left: 0px;
 }
-
-<<<<<<< HEAD
-h1,h2{
-    text-align:center;
-    background-color: #f5a4a4;
-    font-size:1.5em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight:bold;
-    font-family: "Montserrat"
-=======
 h1,
 h2 {
   text-align: center;
@@ -235,41 +192,32 @@ h2 {
   margin-inline-end: 0px;
   font-weight: bold;
   font-family: "Montserrat";
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 }
-
 #visitationtable {
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width:95%;
+  width:100%;
   text-align: center;
   margin-bottom: 20px;
 }
-
-<<<<<<< HEAD
 tr:nth-child(even){
     background-color: #e3edee;
 }
-
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 th,
 tr {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
 }
-
 #requestdetailsbutton {
   border-radius: 5px;
   font-family: "Montserrat";
   background-color: #abe6e9;
   font-size: 15px;
   padding: 3px;
+  cursor: pointer;
 }
-<<<<<<< HEAD
-
 #deletebuddybutton {
   border-radius: 5px;
   font-family: "Montserrat";
@@ -277,9 +225,6 @@ tr {
   font-size: 15px;
   padding: 3px;
   margin-left: 20px;
+  cursor: pointer;
 }
-
-
-=======
->>>>>>> 71c0cb000ecbc5b0f44eb5292785d9645b55534f
 </style>
