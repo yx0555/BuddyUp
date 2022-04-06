@@ -7,14 +7,31 @@
       <h1>My Profile</h1>
       <img src="@/assets/man.png" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #333"/>
 
-      <p style="text-align: center">
+      <div>
         <strong>{{ this.fullName }}</strong>
         <br><br>
         Region: <strong>{{ this.region }}</strong><br>
-        Languages: <strong>{{ this.languages }}</strong><br>
+      </div>
+
+      <span>
+        Languages: 
+        <span v-for="(language, index) in this.languages" :key="language">
+          <strong>{{language}}{{(index+1 &lt; this.languages.length) ? ', ' : ''}}</strong>
+        </span>
+        <br>
+      </span>
+
+      <div>
         Buddy Gender Preferences: <strong>{{ this.buddyGenderPreferences }}</strong><br>
-        Availability: <strong>{{ this.availability }}</strong><br>
-      </p>
+      </div>
+
+      <span>
+        Availability:
+        <span v-for="(availability, index) in this.availability" :key="availability">
+          <strong>{{availability}}{{(index+1 &lt; this.availability.length) ? ', ' : ''}}</strong>
+        </span>
+        <br>
+      </span>
     </div>
 
     <div class="updateProfileContainer">
@@ -439,7 +456,7 @@ export default {
 }
 
 p {
-  text-align: justify;
+  text-align: center;
   margin-left: 0%;
   margin-right: 0%;
 }
