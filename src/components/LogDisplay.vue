@@ -1,18 +1,16 @@
 <template>
   <div class="page" style="text-align: center">
-    <div class="Visitationlist">
       <h2>{{ this.buddyName }}'s Visitations</h2>
       <table id="visitationtable" align="center">
         <tr>
-          <th>S.No</th>
+          <th>No.</th>
           <th>Date</th>
           <th>Start Time</th>
           <th>End Time</th>
           <th>Remarks</th>
-          <th>Options</th>
+          <th>Delete</th>
         </tr>
       </table>
-    </div>
     
     <button id="requestdetailsbutton" type="button" v-on:click="requestdetails()">
       Request Buddy's details
@@ -52,7 +50,7 @@ export default {
   },
   methods: {
     async requestdetails() {
-      alert("Details of the buddy will be sent to your registered email");
+      alert("We have sent the details of your buddy to your registered email!");
     },
     async deletebuddy(){
       alert("This buddy is deleted") //May want to change to confirmation alert
@@ -92,7 +90,7 @@ export default {
     const auth = getAuth();
     var vm = this;
     display();
-    //UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
+    // UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
     async function display() {
       const uid = auth.currentUser.uid;
       const snapshot = await getDoc(doc(db, "Users", uid));
@@ -144,7 +142,7 @@ export default {
         cell5.innerHTML = remarks;
         cell6.innerHTML = "";
         var bu = document.createElement("button")
-        bu.innerHTML="Delete"
+        bu.innerHTML="X"
         bu.style.backgroundColor = "#abe6e9"
         bu.style.borderRadius = "5px"
         bu.style.fontFamily = "Montserrat"
@@ -175,11 +173,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 .page {
-  margin-left: 0px;
+  margin-left:120px;
 }
 h1,
 h2 {
@@ -197,15 +195,24 @@ h2 {
   font-family: "Montserrat";
   font-size: 15px;
   border-collapse: collapse;
-  width:100%;
+  width: 100%;
   text-align: center;
   margin-bottom: 20px;
 }
 tr:nth-child(even){
     background-color: #e3edee;
 }
-th,
-tr {
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+tr{
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+td{
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;

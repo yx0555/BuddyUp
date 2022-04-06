@@ -104,13 +104,8 @@
             <div id="availabilityCheckboxes" style="display: none">
               <h5>Monday</h5>
               <label for="mon8to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="mon8to11"
-                  value="mon8to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+
+                <input class="availabilityCheckbox" type="checkbox" id="mon08to11" value="mon08to11">0800HRS - 1100HRS</label><br>
               <label for="mon11to14">
                 <input
                   class="availabilityCheckbox"
@@ -137,48 +132,18 @@
               >
 
               <h5>Tuesday</h5>
-              <label for="tue08to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="tue08to11"
-                  value="tue08to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+              <label for="tue8to11">
+                <input class="availabilityCheckbox" type="checkbox" id="tue08to11" value="tue08to11">0800HRS - 1100HRS</label><br>
               <label for="tue11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="tue11to14"
-                  value="tue11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="tue11to14" value="tue11to14">1100HRS - 1400HRS</label><br>
               <label for="tue14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="tue14to17"
-                  value="tue14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="tue14to17" value="tue14to17">1400HRS - 1700HRS</label><br>
               <label for="tue17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="tue17to20"
-                  value="tue17to20"
-                />1700HRS - 2000HRS</label
-              >
-              
+                <input class="availabilityCheckbox" type="checkbox" id="tue17to20" value="tue17to20">1700HRS - 2000HRS</label>
+
               <h5>Wednesday</h5>
-              <label for="wed08to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="wed08to11"
-                  value="wed08to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+              <label for="wed8to11">
+                <input class="availabilityCheckbox" type="checkbox" id="wed08to11" value="wed08to11">0800HRS - 1100HRS</label><br>
               <label for="wed11to14">
                 <input
                   class="availabilityCheckbox"
@@ -205,48 +170,19 @@
               >
 
               <h5>Thursday</h5>
-              <label for="thu08to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="thu08to11"
-                  value="thu08to11"
-                />0800HRS - 1100HRS</label
-              ><br />
-              <label for="thu11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="thu11to14"
-                  value="thu11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
-              <label for="thu14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="thu14to17"
-                  value="thu14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
-              <label for="thu17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="thu17to20"
-                  value="thu17to20"
-                />1700HRS - 2000HRS</label
-              >
+
+              <label for="thurs8to11">
+                <input class="availabilityCheckbox" type="checkbox" id="thurs08to11" value="thurs08to11">0800HRS - 1100HRS</label><br>
+              <label for="thurs11to14">
+                <input class="availabilityCheckbox" type="checkbox" id="thurs11to14" value="thurs11to14">1100HRS - 1400HRS</label><br>
+              <label for="thurs14to17">
+                <input class="availabilityCheckbox" type="checkbox" id="thurs14to17" value="thurs14to17">1400HRS - 1700HRS</label><br>
+              <label for="thurs17to20">
+                <input class="availabilityCheckbox" type="checkbox" id="thurs17to20" value="thurs17to20">1700HRS - 2000HRS</label>
 
               <h5>Friday</h5>
-              <label for="fri08to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="fri08to11"
-                  value="fri08to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+              <label for="fri8to11">
+                <input class="availabilityCheckbox" type="checkbox" id="fri08to11" value="fri08to11">0800HRS - 1100HRS</label><br>
               <label for="fri11to14">
                 <input
                   class="availabilityCheckbox"
@@ -274,13 +210,7 @@
 
               <h5>Saturday</h5>
               <label for="sat8to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sat8to11"
-                  value="sat8to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="sat08to11" value="sat08to11">0800HRS - 1100HRS</label><br>
               <label for="sat11to14">
                 <input
                   class="availabilityCheckbox"
@@ -308,13 +238,8 @@
 
               <h5>Sunday</h5>
               <label for="sun8to11">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sun8to11"
-                  value="sun8to11"
-                />0800HRS - 1100HRS</label
-              ><br />
+
+                <input class="availabilityCheckbox" type="checkbox" id="sun08to11" value="sun08to11">0800HRS - 1100HRS</label><br>
               <label for="sun11to14">
                 <input
                   class="availabilityCheckbox"
@@ -502,15 +427,6 @@ export default {
   position: absolute;
 }
 
-.displayProfileContainer {
-  margin-left: 50px;
-}
-
-.updateProfileContainer {
-  margin-left: 50px;
-  border: 5px solid #f07575;
-}
-
 #updateButton {
   background-color: #abe6e9;
   border-radius: 5px;
@@ -520,5 +436,11 @@ export default {
   padding-right: 8px;
   font-weight: 600;
   cursor: pointer;
+}
+
+p {
+  text-align: justify;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 </style>

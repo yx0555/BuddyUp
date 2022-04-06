@@ -100,10 +100,10 @@ export default {
 p {
   text-align: justify;
   margin-left: 10%;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 .page {
-  margin-left: 200px;
+  margin-left: 120px;
 }
 </style>
