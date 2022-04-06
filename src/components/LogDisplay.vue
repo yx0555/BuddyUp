@@ -40,7 +40,6 @@ import {
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 const db = getFirestore(firebaseApp);
-
 export default {
   props: ["buddynumber"],
   data() {
@@ -49,12 +48,10 @@ export default {
       buddyName: "",
     };
   },
-
   methods: {
     async requestdetails() {
       alert("We have sent the details of your buddy to your registered email!");
     },
-
     async deletebuddy(){
       alert("This buddy is deleted") //May want to change to confirmation alert
       const auth = getAuth();
@@ -87,15 +84,12 @@ export default {
         userID:"",
       }); // delete userid from buddyid
       this.$router.push('/mybuddies');
-
     },
   },
-
   mounted() {
     const auth = getAuth();
     var vm = this;
     display();
-
     // UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
     async function display() {
       const uid = auth.currentUser.uid;
@@ -126,7 +120,6 @@ export default {
         orderBy("startTime","asc")
       );
       const querySnapshot = await getDocs(q);
-
       //Inserting data into the table
       querySnapshot.forEach((docs) => {
         let yy = docs.data();
@@ -136,21 +129,18 @@ export default {
         var startTime = yy.startTime;
         var endTime = yy.endTime;
         var remarks = yy.remarks;
-
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
         var cell5 = row.insertCell(4);
         var cell6 = row.insertCell(5);
-
         cell1.innerHTML = ind;
         cell2.innerHTML = date;
         cell3.innerHTML = startTime;
         cell4.innerHTML = endTime;
         cell5.innerHTML = remarks;
         cell6.innerHTML = "";
-
         var bu = document.createElement("button")
         bu.innerHTML="X"
         bu.style.backgroundColor = "#abe6e9"
@@ -186,11 +176,9 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
-
 .page {
   margin-left:120px;
 }
-
 h1,
 h2 {
   text-align: center;
@@ -203,7 +191,6 @@ h2 {
   font-weight: bold;
   font-family: "Montserrat";
 }
-
 #visitationtable {
   font-family: "Montserrat";
   font-size: 15px;
@@ -212,30 +199,24 @@ h2 {
   text-align: center;
   margin-bottom: 20px;
 }
-
 tr:nth-child(even){
     background-color: #e3edee;
 }
-
 th {
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
 }
-
 tr{
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
 }
-
-
 td{
   border: 1px solid #dddddd;
   text-align: center;
   padding: 8px;
 }
-
 #requestdetailsbutton {
   border-radius: 5px;
   font-family: "Montserrat";
@@ -244,7 +225,6 @@ td{
   padding: 3px;
   cursor: pointer;
 }
-
 #deletebuddybutton {
   border-radius: 5px;
   font-family: "Montserrat";
@@ -254,6 +234,4 @@ td{
   margin-left: 20px;
   cursor: pointer;
 }
-
-
 </style>
