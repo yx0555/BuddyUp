@@ -3,10 +3,10 @@
       <form id="myform" autocomplete="off">
         <h2>Set reminder</h2>
         <div class="formli">
-          <label for="date"> Date:</label>
+          <label for="date">Date:&nbsp;</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
-          <label for="remarks">Reminder:</label>
+          <label for="remarks">Reminder:&nbsp;</label>
           <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="b"/><br /><br />
           <div class="save">
             <button id="savebutton" type="button" v-on:click="savetofs()">

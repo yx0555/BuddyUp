@@ -4,14 +4,14 @@
       <form id="myform" autocomplete="off">
         <h2>Log new visitation</h2> 
         <div class="formli">
-          <label for="date"> Date:</label>
+          <label for="date"> Date:&nbsp;</label>
           <input type="date" id="date" required="" placeholder="DD/MM/YYYY" v-model="a"/>
           <br /><br />
-          <label for="starttime">Start Time:</label>
+          <label for="starttime">Start Time:&nbsp;</label>
           <input type="time" id="starttime" required="" v-model="b"/><br /><br />
-          <label for="endtime">End Time:</label>
+          <label for="endtime">End Time:&nbsp;</label>
           <input type="time" id="endtime" required="" v-model="c"/><br /><br />
-          <label for="remarks">Remarks:</label>
+          <label for="remarks">Remarks:&nbsp;</label>
           <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="d"/><br /><br />
           <div class="save">
             <button id="savebutton" type="button" v-on:click="savetofs()">

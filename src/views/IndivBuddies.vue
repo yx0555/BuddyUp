@@ -4,15 +4,15 @@
     <SideBar />
     <div class="container">
     <div class = "row">
-      <div class="column left">
+      <div class="column right">
         <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
         <AddLog :buddynumber="buddynumber" @added="change" />
       </div>
 
-      <div class="column right"> 
+      <div class="column left"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
       </div>
-      </div>
+    </div>
     </div>
 
   </div>
@@ -81,12 +81,13 @@ export default {
   float: right;
 }
 
-.right {
+.left{
   width: 60%;
 }
 
-.left {
+.right {
   width: 40%;
+  
 }
 
 
@@ -104,7 +105,11 @@ export default {
 
 .container{
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
 
+}
+
+.page {
+  margin-left: 110px;
 }
 </style>
