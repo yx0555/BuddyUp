@@ -427,15 +427,6 @@ export default {
   position: absolute;
 }
 
-.displayProfileContainer {
-  margin-left: 50px;
-}
-
-.updateProfileContainer {
-  margin-left: 50px;
-  border: 5px solid #f07575;
-}
-
 #updateButton {
   background-color: #abe6e9;
   border-radius: 5px;
@@ -445,5 +436,11 @@ export default {
   padding-right: 8px;
   font-weight: 600;
   cursor: pointer;
+}
+
+p {
+  text-align: justify;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 </style>
