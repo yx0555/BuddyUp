@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
+    <TopBar />
     <SideBar />
     <div class="container">
     <div class = "row">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import TopBar from "../components/TopBar.vue";
 import SideBar from "../components/SideBar.vue";
 import AddLog from "../components/AddLog.vue";
 import Login from "../components/Login.vue";
@@ -35,7 +35,7 @@ export default {
   name: "IndivBuddies",
 
   components: {
-    NavBar,
+    TopBar,
     SideBar,
     AddLog,
     LogDisplay,

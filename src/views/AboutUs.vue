@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
+    <TopBar />
     <SideBar />
     <div class="info">
       <img
@@ -73,14 +73,14 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import TopBar from "../components/TopBar.vue";
 import SideBar from "../components/SideBar.vue";
 import Login from "../components/Login.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   components: {
-    NavBar,
+    TopBar,
     SideBar,
     Login,
   },
