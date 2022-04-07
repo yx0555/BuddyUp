@@ -111,5 +111,6 @@ export default {
 
 .page {
   margin-left: 110px;
+  height: 100%;
 }
 </style>

@@ -152,11 +152,14 @@ input:hover {
 }
 
 #savebutton {
+  border: none;
   border-radius: 5px;
+  padding: 5px;
+  padding-left: 12px;
+  padding-right: 12px;
   font-family: "Montserrat";
   background-color: #abe6e9;
   font-size: 15px;
-  padding: 2px;
   cursor: pointer;
 }
 </style>

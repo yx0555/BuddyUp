@@ -1,12 +1,20 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
-    <SideBar />
-    <h3>Upcoming Tasks</h3>
-    <ul id="taskList"></ul>
-    <h3>Important Reminders</h3>
-    <ul id="reminderList"></ul>
+  <NavBar />
+  <SideBar />
+      <div class="tasks">
+        <img id="taskIcon" src="@/assets/task.png" alt="task" />
+        <h3>Upcoming Tasks:</h3>
+        </div>
+      <ul id="taskList"></ul>
+      <br>
+        <div class="reminders">
+          <img id="reminderIcon" src="@/assets/reminder.png" alt="reminder" />
+          <h3>Important Reminders:</h3>
+        </div>
+        <ul id="reminderList"></ul>
   </div>
+
   <div v-else>
     <Login route="" />
   </div>
@@ -147,7 +155,7 @@ export default {
           console.log(buddyArray)
 
           buddyArray.forEach((buddy)=>{
-            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " " + buddy.visitDate.getHours() + "00 : visit " + buddy.name);
+            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " " + buddy.visitDate.getHours() + "00 : Visit " + buddy.name);
           })
 
           let list = document.getElementById("taskList");
@@ -262,8 +270,37 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+
 .page {
+  margin-top: 0;
   margin-left: 200px;
+  background-color: #fff8f8;
+  width: auto;
+  height: 100vh;
+}
+
+#taskIcon, #reminderIcon {
+  float: left;
+  max-width: 50px;
+  max-height: 65px;
+  margin-left: 30px;
+}
+
+#taskList, #reminderList {
+  width: 80%;
+  border: 2px solid #f07575;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 100px;
+  background-color: #ffffff
+}
+
+.tasks, .reminders {
+  font-family: "Barlow", sans-serif;
+  margin-left: 100px;
+  text-align: left;
+
 }
 </style>
