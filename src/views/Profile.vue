@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar/>
+    <TopBar/>
     <SideBar/>
 
     <div class="displayProfileContainer">
@@ -302,7 +302,7 @@
 </template>
 
 <script>
-import NavBar from "../components/NavBar.vue";
+import TopBar from "../components/TopBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
 import Login from "../components/Login.vue";
@@ -316,7 +316,7 @@ var expanded = false;
 
 export default {
   components: {
-    NavBar,
+    TopBar,
     SideBar,
     Login,
   },

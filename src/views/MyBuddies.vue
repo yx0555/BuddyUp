@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
+    <TopBar />
     <SideBar />
     <div class = title>
       <h1>My Buddies</h1>
@@ -63,7 +63,7 @@
 <script>
 //TODO try switching the if-elses around for template, might work better, anyways everything is loading
 
-import NavBar from "../components/NavBar.vue";
+import TopBar from "../components/TopBar.vue";
 import SideBar from "../components/SideBar.vue";
 import firebaseApp from "../firebase.js";
 import Login from "../components/Login.vue";
@@ -83,7 +83,7 @@ const auth = getAuth();
 
 export default {
   components: {
-    NavBar,
+    TopBar,
     SideBar,
     Login,
   },

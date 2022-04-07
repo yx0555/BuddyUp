@@ -1,6 +1,6 @@
 <template>
   <div style="text-align: center" v-if="user">
-    <NavBar />
+    <TopBar />
     <h3>Page Not Found !!</h3>
     <h4>Please click on the available options</h4>
     <br />
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
+import TopBar from "@/components/TopBar.vue";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
   name: "NotFound",
 
   components: {
-    NavBar,
+    TopBar,
   },
 
   data() {
