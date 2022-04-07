@@ -235,6 +235,10 @@ export default {
   color: #000000;
 }
 
+h1{
+  background-color: #fff8f8;
+}
+
 #addbutton {
   font-family: "Montserrat";
   background-color: #abe6e9;
@@ -245,6 +249,7 @@ export default {
   padding: 8px;
   cursor:pointer;
 }
+
 
 .column {
   float: left;
