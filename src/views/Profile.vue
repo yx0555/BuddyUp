@@ -431,6 +431,8 @@ export default {
 <style scoped>
 .page {
   margin-left: 200px;
+  width: auto;
+  height: 100vh;
 }
 
 .multiselect {

@@ -288,5 +288,7 @@
 		width: 84vw;
 		margin-left: 17px;
 		margin-right: auto;
+		max-width: 1000px
 	}
+
 </style>

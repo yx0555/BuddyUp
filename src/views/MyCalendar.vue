@@ -1,13 +1,15 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <NavBar />
-    <SideBar />
-    <!-- <h1>My Calendar Page</h1> -->
-    <Calendar />
-  </div>
-  <div v-else>
-    <h1>You must be logged in to view this page</h1>
-    <Login route="mycalendar" />
+  <NavBar />
+  <SideBar />
+      <!-- <h1>My Calendar Page</h1> -->
+    <div class="calendar" style="text-align: center" v-if="user">
+      <Calendar />
+    </div>
+    <div v-else>
+      <h1>You must be logged in to view this page</h1>
+      <Login route="mycalendar" />
+    </div>
   </div>
 </template>
 
@@ -48,7 +50,14 @@ export default {
 
 <style scoped>
 .page {
-  margin-left: 200px;
+  margin-left: 200px; 
+  background-color: #fff8f8;
+  width: auto;
+  height: 100vh;
+}
+
+.calendar {
+  margin-left: 20px;
 }
 
 body {

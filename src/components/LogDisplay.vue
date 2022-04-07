@@ -222,15 +222,24 @@ td{
   font-family: "Montserrat";
   background-color: #abe6e9;
   font-size: 15px;
-  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   cursor: pointer;
 }
+
 #deletebuddybutton {
   border-radius: 5px;
   font-family: "Montserrat";
-  background-color: #ff4949;
+  background-color: #ff5353dc;
   font-size: 15px;
-  padding: 3px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-left: 20px;
   cursor: pointer;
 }
