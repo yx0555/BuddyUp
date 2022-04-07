@@ -2,13 +2,15 @@
   <div class="page" style="text-align: center" v-if="user">
     <NavBar />
     <SideBar />
-    <h1>My Buddies Page</h1>
+    <div class = title>
+      <h1>My Buddies</h1>
+    </div>
     <br />
     <div class="row">
       <div class="column">
         <img
           id="icon"
-          src="@/assets/buddyicon.png"
+          src="@/assets/elderly.png"
           width="150"
           alt="Buddy Icon"
         />
@@ -21,7 +23,7 @@
       <div class="column">
         <img
           id="icon2"
-          src="@/assets/buddyicon.png"
+          src="@/assets/elderly.png"
           width="150"
           alt="Buddy Icon"
         />
@@ -34,7 +36,7 @@
       <div class="column">
         <img
           id="icon3"
-          src="@/assets/buddyicon.png"
+          src="@/assets/elderly.png"
           width="150"
           alt="Buddy Icon"
         />
@@ -221,6 +223,9 @@ export default {
 
 .page {
   margin-left: 200px;
+  background-color: #fff8f8;
+  width: auto;
+  height: 100vh;
 }
 
 #icon {
@@ -251,5 +256,10 @@ export default {
   content: "";
   display: table;
   clear: both;
+}
+
+.title {
+  font-family: "Montserrat";
+  color: #411d1d;
 }
 </style>
