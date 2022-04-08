@@ -139,6 +139,7 @@ input {
 input:hover {
   box-shadow: 3px 3px #dddddd;
   border-radius: 2px;
+  border: black
 }
 
 .save {
