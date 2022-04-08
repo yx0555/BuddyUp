@@ -8,7 +8,7 @@
     </div>
     <div v-else>
       <h1>You must be logged in to view this page</h1>
-      <Login route="mycalendar" />
+      <Login />
     </div>
   </div>
 </template>
@@ -32,16 +32,18 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       loading: false,
     };
   },
 
-  beforeCreate() {
+  mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+      } else {
+        this.user = false;
       }
     });
   },

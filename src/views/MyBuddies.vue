@@ -180,7 +180,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       buddyName1: "",
       buddyName2: "",
       buddyName3: "",
@@ -207,8 +207,7 @@ export default {
           vm.buddyName3 = name3;
         });
       } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
+        this.user = false;
       }
     });
   },
