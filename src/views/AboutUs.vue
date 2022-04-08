@@ -87,7 +87,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
     };
   },
 
@@ -96,6 +96,8 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+      } else {
+        this.user = false;
       }
     });
   },

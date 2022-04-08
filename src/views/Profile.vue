@@ -230,7 +230,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       fullName: "",
       region: "",
       languages: "",
@@ -262,6 +262,8 @@ export default {
           const availability = snapshot.data().availability;
           vm.availability = availability;
         });
+      } else {
+        this.user = false;
       }
     });
   },
