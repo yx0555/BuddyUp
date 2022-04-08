@@ -101,9 +101,7 @@ export default {
 
       var buddy1 = snapshot.data().buddyID1;
       var buddy2 = snapshot.data().buddyID2;
-      var buddy3 = snapshot.data().buddyID3;
-
-      
+      var buddy3 = snapshot.data().buddyID3;   
 
       var x;
       if (buddy1 == "" || buddy1 == null) {
@@ -182,7 +180,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       buddyName1: "",
       buddyName2: "",
       buddyName3: "",
@@ -209,8 +207,7 @@ export default {
           vm.buddyName3 = name3;
         });
       } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
+        this.user = false;
       }
     });
   },
@@ -237,6 +234,10 @@ export default {
   color: #000000;
 }
 
+h1{
+  background-color: #fff8f8;
+}
+
 #addbutton {
   font-family: "Montserrat";
   background-color: #abe6e9;
@@ -247,6 +248,7 @@ export default {
   padding: 8px;
   cursor:pointer;
 }
+
 
 .column {
   float: left;

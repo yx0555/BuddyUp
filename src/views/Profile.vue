@@ -7,14 +7,34 @@
       <h1>My Profile</h1>
       <img src="@/assets/man.png" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #333"/>
 
-      <p style="text-align: center">
+      <div>
         <strong>{{ this.fullName }}</strong>
         <br><br>
-        Region: <strong>{{ this.region }}</strong><br>
-        Languages: <strong>{{ this.languages }}</strong><br>
-        Buddy Gender Preferences: <strong>{{ this.buddyGenderPreferences }}</strong><br>
-        Availability: <strong>{{ this.availability }}</strong><br>
-      </p>
+      </div>
+
+      <div>
+        <strong>Region:</strong> {{ this.region.charAt(0).toUpperCase() + this.region.slice(1) }}<br>
+      </div>
+
+      <span>
+        <strong>Languages: </strong>
+        <span v-for="(language, index) in this.languages" :key="language">
+          {{language.charAt(0).toUpperCase() + language.slice(1)}}{{(index+1 &lt; this.languages.length) ? ', ' : ''}}
+        </span>
+        <br>
+      </span>
+
+      <div>
+        <strong>Buddy Gender Preferences: </strong>{{ this.buddyGenderPreferences.charAt(0).toUpperCase() + this.buddyGenderPreferences.slice(1) }}<br>
+      </div>
+
+      <span>
+        <strong>Availability: </strong>
+        <span v-for="(availability, index) in this.availability" :key="availability">
+          {{availability.charAt(0).toUpperCase() + availability.slice(1)}}{{(index+1 &lt; this.availability.length) ? ', ' : ''}}
+        </span>
+        <br>
+      </span>
     </div>
 
     <div class="updateProfileContainer">
@@ -23,7 +43,8 @@
       <form id="updateProfileDetails">
         <div id="formOfDetails">
           <!-- REGION -->
-          <label for="region" id="formFields"><strong>Region: </strong></label>
+          <label for="region" id="formFields"><strong>Region:</strong></label>
+          <br>
           <select name="region" id="region">
             <option value="">Select option</option>
             <option value="north">North</option>
@@ -49,39 +70,35 @@
                   class="languageCheckbox"
                   type="checkbox"
                   id="english"
-                  value="english"
-                />English</label>
+                  value="english">English</label>
               <br>
               <label for="chinese">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="chinese"
-                  value="chinese"
-                />Chinese</label>
+                  value="chinese">Chinese</label>
               <br>
               <label for="malay">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="malay"
-                  value="malay"
-                />Malay</label>
+                  value="malay">Malay</label>
               <br>
               <label for="tamil">
                 <input
                   class="languageCheckbox"
                   type="checkbox"
                   id="tamil"
-                  value="tamil"
-                />Tamil</label>
+                  value="tamil">Tamil</label>
             </div>
           </div>
           <br>
 
           <!-- GENDER PREFERENCES -->
-          <label for="genderPreferences" id="formFields"
-            ><strong>Buddy Gender Preferences: </strong></label>
+          <label for="genderPreferences" id="formFields"><strong>Buddy Gender Preferences:</strong></label>
+          <br>
           <select name="genderPreferences" id="genderPreferences">
             <option value="">Select option</option>
             <option value="male">Male</option>
@@ -92,8 +109,7 @@
 
           <!-- AVAILABILITY -->
           <label for="availability" id="availabilityFields"
-            ><strong>Availability:</strong></label
-          >
+            ><strong>Availability:</strong></label>
           <div class="multiselect">
             <div class="selectBox" v-on:click="showAvailabilityCheckboxes()">
               <select>
@@ -104,32 +120,13 @@
             <div id="availabilityCheckboxes" style="display: none">
               <h5>Monday</h5>
               <label for="mon8to11">
-
                 <input class="availabilityCheckbox" type="checkbox" id="mon08to11" value="mon08to11">0800HRS - 1100HRS</label><br>
               <label for="mon11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="mon11to14"
-                  value="mon11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="mon11to14" value="mon11to14">1100HRS - 1400HRS</label><br>
               <label for="mon14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="mon14to17"
-                  value="mon14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="mon14to17" value="mon14to17">1400HRS - 1700HRS</label><br>
               <label for="mon17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="mon17to20"
-                  value="mon17to20"
-                />1700HRS - 2000HRS</label
-              >
+                <input class="availabilityCheckbox" type="checkbox" id="mon17to20" value="mon17to20">1700HRS - 2000HRS</label>
 
               <h5>Tuesday</h5>
               <label for="tue8to11">
@@ -145,29 +142,11 @@
               <label for="wed8to11">
                 <input class="availabilityCheckbox" type="checkbox" id="wed08to11" value="wed08to11">0800HRS - 1100HRS</label><br>
               <label for="wed11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="wed11to14"
-                  value="wed11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="wed11to14" value="wed11to14"/>1100HRS - 1400HRS</label><br>
               <label for="wed14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="wed14to17"
-                  value="wed14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="wed14to17" value="wed14to17"/>1400HRS - 1700HRS</label><br>
               <label for="wed17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="wed17to20"
-                  value="wed17to20"
-                />1700HRS - 2000HRS</label
-              >
+                <input class="availabilityCheckbox" type="checkbox" id="wed17to20" value="wed17to20">1700HRS - 2000HRS</label>
 
               <h5>Thursday</h5>
 
@@ -184,89 +163,34 @@
               <label for="fri8to11">
                 <input class="availabilityCheckbox" type="checkbox" id="fri08to11" value="fri08to11">0800HRS - 1100HRS</label><br>
               <label for="fri11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="fri11to14"
-                  value="fri11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="fri11to14" value="fri11to14">1100HRS - 1400HRS</label><br>
               <label for="fri14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="fri14to17"
-                  value="fri14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="fri14to17" value="fri14to17">1400HRS - 1700HRS</label><br>
               <label for="fri17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="fri17to20"
-                  value="fri17to20"
-                />1700HRS - 2000HRS</label
-              >
+                <input class="availabilityCheckbox" type="checkbox" id="fri17to20" value="fri17to20">1700HRS - 2000HRS</label>
 
               <h5>Saturday</h5>
               <label for="sat8to11">
                 <input class="availabilityCheckbox" type="checkbox" id="sat08to11" value="sat08to11">0800HRS - 1100HRS</label><br>
               <label for="sat11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sat11to14"
-                  value="sat11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="sat11to14" value="sat11to14">1100HRS - 1400HRS</label><br>
               <label for="sat14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sat14to17"
-                  value="sat14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="sat14to17" value="sat14to17">1400HRS - 1700HRS</label><br>
               <label for="sat17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sat17to20"
-                  value="sat17to20"
-                />1700HRS - 2000HRS</label
-              >
+                <input class="availabilityCheckbox" type="checkbox" id="sat17to20" value="sat17to20">1700HRS - 2000HRS</label>
 
               <h5>Sunday</h5>
               <label for="sun8to11">
-
                 <input class="availabilityCheckbox" type="checkbox" id="sun08to11" value="sun08to11">0800HRS - 1100HRS</label><br>
               <label for="sun11to14">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sun11to14"
-                  value="sun11to14"
-                />1100HRS - 1400HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="sun11to14" value="sun11to14">1100HRS - 1400HRS</label><br>
               <label for="sun14to17">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sun14to17"
-                  value="sun14to17"
-                />1400HRS - 1700HRS</label
-              ><br />
+                <input class="availabilityCheckbox" type="checkbox" id="sun14to17" value="sun14to17">1400HRS - 1700HRS</label><br>
               <label for="sun17to20">
-                <input
-                  class="availabilityCheckbox"
-                  type="checkbox"
-                  id="sun17to20"
-                  value="sun17to20"
-                />1700HRS - 2000HRS</label
-              >
+                <input class="availabilityCheckbox" type="checkbox" id="sun17to20" value="sun17to20">1700HRS - 2000HRS</label>
             </div>
           </div>
-          <br />
+          <br>
         </div>
       </form>
       <!-- UPDATE BUTTON -->
@@ -306,7 +230,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       fullName: "",
       region: "",
       languages: "",
@@ -338,6 +262,8 @@ export default {
           const availability = snapshot.data().availability;
           vm.availability = availability;
         });
+      } else {
+        this.user = false;
       }
     });
   },
@@ -369,19 +295,23 @@ export default {
         }
       }
 
-      var uid = auth.currentUser.uid;
-      console.log(userRegion);
-      updateDoc(doc(db, "Users", uid), {
-        region: userRegion,
-        languages: userCheckedLanguages,
-        genderPref: userGenderPreferences,
-        availability: userCheckedAvailability,
-      });
+      if (userRegion != "" && userCheckedLanguages != "" && userGenderPreferences != "" && userCheckedAvailability != "") {
+        var uid = auth.currentUser.uid;
+        console.log(userRegion);
+        updateDoc(doc(db, "Users", uid), {
+          region: userRegion,
+          languages: userCheckedLanguages,
+          genderPref: userGenderPreferences,
+          availability: userCheckedAvailability,
+        });
 
-      alert("Your particulars have been updated!");
-      setTimeout(function () {
-        window.location.reload();
-      }, 1000);
+        alert("Your particulars have been updated!");
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
+      } else {
+        alert("Please fill up all fields!");
+      }
     },
 
     showLanguageCheckboxes() {
@@ -415,11 +345,16 @@ export default {
 .page {
   margin-left: 200px;
   width: auto;
-  height: 100vh;
+}
+
+select:hover {
+  box-shadow: 3px 3px #dddddd;
+  border-radius: 2px;
 }
 
 .multiselect {
   text-align: center;
+  /* display: inline-block; */
 }
 .selectBox {
   position: relative;
@@ -441,8 +376,12 @@ export default {
 }
 
 p {
-  text-align: justify;
+  text-align: center;
   margin-left: 0%;
   margin-right: 0%;
+}
+
+.userName {
+  font-size: 10px;
 }
 </style>

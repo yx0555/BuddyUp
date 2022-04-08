@@ -1,9 +1,9 @@
 <template>
-	<div id="app">
+	<div id="app" v-if="user">
 		<calendar-view
 			:show-date="showDate"
 			:items="state.items"
-			show-times= true
+			:show-times= "true"
 			:time-format-options="{ hour: 'numeric', minute: '2-digit' }"
 			class="theme-default holiday-us-traditional holiday-us-official"
 			@click-date="onClickDate"
@@ -66,7 +66,7 @@
 		
 		data() {
 			return {
-				user: false,
+				user: true,
 				uid: "",
 				showDate: new Date(),
 				state: reactive(new AppState()),
@@ -250,6 +250,8 @@
 							})
 						})
 					})
+				} else {
+					this.user = false;
 				}
 			});
 		},

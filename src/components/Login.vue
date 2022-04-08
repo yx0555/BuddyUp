@@ -30,11 +30,9 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// import firebaseApp from '../firebase.js';
-// import { getFirestore } from "firebase/firestore";
 
 export default {
-  name: "Login",
+  name: 'Login',
 
   props: {
     route: String,
@@ -61,7 +59,6 @@ export default {
           // Signed in
           console.log("signed in successfully");
           this.$router.push(route);
-          // ...
         })
         .catch((error) => {
           alert(error.message);
@@ -80,6 +77,8 @@ export default {
 
 p {
   text-align: center;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 
