@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
       isModalVisible: false,
@@ -64,8 +64,7 @@ export default {
       if (user) {
         this.user = user;
       } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
+        this.user = false;
       }
     });
   },
