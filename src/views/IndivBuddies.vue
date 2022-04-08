@@ -45,7 +45,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
       isModalVisible: false,
@@ -63,6 +63,8 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
+      } else {
+        this.user = false;
       }
     });
   },
