@@ -3,10 +3,10 @@
     <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
     <div>
       <form @submit.prevent="login">
-        <h2>Login</h2>
-        <input type="email" placeholder="Email address..." v-model="email" />
+        <h1>Login</h1>
+        <input type="email" placeholder="Email" v-model="email" />
         <br />
-        <input type="password" placeholder="Password..." v-model="password" />
+        <input type="password" placeholder="Password" v-model="password" />
         <br /><br />
         <button type="submit" v-on:click="submit()">Login</button>
       </form>
@@ -22,11 +22,9 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-// import firebaseApp from '../firebase.js';
-// import { getFirestore } from "firebase/firestore";
 
 export default {
-  name: "Login",
+  name: 'Login',
 
   props: {
     route: String,
@@ -53,7 +51,6 @@ export default {
           // Signed in
           console.log("signed in successfully");
           this.$router.push(route);
-          // ...
         })
         .catch((error) => {
           alert(error.message);
@@ -70,5 +67,7 @@ export default {
 <style scoped>
 p {
   text-align: center;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 </style>
