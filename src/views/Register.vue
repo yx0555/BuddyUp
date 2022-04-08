@@ -1,71 +1,72 @@
 <template>
-  <div id="app">
-    <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
-  </div>
+  <div id = "page">
+    <img id="logo" src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
+    <br /><br />
+    <h1>Create an Account</h1>
+    <br />
 
-  <h1>Create An Account</h1>
+    <div class="registerMainContainer">
+      <form id="userRegistration">
+        <div class="formli">
+          <label for="fullName">Full Name: </label>
+          <input
+            type="text"
+            id="fullNameField"
+            required=""
+            placeholder="Enter your Full Name"
+          />
+          <br /><br />
 
-  <div class="registerMainContainer">
-    <form id="userRegistration">
-      <div class="formli">
-        <label for="fullName">Full Name: </label>
-        <input
-          type="text"
-          id="fullName"
-          required=""
-          placeholder="Enter your Full Name"
-        />
-        <br /><br />
+          <label for="username">Username: </label>
+          <input
+            type="text"
+            id="usernameField"
+            required=""
+            placeholder="Enter your Username"
+          />
+          <br /><br />
 
-        <label for="username">Username: </label>
-        <input
-          type="text"
-          id="username"
-          required=""
-          placeholder="Enter your Username"
-        />
-        <br /><br />
+          <label for="emailAddress">Email Address: </label>
+          <input
+            type="email"
+            id="emailAddressField"
+            required=""
+            placeholder="Enter your Email"
+          />
+          <br /><br />
 
-        <label for="emailAddress">Email Address: </label>
-        <input
-          type="email"
-          id="emailAddress"
-          required=""
-          placeholder="Enter your Email"
-        />
-        <br /><br />
+          <label for="password">Password: </label>
+          <input
+            type="password"
+            id="passwordField"
+            required=""
+            placeholder="Enter your Password"
+          />
+          <br /><br />
 
-        <label for="password">Password: </label>
-        <input
-          type="password"
-          id="password"
-          required=""
-          placeholder="Enter your Password"
-        />
-        <br /><br />
+          <label for="repeatPassword">Repeat Password: </label>
+          <input
+            type="password"
+            id="repeatPasswordField"
+            required=""
+            placeholder="Enter your Password again"
+          />
+          <br /><br />
 
-        <label for="repeatPassword">Repeat Password: </label>
-        <input
-          type="password"
-          id="repeatPassword"
-          required=""
-          placeholder="Enter Password again"
-        />
-        <br /><br />
-
-        <div class="signUp">
-          <button
-            id="signUpButton"
-            type="button"
-            v-on:click="checkValidityOfForm()"
-          >
-            Sign Up
-          </button>
+          <div class="signUp">
+            <button
+              id="signUpButton"
+              type="button"
+              v-on:click="checkValidityOfForm()"
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
+      </form>
+      <div id="loginPromptRouter">
+        <router-link to="/login">Have an account? Login here!</router-link>
       </div>
-    </form>
-    <div id="loginPromptRouter">
-      <router-link to="/login">Have an account? Login here!</router-link>
     </div>
   </div>
 </template>
@@ -140,8 +141,11 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500");
+
 h1 {
-  text-align: center;
+  background-color: #fff8f8;
+  font-size: 20px;
 }
 
 label {
@@ -151,13 +155,48 @@ label {
   text-align: right;
 }
 
+#logo {
+  width: 200px;
+  margin: auto;
+  display: block;
+}
+
+#loginPromptRouter {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#page {
+  background-color: #fff8f8;
+  height: 100vh;
+  
+}
+
 #signUpButton {
-  background-color: #f07575;
-  border-radius: 4px;
+  background-color: #abe6e9;
+  border: none;
+  border-radius: 10px;
+  padding: 7px;
+  padding-left: 25px;
+  padding-right: 25px;
   cursor: pointer;
+  font-family: "Montserrat";
+  font-weight: 700;
 }
 
 #nav {
   padding: 30px;
 }
+
+#fullNameField, #usernameField, #emailAddressField, #passwordField, #repeatPasswordField {
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-indent: 10px;
+  margin: auto 7px auto 2px;
+}
+
 </style>
