@@ -12,7 +12,7 @@
           <label for="endtime">End Time:&nbsp;</label>
           <input type="time" id="endtime" required="" v-model="c"/><br /><br />
           <label for="remarks">Remarks:&nbsp;</label>
-          <input type="text" id="remarks" required="" placeholder="Eg. Bring item" v-model="d"/><br /><br />
+          <input type="text" id="remarks" required="" placeholder="How was your visit?" v-model="d"/><br /><br />
           <div class="save">
             <button id="savebutton" type="button" v-on:click="savetofs()">
               Save

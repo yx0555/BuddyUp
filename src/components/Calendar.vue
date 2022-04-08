@@ -7,6 +7,7 @@
 			:time-format-options="{ hour: 'numeric', minute: '2-digit' }"
 			class="theme-default holiday-us-traditional holiday-us-official"
 			@click-date="onClickDate"
+			
 		>
 			<template #header="{ headerProps }">
 				<calendar-view-header
