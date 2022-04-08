@@ -138,7 +138,8 @@ export default {
           if (buddy1Slot) {
             buddy1Day = convertDayToInt(buddy1Slot.slice(0,3));
             buddy1Time = buddy1Slot.slice(3,5);
-            buddy1EndTime = buddy1Slot.slice(7);
+            buddy1EndTime = buddy1Slot.slice(-2);
+            console.log(buddy1EndTime);
             buddy1.endDate = getVisitDate(buddy1Day, buddy1EndTime);
             buddy1.visitDate = getVisitDate(buddy1Day, buddy1Time);
             buddyArray.push(buddy1);
@@ -147,7 +148,7 @@ export default {
           if (buddy2Slot) {
             buddy2Day = convertDayToInt(buddy2Slot.slice(0,3));
             buddy2Time = buddy2Slot.slice(3,5);
-            buddy2EndTime = buddy2Slot.slice(7);
+            buddy2EndTime = buddy2Slot.slice(-2);
             buddy2.endDate = getVisitDate(buddy2Day, buddy2EndTime);
             buddy2.visitDate = getVisitDate(buddy2Day, buddy2Time);
             buddyArray.push(buddy2);
@@ -155,7 +156,7 @@ export default {
           if (buddy3Slot) {
             buddy3Day = convertDayToInt(buddy3Slot.slice(0,3));
             buddy3Time = buddy3Slot.slice(3,5);
-            buddy3EndTime = buddy3Slot.slice(7);
+            buddy3EndTime = buddy3Slot.slice(-2);
             buddy3.endDate = getVisitDate(buddy3Day, buddy3EndTime);
             buddy3.visitDate = getVisitDate(buddy3Day, buddy3Time);
             buddyArray.push(buddy3)
