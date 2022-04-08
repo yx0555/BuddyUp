@@ -63,9 +63,6 @@ export default {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         this.user = user;
-      } else {
-        alert("you must be logged in to view this page");
-        this.$router.push("/");
       }
     });
   },
