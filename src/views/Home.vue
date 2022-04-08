@@ -48,14 +48,14 @@ export default {
   data() {
     return {
       refreshComp: 0,
-      user: false,
+      user: true,
       upcomingVisits: [],
       reminders: [],
       uid : ""
     };
   },
 
-  mounted() {
+  beforeMount() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -159,6 +159,7 @@ export default {
           })
 
           let list = document.getElementById("taskList");
+          list.innerHTML = '';
         
           vm.upcomingVisits.forEach((visit)=>{
             let li = document.createElement("li");
@@ -178,6 +179,8 @@ export default {
             vm.reminders.push(new Date(r.data().date).toDateString() + " : " + r.data().reminder + " (" + r.data().buddyName + ")");
           })
           let list2 = document.getElementById("reminderList");
+          list2.innerHTML = '';
+
           vm.reminders.forEach((reminder)=>{
             let li = document.createElement("li");
             li.innerText = reminder;
@@ -189,6 +192,8 @@ export default {
             list2.appendChild(li)
           }
         })
+      } else {
+        this.user = false;
       }
     });
 
