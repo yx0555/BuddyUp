@@ -112,6 +112,7 @@ p {
   padding: 0 30px 0 30px;
   font-family: "Montserrat";
   font-weight: 700;
+  cursor: pointer;
 }
 
 #pwRouter {
