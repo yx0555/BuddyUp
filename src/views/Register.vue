@@ -2,10 +2,9 @@
   <div id = "page">
     <img id="logo" src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
     <br /><br />
-    <h1>Create an Account</h1>
-    <br />
 
   <h1>CREATE AN ACCOUNT</h1>
+  <br>
     <div class="registerMainContainer">
       <form id="userRegistration">
         <div class="formli">
@@ -76,7 +75,7 @@
 import firebaseApp from "../firebase.js";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 // import { collection, addDoc } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendSignInLinkToEmail } from "firebase/auth";
 
 const db = getFirestore(firebaseApp);
 
@@ -116,7 +115,7 @@ export default {
         try {
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
-              this.$router.push("/");
+              // this.$router.push("/");
 
               var uid = auth.currentUser.uid;
               setDoc(doc(db, "Users", uid), {
@@ -124,14 +123,21 @@ export default {
                 username: userUsername,
                 emailAddress: userEmail,
               });
-              // console.log(docRef)
               document.getElementById("userRegistration").reset();
-              // this.$emit("added")'
-              alert("We will be registering you: " + userFullName);
+              // alert("We will be registering you: " + userFullName);
             })
             .catch((error) => {
               alert(error.message);
             });
+
+          sendSignInLinkToEmail(auth, userEmail, {
+            url: 'https://buddyup-e927c.web.app/',
+            handleCodeInApp: true
+          })
+            .then(() => {
+              alert("We will be registering you, " + userFullName + "! Please authenticate yourself via the link sent to your email before logging in.")
+            })
+
         } catch (error) {
           console.error("Error adding document: ", error);
         }
