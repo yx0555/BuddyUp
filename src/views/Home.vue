@@ -139,7 +139,6 @@ export default {
             buddy1Day = convertDayToInt(buddy1Slot.slice(0,3));
             buddy1Time = buddy1Slot.slice(3,5);
             buddy1EndTime = buddy1Slot.slice(-2);
-            console.log(buddy1EndTime);
             buddy1.endDate = getVisitDate(buddy1Day, buddy1EndTime);
             buddy1.visitDate = getVisitDate(buddy1Day, buddy1Time);
             buddyArray.push(buddy1);
@@ -162,7 +161,6 @@ export default {
             buddyArray.push(buddy3)
           }
           buddyArray.sort((a,b) => (a.visitDate > b.visitDate) ? 1 : -1);
-          console.log(buddyArray)
 
           buddyArray.forEach((buddy)=>{
             const zero = (buddy.visitDate.getHours() ==  8 ? "0" : "")
@@ -185,7 +183,6 @@ export default {
         });
         
         querySnapshot.then(function (reminderArray) {
-          console.log(reminderArray)
           reminderArray.forEach((r) =>{
             vm.reminders.push(new Date(r.data().date).toDateString() + " : " + r.data().reminder + " (" + r.data().buddyName + ")");
           })
