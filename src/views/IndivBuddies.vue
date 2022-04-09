@@ -5,12 +5,13 @@
     <div class="container">
     <div class = "row">
       <div class="column right">
-        <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
         <AddLog :buddynumber="buddynumber" @added="change" />
+        <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
       </div>
 
       <div class="column left"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
+        <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" />
       </div>
     </div>
     </div>
@@ -29,6 +30,7 @@ import AddLog from "../components/AddLog.vue";
 import Login from "../components/Login.vue";
 import LogDisplay from "../components/LogDisplay.vue";
 import AddReminders from "../components/AddReminders.vue"
+import ReminderDisplay from "../components/ReminderDisplay.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -41,6 +43,7 @@ export default {
     LogDisplay,
     Login,
     AddReminders,
+    ReminderDisplay
   },
 
   data() {
