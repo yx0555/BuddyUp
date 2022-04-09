@@ -288,10 +288,11 @@
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		color: #94273f;
 		height: 83vh;
-		width: 84vw;
+		width: 100vw;
 		margin-left: 17px;
 		margin-right: auto;
-		max-width: 100%;
+		/* max-width: 1000px */
+		max-width: 1200px;
 	}
 
 </style>

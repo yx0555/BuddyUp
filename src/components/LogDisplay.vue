@@ -64,6 +64,7 @@ export default {
           await updateDoc(userDocRef,{
             buddyID1:"",
             buddyName1:"",
+            buddy1VisitationSlot:"",
           });
         } 
         else if(this.buddynumber == 2){
@@ -71,6 +72,7 @@ export default {
           await updateDoc(userDocRef,{
             buddyID2:"",
             buddyName2:"",
+            buddy2VisitationSlot:"",
         });
         } 
         else if(this.buddynumber == 3){
@@ -78,6 +80,7 @@ export default {
           await updateDoc(userDocRef,{
             buddyID3:"",
             buddyName3:"",
+            buddy3VisitationSlot:"",
         });
         } 
         await updateDoc(doc(db,"Buddies",buddyid),{

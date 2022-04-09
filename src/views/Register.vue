@@ -12,7 +12,7 @@
           <label for="fullName">Full Name: </label>
           <input
             type="text"
-            id="fullNameField"
+            id="fullName"
             required=""
             placeholder="Enter your Full Name"
           />
@@ -21,7 +21,7 @@
           <label for="username">Username: </label>
           <input
             type="text"
-            id="usernameField"
+            id="username"
             required=""
             placeholder="Enter your Username"
           />
@@ -30,7 +30,7 @@
           <label for="emailAddress">Email Address: </label>
           <input
             type="email"
-            id="emailAddressField"
+            id="emailAddress"
             required=""
             placeholder="Enter your Email"
           />
@@ -39,7 +39,7 @@
           <label for="password">Password: </label>
           <input
             type="password"
-            id="passwordField"
+            id="password"
             required=""
             placeholder="Enter your Password"
           />
@@ -48,7 +48,7 @@
           <label for="repeatPassword">Repeat Password: </label>
           <input
             type="password"
-            id="repeatPasswordField"
+            id="repeatPassword"
             required=""
             placeholder="Enter your Password again"
           />
@@ -189,7 +189,7 @@ label {
   padding: 30px;
 }
 
-#fullNameField, #usernameField, #emailAddressField, #passwordField, #repeatPasswordField {
+#fullName, #username, #emailAddress, #password, #repeatPassword {
   width: 200px;
   height: 30px;
   outline: none;
