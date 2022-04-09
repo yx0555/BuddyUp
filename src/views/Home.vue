@@ -77,9 +77,9 @@ export default {
 
 
         docRef.then(function (snapshot) {
-          const buddy1 = {name:"", visitDate:new Date()};
-          const buddy2 = {name:"", visitDate:new Date()};
-          const buddy3 = {name:"", visitDate:new Date()};
+          const buddy1 = {name:"", visitDate:new Date(), endDate:new Date()};
+          const buddy2 = {name:"", visitDate:new Date(), endDate:new Date()};
+          const buddy3 = {name:"", visitDate:new Date(), endDate:new Date()};
           buddy1.name = snapshot.data().buddyName1
           buddy2.name = snapshot.data().buddyName2
           buddy3.name = snapshot.data().buddyName3
@@ -130,24 +130,34 @@ export default {
           var buddy1Time = "";
           var buddy2Time = "";
           var buddy3Time = "";
+          var buddy1EndTime = "";
+          var buddy2EndTime = "";
+          var buddy3EndTime = "";
           const buddyArray = []
 
           if (buddy1Slot) {
             buddy1Day = convertDayToInt(buddy1Slot.slice(0,3));
-            buddy1Time = buddy1Slot.slice(7);
+            buddy1Time = buddy1Slot.slice(3,5);
+            buddy1EndTime = buddy1Slot.slice(-2);
+            console.log(buddy1EndTime);
+            buddy1.endDate = getVisitDate(buddy1Day, buddy1EndTime);
             buddy1.visitDate = getVisitDate(buddy1Day, buddy1Time);
             buddyArray.push(buddy1);
 
           }
           if (buddy2Slot) {
             buddy2Day = convertDayToInt(buddy2Slot.slice(0,3));
-            buddy2Time = buddy2Slot.slice(7);
+            buddy2Time = buddy2Slot.slice(3,5);
+            buddy2EndTime = buddy2Slot.slice(-2);
+            buddy2.endDate = getVisitDate(buddy2Day, buddy2EndTime);
             buddy2.visitDate = getVisitDate(buddy2Day, buddy2Time);
             buddyArray.push(buddy2);
           }
           if (buddy3Slot) {
             buddy3Day = convertDayToInt(buddy3Slot.slice(0,3));
-            buddy3Time = buddy3Slot.slice(7);
+            buddy3Time = buddy3Slot.slice(3,5);
+            buddy3EndTime = buddy3Slot.slice(-2);
+            buddy3.endDate = getVisitDate(buddy3Day, buddy3EndTime);
             buddy3.visitDate = getVisitDate(buddy3Day, buddy3Time);
             buddyArray.push(buddy3)
           }
@@ -155,7 +165,8 @@ export default {
           console.log(buddyArray)
 
           buddyArray.forEach((buddy)=>{
-            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " " + buddy.visitDate.getHours() + "00 : Visit " + buddy.name);
+            const zero = (buddy.visitDate.getHours() ==  8 ? "0" : "")
+            vm.upcomingVisits.push(buddy.visitDate.toDateString() + " " + zero + buddy.visitDate.getHours() + "00  - " + buddy.endDate.getHours() + "00: Visit " + buddy.name);
           })
 
           let list = document.getElementById("taskList");
