@@ -355,7 +355,6 @@ select:hover {
 
 .multiselect {
   text-align: center;
-  /* display: inline-block; */
 }
 .selectBox {
   position: relative;
@@ -414,7 +413,8 @@ h1, h2 {
 .updateProfileContainer {
   border: 5px solid #f2afaf;
   border-radius: 15px;
-  margin: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 </style>

@@ -107,7 +107,7 @@ export default {
 <style>
 p {
   text-align: justify;
-  margin-left: 10%;
+  margin-left: 5%;
   margin-right: 5%;
 }
 
@@ -125,8 +125,10 @@ p {
 
 .info {
   background: #ffffff;
-  margin: 50px;
-  margin-left: 180px;
+  margin-top: 30px;
+  margin-bottom: 150px;
+  margin-right: 40px;
+  margin-left: 120px;
   border: 3px solid #f07575;
   border-radius: 20px;
 }
