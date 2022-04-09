@@ -72,19 +72,21 @@ export default {
     async savetofs() {
       if (!(String(this.a) == "" || String(this.b) == "")){
           //Date and time cannot be empty
-          try {
-              var uid = auth.currentUser.uid;
-              // const addRef = doc(db, "Users", uid);
-              await addDoc(collection(db, "Reminders"), {
-                  date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId, buddyName: this.buddyName,
-                  });
-                  // updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
-              this.a = this.b = ""
-              this.$emit("added");
-              alert("Reminder has been added")
-          } catch (error) {
-              console.error("Error adding document: ", error);
-          }
+          if (String(this.b).length<120){
+            try {
+                var uid = auth.currentUser.uid;
+                // const addRef = doc(db, "Users", uid);
+                await addDoc(collection(db, "Reminders"), {
+                    date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId, buddyName: this.buddyName,
+                    });
+                    // updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
+                this.a = this.b = ""
+                this.$emit("added");
+                alert("Reminder has been added")
+            } catch (error) {
+                console.error("Error adding document: ", error);
+            }
+          } else alert("Reminders cannot take more than 120 characters");
       } else alert("Cannot take empty values. Please enter the values");
     },
   },

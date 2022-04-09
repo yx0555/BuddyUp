@@ -3,7 +3,7 @@
     <img src="@/assets/BuddyUpLogo.png" alt="Buddy Up Logo" />
   </div>
 
-  <h1>Create An Account</h1>
+  <h1>CREATE AN ACCOUNT</h1>
 
   <div class="registerMainContainer">
     <form id="userRegistration">
@@ -111,7 +111,6 @@ export default {
           "Your passwords are not the same. Please key in your passwords again."
         );
       } else {
-        alert("We will be registering you: " + userFullName);
         try {
           createUserWithEmailAndPassword(auth, userEmail, userPassword)
             .then(() => {
@@ -126,6 +125,7 @@ export default {
               // console.log(docRef)
               document.getElementById("userRegistration").reset();
               // this.$emit("added")'
+              alert("We will be registering you: " + userFullName);
             })
             .catch((error) => {
               alert(error.message);

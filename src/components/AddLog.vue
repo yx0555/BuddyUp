@@ -80,19 +80,21 @@ export default {
       if (!(String(this.a) == "" || String(this.b) == "" || String(this.c) == "")){
           if (this.b!=this.c) {
           //Date and time cannot be empty
-          try {
-              var uid = auth.currentUser.uid;
-              await addDoc(collection(db, "Visitations"), {
-              date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
-              });
-              // const addRef = doc(db, "Buddies", this.buddyId);
-              // await updateDoc(addRef, {visitationID: arrayUnion(docRef.id),});
-              this.a = this.b = this.c = this.d = ""
-              this.$emit("added");
-              alert("Visitation has been added")
-          } catch (error) {
-              console.error("Error adding document: ", error);
-          }
+            if (String(this.d).length<120){
+              if (String(this.b)<String(this.c)){
+                try {
+                    var uid = auth.currentUser.uid;
+                    await addDoc(collection(db, "Visitations"), {
+                    date: this.a, startTime: this.b, endTime: this.c, remarks: this.d, userID: uid, buddyID: this.buddyId,
+                    });
+                    this.a = this.b = this.c = this.d = ""
+                    this.$emit("added");
+                    alert("Visitation has been added")
+                } catch (error) {
+                    console.error("Error adding document: ", error);
+                }
+              } else alert("Start time should be before end time");
+            } else alert ("Remarks should not be more than 120 characters")
         } else alert("Start and end time cannot be the same!");
       } else alert("Cannot take empty values. Please enter the values");
     },
