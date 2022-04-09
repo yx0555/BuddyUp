@@ -103,7 +103,7 @@ export default {
     async function deletereminder(reminderID) {
       if (confirm("Do you want to delete this reminder?")==true){
         await deleteDoc(doc(db, "Reminders", reminderID));
-        let tb = document.getElementById("remindetable");
+        let tb = document.getElementById("remindertable");
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
