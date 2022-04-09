@@ -36,6 +36,7 @@
         <br>
       </span>
     </div>
+    <br />
 
     <div class="updateProfileContainer">
       <h2>Update My Particulars</h2>
@@ -59,7 +60,7 @@
           <label for="languages" id="languagesFields"><strong>Languages:</strong></label>
           <div class="multiselect">
             <div class="selectBox" v-on:click="showLanguageCheckboxes()">
-              <select>
+              <select class=languagesField>
                 <option value="">Select option(s)</option>
               </select>
               <div class="overSelect"></div>
@@ -112,7 +113,7 @@
             ><strong>Availability:</strong></label>
           <div class="multiselect">
             <div class="selectBox" v-on:click="showAvailabilityCheckboxes()">
-              <select>
+              <select class="availablityField" >
                 <option value="">Select option(s)</option>
               </select>
               <div class="overSelect"></div>
@@ -364,14 +365,35 @@ select:hover {
   position: absolute;
 }
 
+#region, #genderPreferences {
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-indent: 10px;
+  margin: auto 7px auto 2px;
+}
+
+.languagesField, .availablityField {
+  width: 200px;
+  height: 30px;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-indent: 10px;
+  margin: auto 7px auto 2px;
+}
+
 #updateButton {
   background-color: #abe6e9;
   border-radius: 5px;
   border: none;
-  padding: 5px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: 5px 20px;
   font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -384,4 +406,15 @@ p {
 .userName {
   font-size: 10px;
 }
+
+h1, h2 {
+  background-color: #fff8f8;
+}
+
+.updateProfileContainer {
+  border: 5px solid #f2afaf;
+  border-radius: 15px;
+  margin: 30px;
+}
+
 </style>
