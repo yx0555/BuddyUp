@@ -14,6 +14,7 @@ Our project aims to tackle the growing healthcare issue of elderlies in Singapor
 
 
 ### User Journey
+```javascript
 1. New users will first create an account by clicking on “Create An Account” on the front page, then input in their necessary information.
 2. After clicking on the “Sign Up” button, a pop-up will appear to show that a link has been sent to their email for verification, which they will then click on “OK”.
 3. They will then go to the email to click on the verification link.
@@ -48,6 +49,6 @@ i. Press on delete buddy and acknowledge and it will bring them to the “My Bud
 a. Hover over the event to view the full event  <br />
 9. Volunteers will be able to find out more about the application and our goal under “About us”.  <br />
 10. Users can then log out on the top bar and it will bring them back to the Login page  <br />
-
+```
 
 
