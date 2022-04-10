@@ -8,7 +8,7 @@
         src="@/assets/aboutus.png"
         width="150"
         alt="About Us" />
-      <br />
+      <!-- <br /> -->
       <h2>About Us</h2>
       <p>
         Buddy Up serves as an all-in-one platform solely for volunteers’ use. The

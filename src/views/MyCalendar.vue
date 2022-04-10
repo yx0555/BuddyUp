@@ -2,7 +2,6 @@
   <div class="page" style="text-align: center" v-if="user">
   <TopBar :componentName="componentName"/>
   <SideBar />
-      <!-- <h1>My Calendar Page</h1> -->
     <div class="calendar" style="text-align: center" v-if="user">
       <Calendar />
     </div>

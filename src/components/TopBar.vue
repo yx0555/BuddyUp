@@ -27,9 +27,12 @@ export default {
 
 h1 {
   background-color: #f07575;
-  margin-left: 100px;
+  margin-left: 43%;
+  margin-right: 20%;
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
+  text-align: center;
+
 }
 
 .topnav {
@@ -37,6 +40,7 @@ h1 {
   width: 100%;
   height: 65px;
   display: flex;
+  text-align: center;
 }
 
 #logoutButton {

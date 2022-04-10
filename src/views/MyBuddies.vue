@@ -187,7 +187,7 @@ export default {
       buddyID1: "",
       buddyID2: "",
       buddyID3: "",
-      componentName: "My Buddies"
+      componentName:"My Buddies"
     };
   },
 

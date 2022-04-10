@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center">
-      <h2>Reminders CHANGE2</h2>
+      <h2>Reminders</h2>
       <table id="remindertable" align="center">
         <tr>
           <th>No.</th>
