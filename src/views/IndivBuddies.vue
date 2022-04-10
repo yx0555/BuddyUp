@@ -6,12 +6,11 @@
     <div class = "row">
       <div class="column right">
         <AddLog :buddynumber="buddynumber" @added="change" />
-        <AddReminders :buddynumber="buddynumber" @added="change2"/> <br>
+        <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
       </div>
 
       <div class="column left"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
-        <!-- <ReminderDisplay :key="refreshComp2" :buddynumber="buddynumber" /> -->
       </div>
     </div>
     </div>
@@ -51,7 +50,6 @@ export default {
     return {
       user: true,
       refreshComp: 0,
-      refreshComp2: 0,
       buddynumber: this.$route.params.id,
       componentName: "Individual Buddies"
     };
@@ -62,9 +60,6 @@ export default {
       this.refreshComp += 1;
     },
 
-    change2(){
-      this.refreshComp2 +=1;
-    }
   },
 
   mounted() {
