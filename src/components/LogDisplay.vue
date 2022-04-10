@@ -234,7 +234,7 @@ export default {
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
-        display();
+        display2();
       }
     }
 
@@ -245,7 +245,7 @@ export default {
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
-        display();
+        display3();
       }
     }
   },
