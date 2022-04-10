@@ -48,6 +48,7 @@ a. Hover over the event to view the full event
 9. Volunteers will be able to find out more about the application and our goal under “About us”.
 10. Users can then log out on the top bar and it will bring them back to the Login page
 ```
+## Contributing
 ## Contributors
 @yx055 @melissaoyl @mltnsia @High325 @joeyylow
 
