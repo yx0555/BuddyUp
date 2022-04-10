@@ -40,6 +40,14 @@ i. Key in Date by pressing on the calendar
 ii. Key in the reminders 
 iii. Clicking on the “save button” will add a reminder to home page as well as calendar
 c. Visitation table
-i. Click on “X” to delete the visitations and confirm the delete→Visitation entry will be deleted
+i. Click on “X” to delete the visitations and confirm the delete such that visitation entry will be deleted
+d. Request Buddy’s details, then a pop up will mention that an email of buddy’s critical information has been sent to their registered email.
+e. Delete buddy 
+i. Press on delete buddy and acknowledge and it will bring them to the “My Buddies” page
+8. The schedule of the volunteers will appear under “My Calendar”.
+a. Hover over the event to view the full event 
+9. Volunteers will be able to find out more about the application and our goal under “About us”.
+10. Users can then log out on the top bar and it will bring them back to the Login page
+
 
 
