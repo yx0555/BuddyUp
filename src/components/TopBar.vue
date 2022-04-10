@@ -1,7 +1,9 @@
 <template>
   <div class="topnav">
     <h1>{{this.componentName}}</h1>
-    <Logout />
+    <div id="logoutButton">
+      <Logout />
+    </div>
   </div>
 </template>
 
@@ -23,29 +25,25 @@ export default {
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500");
 @import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
 
-/* h1 {
+h1 {
   background-color: #f07575;
   margin-left: 100px;
   font-family: "Montserrat", sans-serif;
   font-size: 30px;
-} */
+}
 
 .topnav {
   background-color: #f07575;
-  text-align: right;
   width: 100%;
   height: 65px;
   display: flex;
 }
 
-/* h1{
-  font-family: "Montserrat";
-  text-align: center;
-  background-color:#f07575;
-} */
 #logoutButton {
   margin-right: 10px;
   margin-left: auto;
+  margin-bottom: 0;
+  margin-top: auto
 }
 
 </style>

@@ -288,7 +288,7 @@
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		color: #94273f;
 		height: 83vh;
-		width: 100vw;
+		width: 100%;
 		margin-left: 17px;
 		margin-right: auto;
 		/* max-width: 1000px */
