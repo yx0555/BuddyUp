@@ -5,13 +5,11 @@
 npm install
 npm run serve
 ```
-
 ## Deployed app
 https://buddyup-e927c.web.app/
 
 ### About Us
 Our project aims to tackle the growing healthcare issue of elderlies in Singapore being socially isolated and the lack of platforms to lower the barriers to entry for volunteering. As such, we came up with the web application - ‘Buddy Up’, which focuses on having elderlies as the beneficiaries. The main functionality of this app is to match registered volunteers to elderlies, registered by partner beneficiary organisations, based on their preferences. The volunteer can then make weekly visitations to the elderlies’ home to administer preventive care and keep them company. This app also allows the volunteers to log their visitations, set reminders for themselves, and use the built-in calendar to keep track of the visitations they have. 
-
 
 ### User Journey
 ```
@@ -50,5 +48,6 @@ a. Hover over the event to view the full event
 9. Volunteers will be able to find out more about the application and our goal under “About us”.
 10. Users can then log out on the top bar and it will bring them back to the Login page
 ```
-
+## Contributors
+@yx055 @melissaoyl @mltnsia @High325 @joeyylow
 
