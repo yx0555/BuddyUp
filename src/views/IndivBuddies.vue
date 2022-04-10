@@ -2,7 +2,6 @@
   <div class="page" style="text-align: center" v-if="user">
     <TopBar />
     <SideBar />
-    Change 
     <div class="container">
     <div class = "row">
       <div class="column right">
@@ -56,9 +55,9 @@ export default {
   },
 
   methods: {
-    change() {
-      this.refreshComp += 1;
-    },
+    // change() {
+    //   this.refreshComp += 1;
+    // },
   },
 
   mounted() {
