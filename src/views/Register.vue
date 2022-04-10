@@ -122,6 +122,10 @@ export default {
                 fullName: userFullName,
                 username: userUsername,
                 emailAddress: userEmail,
+                region: "",
+                languages: "",
+                genderPref: "",
+                availability: "",
               });
               document.getElementById("userRegistration").reset();
               // alert("We will be registering you: " + userFullName);
