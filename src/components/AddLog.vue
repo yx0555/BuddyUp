@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="text-align: center">
+  <div class="page" style="text-align: center" v-if="user">
     <div class="Addvisitation">
       <form id="myform" autocomplete="off">
         <h2>Log new visitation</h2> 
@@ -47,6 +47,7 @@ export default {
       d: "",
       buddyId: "",
       buddyName: "",
+      user: true,
     };
   },
 

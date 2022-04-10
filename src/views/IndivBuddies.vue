@@ -49,7 +49,7 @@ export default {
 
   data() {
     return {
-      user: false,
+      user: true,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
       componentName: "Individual Buddies"

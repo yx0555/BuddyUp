@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="text-align: center">
+  <div class="page" style="text-align: center" v-if="user">
       <form id="myform" autocomplete="off">
         <h2>Set reminder</h2>
         <div class="formli">
@@ -40,6 +40,7 @@ export default {
       b: "",
       buddyId: "",
       buddyName: "",
+      user: true,
     };
   },
 

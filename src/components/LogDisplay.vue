@@ -1,5 +1,5 @@
 <template>
-  <div class="page" style="text-align: center">
+  <div class="page" style="text-align: center" v-if="user">
       <h2>{{ this.buddyName }}'s Visitations</h2>
       <table id="visitationtable" align="center">
         <tr>
@@ -53,6 +53,7 @@ export default {
   props: ["buddynumber"],
   data() {
     return {
+      user: true,
       buddyId: "",
       buddyName: "",
     };
