@@ -201,7 +201,7 @@
 							const startDate = new Date(buddy.visitDate);
 							const endDate = addHours(startDate, 3)
 							console.log(startDate)
-							for (let i = 0; i < 5; i++){
+							for (let i = 0; i < 30; i++){
 								const currStartDate = addWeeks(startDate, i)
 								const currEndDate = addWeeks(endDate, i)
 								vm.state.items.push({
