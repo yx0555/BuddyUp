@@ -19,35 +19,35 @@ Our project aims to tackle the growing healthcare issue of elderlies in Singapor
 3. They will then go to the email to click on the verification link.
 4. After signing up, they will be brought to the Homepage
 5. They will then update preferences under My Profile by filling in the following information:
-a. Region: North, South, East, West, Central
-b. Language/Dialects: English, Chinese, Tamil, Malay
-c. Buddy Preferences: Female, Male, No Preference 
-d. Availability: Multiple checkboxes blocks of 2 hours from 8 am to 8 pm
-e. Click “Update” and acknowledge the alert
-6. Users will then proceed to the “My buddies” page and click on “Add a buddy” for the name of the buddy to show up on the main page. Up to 3 buddies can be added.
-a. If the user does not click on the button at all, there will be an empty icon to show that the user is currently not matched with any buddies.
-b. If the user already has 3 buddies and clicks on the button, an alert will pop up to remind them “The maximum number of buddies you can have is 3”.
-c. If the user has not yet updated their particulars and gender preferences, an alert pop up will prompt the user to update preferences before they can be matched with an elderly.
+a. Region: North, South, East, West, Central  <br />
+b. Language/Dialects: English, Chinese, Tamil, Malay  <br />
+c. Buddy Preferences: Female, Male, No Preference   <br />
+d. Availability: Multiple checkboxes blocks of 2 hours from 8 am to 8 pm  <br />
+e. Click “Update” and acknowledge the alert  <br />
+6. Users will then proceed to the “My buddies” page and click on “Add a buddy” for the name of the buddy to show up on the main page. Up to 3 buddies can be added.  <br />
+a. If the user does not click on the button at all, there will be an empty icon to show that the user is currently not matched with any buddies.  <br /> 
+b. If the user already has 3 buddies and clicks on the button, an alert will pop up to remind them “The maximum number of buddies you can have is 3”.  <br />
+c. If the user has not yet updated their particulars and gender preferences, an alert pop up will prompt the user to update preferences before they can be matched with an elderly.  <br />
 7. After there is a match of the volunteers with the elderly, users can click into any specific buddy, to bring them to the individual buddy page. They can then:
-a. Add new visitation
-i. Key in start time by pressing on the clock
-ii. Key in end time by pressing on the clock
-iii. Start and end time cannot be the same, and start should be less than end time
-iv. Key in Date by pressing on the calendar
-v. Clicking on the “Save” button will add it into the Visitation table
-b. Add new reminder
-i. Key in Date by pressing on the calendar
-ii. Key in the reminders 
-iii. Clicking on the “save button” will add a reminder to home page as well as calendar
-c. Visitation table
-i. Click on “X” to delete the visitations and confirm the delete such that visitation entry will be deleted
-d. Request Buddy’s details, then a pop up will mention that an email of buddy’s critical information has been sent to their registered email.
-e. Delete buddy 
-i. Press on delete buddy and acknowledge and it will bring them to the “My Buddies” page
-8. The schedule of the volunteers will appear under “My Calendar”.
-a. Hover over the event to view the full event 
-9. Volunteers will be able to find out more about the application and our goal under “About us”.
-10. Users can then log out on the top bar and it will bring them back to the Login page
+a. Add new visitation  <br />
+i. Key in start time by pressing on the clock  <br />
+ii. Key in end time by pressing on the clock  <br />
+iii. Start and end time cannot be the same, and start should be less than end time  <br />
+iv. Key in Date by pressing on the calendar  <br />
+v. Clicking on the “Save” button will add it into the Visitation table  <br />
+b. Add new reminder  <br />
+i. Key in Date by pressing on the calendar  <br />
+ii. Key in the reminders  <br />
+iii. Clicking on the “save button” will add a reminder to home page as well as calendar  <br />
+c. Visitation table  <br />
+i. Click on “X” to delete the visitations and confirm the delete such that visitation entry will be deleted  <br />
+d. Request Buddy’s details, then a pop up will mention that an email of buddy’s critical information has been sent to their registered email.  <br />
+e. Delete buddy  <br />
+i. Press on delete buddy and acknowledge and it will bring them to the “My Buddies” page  <br />
+8. The schedule of the volunteers will appear under “My Calendar”.  <br />
+a. Hover over the event to view the full event  <br />
+9. Volunteers will be able to find out more about the application and our goal under “About us”.  <br />
+10. Users can then log out on the top bar and it will bring them back to the Login page  <br />
 
 
 
