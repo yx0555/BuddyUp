@@ -51,7 +51,7 @@ export default {
         } else if (vm.buddynumber == 2) {
           vm.buddyName = snapshot.data().buddyName2;
           vm.buddyId = snapshot.data().buddyID2;
-        } else {
+        } else if (vm.buddynumber == 3){
           vm.buddyName = snapshot.data().buddyName3;
           vm.buddyId = snapshot.data().buddyID3;
         }
@@ -62,6 +62,7 @@ export default {
       const uid = auth.currentUser.uid;
       let ind = 1;
       const vRef = collection(db, "Reminders");
+      console.log(vm.buddyId);
       const q = query(
         vRef,
         where("buddyID", "==", vm.buddyId),

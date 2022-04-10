@@ -26,8 +26,6 @@ import {
   addDoc,
   collection,
   doc,
-  // arrayUnion,
-  // updateDoc,
   getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -75,11 +73,9 @@ export default {
           if (String(this.b).length<120){
             try {
                 var uid = auth.currentUser.uid;
-                // const addRef = doc(db, "Users", uid);
                 await addDoc(collection(db, "Reminders"), {
                     date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId, buddyName: this.buddyName,
                     });
-                    // updateDoc(addRef, {remindersID: arrayUnion(docRef.id),});
                 this.a = this.b = ""
                 this.$emit("added");
                 alert("Reminder has been added")
