@@ -88,7 +88,7 @@ export default {
   data() {
     return {
       user: true,
-      componentName:"About Us"
+      componentName: "About Us"
     };
   },
 
@@ -139,4 +139,5 @@ h2 {
   font-weight: bold;
   color: #411d1d;
 }
+
 </style>

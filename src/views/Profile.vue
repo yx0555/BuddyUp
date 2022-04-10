@@ -5,6 +5,7 @@
 
     <div class="displayProfileContainer">
       <!-- <h1>My Profile</h1> -->
+      <br />
       <img src="@/assets/man.png" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #333"/>
 
       <div>
