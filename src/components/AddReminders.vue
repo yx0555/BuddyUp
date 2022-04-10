@@ -79,9 +79,6 @@ export default {
                 this.a = this.b = ""
                 this.$emit("added");
                 alert("Reminder has been added")
-                // setTimeout(function () {
-                //   window.location.reload();
-                // }, 1000);
             } catch (error) {
                 console.error("Error adding document: ", error);
             }

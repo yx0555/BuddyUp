@@ -6,12 +6,12 @@
     <div class = "row">
       <div class="column right">
         <AddLog :buddynumber="buddynumber" @added="change" />
-        <AddReminders :buddynumber="buddynumber" @added="change"/> <br>
+        <AddReminders :buddynumber="buddynumber" @added="change2"/> <br>
       </div>
 
       <div class="column left"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
-        <!-- <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" /> -->
+        <ReminderDisplay :key="refreshComp2" :buddynumber="buddynumber" />
       </div>
     </div>
     </div>
@@ -31,7 +31,7 @@ import AddLog from "../components/AddLog.vue";
 import Login from "../components/Login.vue";
 import LogDisplay from "../components/LogDisplay.vue";
 import AddReminders from "../components/AddReminders.vue"
-// import ReminderDisplay from "../components/ReminderDisplay.vue"
+import ReminderDisplay from "../components/ReminderDisplay.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -44,13 +44,14 @@ export default {
     LogDisplay,
     Login,
     AddReminders,
-    // ReminderDisplay
+    ReminderDisplay
   },
 
   data() {
     return {
       user: false,
       refreshComp: 0,
+      refreshComp2: 0,
       buddynumber: this.$route.params.id,
       componentName: "Individual Buddies"
     };
@@ -59,9 +60,9 @@ export default {
   methods: {
     change() {
       this.refreshComp += 1;
-      // setTimeout(function () {
-      //   window.location.reload();
-      // }, 1000);
+    },
+    change2() {
+      this.refreshComp2 += 1;
     },
   },
 
