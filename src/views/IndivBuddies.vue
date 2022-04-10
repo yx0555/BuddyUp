@@ -48,7 +48,7 @@ export default {
 
   data() {
     return {
-      user: true,
+      user: false,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
       isModalVisible: false,

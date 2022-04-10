@@ -33,7 +33,6 @@ import {
   getDocs,
   getDoc,
   deleteDoc,
-  // arrayRemove,
   query,
   where,
   orderBy,
@@ -181,9 +180,6 @@ export default {
     async function deletevisitation(visitationID) {
       if (confirm("Do you want to delete this visitation log?")==true){
         await deleteDoc(doc(db, "Visitations", visitationID));
-        // await updateDoc(doc(db, "Buddies", vm.buddyId), {
-        //   visitationID: arrayRemove(visitationID),
-        // });
         let tb = document.getElementById("visitationtable");
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
