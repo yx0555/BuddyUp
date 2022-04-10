@@ -14,7 +14,7 @@ Our project aims to tackle the growing healthcare issue of elderlies in Singapor
 
 
 ### User Journey
-```javascript
+```
 1. New users will first create an account by clicking on “Create An Account” on the front page, then input in their necessary information.
 2. After clicking on the “Sign Up” button, a pop-up will appear to show that a link has been sent to their email for verification, which they will then click on “OK”.
 3. They will then go to the email to click on the verification link.
