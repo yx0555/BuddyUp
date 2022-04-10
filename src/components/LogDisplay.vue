@@ -120,11 +120,11 @@ export default {
   mounted() {
     const auth = getAuth();
     var vm = this;
-    display();
+    display(auth.currentUser.uid);
     // UPDATE THE BUDDYNAME AND BUDDYID BASED ON THE ROUTE PARAMETERS
-    async function display() {
-      const uid = auth.currentUser.uid;
-      const snapshot = await getDoc(doc(db, "Users", uid));
+    async function display(user) {
+      // const uid = auth.currentUser.uid;
+      const snapshot = await getDoc(doc(db, "Users", user));
       if (snapshot.exists()) {
         if (vm.buddynumber == 1) {
           vm.buddyName = snapshot.data().buddyName1;
@@ -137,17 +137,17 @@ export default {
           vm.buddyId = snapshot.data().buddyID3;
         }
       }
-      display2();
-      display3();
+      display2(user);
+      display3(user);
     }
-    async function display2() {
-      const uid = auth.currentUser.uid;
+    async function display2(user) {
+      // const uid = auth.currentUser.uid;
       let ind = 1;
       const vRef = collection(db, "Visitations");
       const q = query(
         vRef,
         where("buddyID", "==", vm.buddyId),
-        where("userID", "==", uid),
+        where("userID", "==", user),
         orderBy("date"),
         orderBy("startTime","asc")
       );
@@ -180,21 +180,21 @@ export default {
         bu.style.fontFamily = "Montserrat"
         bu.style.cursor = "pointer"
         bu.onclick = function(){
-            deletevisitation(docs.id)
+            deletevisitation(user,docs.id)
         };
         cell6.appendChild(bu)
         ind += 1;
       });
     }
 
-      async function display3(){
-        const uid = auth.currentUser.uid;
+      async function display3(user){
+        // const uid = auth.currentUser.uid;
       let newind = 1;
       const newRef = collection(db, "Reminders");
       const newq = query(
         newRef,
         where("buddyID", "==", vm.buddyId),
-        where("userID", "==", uid),
+        where("userID", "==", user),
         orderBy("date"),
       );
       const querySnapshot = await getDocs(newq);
@@ -220,32 +220,32 @@ export default {
         bu.style.fontFamily = "Montserrat"
         bu.style.cursor = "pointer"
         bu.onclick = function(){
-            deletereminder(docs.id)
+            deletereminder(user,docs.id)
         };
         cell4.appendChild(bu)
         newind += 1;
       });
     }
     //Delete from firebase
-    async function deletevisitation(visitationID) {
+    async function deletevisitation(user,visitationID) {
       if (confirm("Do you want to delete this visitation log?")==true){
         await deleteDoc(doc(db, "Visitations", visitationID));
         let tb = document.getElementById("visitationtable");
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
-        display2();
+        display2(user);
       }
     }
 
-    async function deletereminder(reminderID) {
+    async function deletereminder(user,reminderID) {
       if (confirm("Do you want to delete this reminder?")==true){
         await deleteDoc(doc(db, "Reminders", reminderID));
         let tb = document.getElementById("remindertable");
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
-        display3();
+        display3(user);
       }
     }
   },
