@@ -20,6 +20,16 @@
       Delete this buddy
     </button>
 
+    <h2>Reminders</h2>
+      <table id="remindertable" align="center">
+        <tr>
+          <th>No.</th>
+          <th>Date</th>
+          <th>Remarks</th>
+          <th>Delete</th>
+        </tr>
+      </table>
+
   </div>
 </template>
 
@@ -127,6 +137,7 @@ export default {
         }
       }
       display2();
+      display3();
     }
     async function display2() {
       const uid = auth.currentUser.uid;
@@ -174,11 +185,62 @@ export default {
         ind += 1;
       });
     }
+
+      async function display3(){
+        const uid = auth.currentUser.uid;
+      let newind = 1;
+      const newRef = collection(db, "Reminders");
+      const newq = query(
+        newRef,
+        where("buddyID", "==", vm.buddyId),
+        where("userID", "==", uid),
+        orderBy("date"),
+      );
+      const querySnapshot = await getDocs(newq);
+      //Inserting data into the table
+      querySnapshot.forEach((docs) => {
+        let yy = docs.data();
+        var table = document.getElementById("remindertable");
+        var row = table.insertRow(newind);
+        var date = yy.date;
+        var reminder = yy.reminder;
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = newind;
+        cell2.innerHTML = date;
+        cell3.innerHTML = reminder;
+        cell4.innerHTML = "";
+        var bu = document.createElement("button")
+        bu.innerHTML="X"
+        bu.style.backgroundColor = "#abe6e9"
+        bu.style.borderRadius = "5px"
+        bu.style.fontFamily = "Montserrat"
+        bu.style.cursor = "pointer"
+        bu.onclick = function(){
+            deletereminder(docs.id)
+        };
+        cell4.appendChild(bu)
+        newind += 1;
+      });
+    }
     //Delete from firebase
     async function deletevisitation(visitationID) {
       if (confirm("Do you want to delete this visitation log?")==true){
         await deleteDoc(doc(db, "Visitations", visitationID));
         let tb = document.getElementById("visitationtable");
+        while (tb.rows.length > 1) {
+          tb.deleteRow(1);
+        }
+        display();
+      }
+    }
+
+    async function deletereminder(reminderID) {
+      if (confirm("Do you want to delete this reminder?")==true){
+        await deleteDoc(doc(db, "Reminders", reminderID));
+        let tb = document.getElementById("remindertable");
         while (tb.rows.length > 1) {
           tb.deleteRow(1);
         }
@@ -206,6 +268,15 @@ h2 {
   margin-inline-end: 0px;
   font-weight: bold;
   font-family: "Montserrat";
+}
+
+#remindertable {
+  font-family: "Montserrat";
+  font-size: 15px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 #visitationtable {
   font-family: "Montserrat";

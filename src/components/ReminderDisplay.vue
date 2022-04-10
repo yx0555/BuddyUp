@@ -60,28 +60,27 @@ export default {
     }
     async function display2() {
       const uid = auth.currentUser.uid;
-      let ind = 1;
-      const vRef = collection(db, "Reminders");
-      console.log(vm.buddyId)
-      const q = query(
-        vRef,
+      let newind = 1;
+      const newRef = collection(db, "Reminders");
+      const newq = query(
+        newRef,
         where("buddyID", "==", vm.buddyId),
         where("userID", "==", uid),
         orderBy("date"),
       );
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await getDocs(newq);
       //Inserting data into the table
       querySnapshot.forEach((docs) => {
         let yy = docs.data();
         var table = document.getElementById("remindertable");
-        var row = table.insertRow(ind);
+        var row = table.insertRow(newind);
         var date = yy.date;
         var reminder = yy.reminder;
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
         var cell3 = row.insertCell(2);
         var cell4 = row.insertCell(3);
-        cell1.innerHTML = ind;
+        cell1.innerHTML = newind;
         cell2.innerHTML = date;
         cell3.innerHTML = reminder;
         cell4.innerHTML = "";
@@ -95,9 +94,7 @@ export default {
             deletereminder(docs.id)
         };
         cell4.appendChild(bu)
-        ind += 1;
-    
-  
+        newind += 1;  
       });
     }
     //Delete from firebase
