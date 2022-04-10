@@ -2,6 +2,7 @@
   <div class="page" style="text-align: center" v-if="user">
     <TopBar />
     <SideBar />
+    Change 
     <div class="container">
     <div class = "row">
       <div class="column right">
@@ -51,7 +52,6 @@ export default {
       user: false,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
-      isModalVisible: false,
     };
   },
 
@@ -61,7 +61,7 @@ export default {
     },
   },
 
-  beforeMount() {
+  mounted() {
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
