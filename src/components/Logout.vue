@@ -45,8 +45,9 @@ export default {
   background-color: #f07575;
   border: none;
   text-decoration: underline;
-  margin-top: 45px;
+  /* margin-top: 45px; */
   margin-right: 8px;
+  cursor: pointer;
 }
 
 #btn:hover {

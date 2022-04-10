@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <TopBar />
+    <TopBar :componentName="componentName"/>
     <SideBar />
     <div class="info">
       <img
@@ -88,6 +88,7 @@ export default {
   data() {
     return {
       user: true,
+      componentName:"About Us"
     };
   },
 

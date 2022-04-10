@@ -1,8 +1,6 @@
 <template>
   <div class="topnav">
-    <!-- <div class="topnav-left">
-        <img id="logo" src="@/assets/BuddyUpLogo.png" alt="Logo" />
-      </div> -->
+    <h1>{{this.componentName}}</h1>
     <Logout />
   </div>
 </template>
@@ -10,11 +8,13 @@
 <script>
 import Logout from "./Logout.vue";
 export default {
+  props: ["componentName"],
   name: "NavBar",
 
   components: {
     Logout,
   },
+
 };
 </script>
 
@@ -27,5 +27,11 @@ export default {
   text-align: right;
   width: 100%;
   height: 65px;
+}
+
+h1{
+  font-family: "Montserrat";
+  text-align: center;
+  background-color:#f07575;
 }
 </style>

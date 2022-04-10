@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <TopBar />
+    <TopBar :componentName="componentName"/>
     <SideBar />
     <div class="container">
     <div class = "row">
@@ -51,6 +51,7 @@ export default {
       user: false,
       refreshComp: 0,
       buddynumber: this.$route.params.id,
+      componentName: "Individual Buddies"
     };
   },
 

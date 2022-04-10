@@ -1,6 +1,6 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-  <TopBar />
+  <TopBar :componentName="componentName"/>
   <SideBar />
       <div class="tasks">
         <img id="taskIcon" src="@/assets/task.png" alt="task" />
@@ -51,7 +51,8 @@ export default {
       user: true,
       upcomingVisits: [],
       reminders: [],
-      uid : ""
+      uid : "",
+      componentName: "Homepage",
     };
   },
 

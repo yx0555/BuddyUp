@@ -31,8 +31,6 @@ import {
   addDoc,
   collection,
   doc,
-  // arrayUnion,
-  // updateDoc,
   getDoc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";

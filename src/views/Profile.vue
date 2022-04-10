@@ -1,10 +1,10 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <TopBar/>
+    <TopBar :componentName="componentName"/>
     <SideBar/>
 
     <div class="displayProfileContainer">
-      <h1>My Profile</h1>
+      <!-- <h1>My Profile</h1> -->
       <img src="@/assets/man.png" style="width: 100px; height: 100px; border-radius: 50%; border: 4px solid #333"/>
 
       <div>
@@ -238,6 +238,7 @@ export default {
       languages: "",
       buddyGenderPreferences: "",
       availability: "",
+      componentName: "My Profile"
     };
   },
 

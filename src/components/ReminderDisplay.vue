@@ -62,7 +62,7 @@ export default {
       const uid = auth.currentUser.uid;
       let ind = 1;
       const vRef = collection(db, "Reminders");
-      console.log(vm.buddyId);
+      console.log(vm.buddyId)
       const q = query(
         vRef,
         where("buddyID", "==", vm.buddyId),

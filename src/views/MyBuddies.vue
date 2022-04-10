@@ -1,9 +1,9 @@
 <template>
   <div class="page" style="text-align: center" v-if="user">
-    <TopBar />
+    <TopBar :componentName="componentName"/>
     <SideBar />
     <div class = title>
-      <h1>My Buddies</h1>
+      <!-- <h1>My Buddies</h1> -->
     </div>
     <br />
     <div class="row">
@@ -187,6 +187,7 @@ export default {
       buddyID1: "",
       buddyID2: "",
       buddyID3: "",
+      componentName: "My Buddies"
     };
   },
 
