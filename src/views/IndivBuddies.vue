@@ -10,8 +10,8 @@
       </div>
 
       <div class="column left"> 
-        <LogDisplay :buddynumber="buddynumber" />
-        <ReminderDisplay :buddynumber="buddynumber" />
+        <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
+        <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" />
       </div>
     </div>
     </div>

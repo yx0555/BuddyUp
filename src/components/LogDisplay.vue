@@ -172,8 +172,6 @@ export default {
         };
         cell6.appendChild(bu)
         ind += 1;
-    
-  
       });
     }
     //Delete from firebase
