@@ -14,7 +14,6 @@
 
       <div>
         <strong>Region:</strong> {{ this.region.charAt(0).toUpperCase() + this.region.slice(1) }}<br>
-        <!-- <strong>Region:</strong> {{ this.region }}<br> -->
       </div>
 
       <span>
@@ -254,13 +253,6 @@ export default {
         docRef.then(function (snapshot) {
           const fullName = snapshot.data().fullName;
           vm.fullName = fullName;
-
-          // const region = snapshot.data().region;
-          // if (region != undefined) {
-          //   vm.region = region.charAt(0).toUpperCase() + this.region.slice(1)
-          // } else {
-          //   vm.region = ""
-          // }
 
           const region = snapshot.data().region;
           vm.region = region;
