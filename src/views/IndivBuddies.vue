@@ -10,8 +10,8 @@
       </div>
 
       <div class="column left"> 
-        <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
-        <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" />
+        <LogDisplay :buddynumber="buddynumber" />
+        <ReminderDisplay :buddynumber="buddynumber" />
       </div>
     </div>
     </div>
@@ -55,9 +55,9 @@ export default {
   },
 
   methods: {
-    // change() {
-    //   this.refreshComp += 1;
-    // },
+    change() {
+      this.refreshComp += 1;
+    },
   },
 
   mounted() {
