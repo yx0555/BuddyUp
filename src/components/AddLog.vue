@@ -89,9 +89,6 @@ export default {
                     this.a = this.b = this.c = this.d = ""
                     this.$emit("added");
                     alert("Visitation has been added")
-                    // setTimeout(function () {
-                    //   window.location.reload();
-                    // }, 1000);
                 } catch (error) {
                     console.error("Error adding document: ", error);
                 }
