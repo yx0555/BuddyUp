@@ -201,7 +201,7 @@
 							const startDate = new Date(buddy.visitDate);
 							const endDate = addHours(startDate, 3)
 							console.log(startDate)
-							for (let i = 0; i < 5; i++){
+							for (let i = 0; i < 30; i++){
 								const currStartDate = addWeeks(startDate, i)
 								const currEndDate = addWeeks(endDate, i)
 								vm.state.items.push({
@@ -288,7 +288,7 @@
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		color: #94273f;
 		height: 83vh;
-		width: 100vw;
+		width: 100%;
 		margin-left: 17px;
 		margin-right: auto;
 		/* max-width: 1000px */
