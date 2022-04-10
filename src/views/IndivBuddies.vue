@@ -11,7 +11,7 @@
 
       <div class="column left"> 
         <LogDisplay :key="refreshComp" :buddynumber="buddynumber" />
-        <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" />
+        <!-- <ReminderDisplay :key="refreshComp" :buddynumber="buddynumber" /> -->
       </div>
     </div>
     </div>
@@ -19,8 +19,8 @@
   </div>
   <div v-else>
     <h1>You must be logged in to view this page</h1>
-    <!-- <Login :route="'indivbuddies/' + this.$route.params.id" /> -->
-    <!-- <Login /> -->
+    <Login :route="'indivbuddies/' + this.$route.params.id" />
+    <Login />
   </div>
 </template>
 
@@ -28,10 +28,10 @@
 import TopBar from "../components/TopBar.vue";
 import SideBar from "../components/SideBar.vue";
 import AddLog from "../components/AddLog.vue";
-// import Login from "../components/Login.vue";
+import Login from "../components/Login.vue";
 import LogDisplay from "../components/LogDisplay.vue";
 import AddReminders from "../components/AddReminders.vue"
-import ReminderDisplay from "../components/ReminderDisplay.vue"
+// import ReminderDisplay from "../components/ReminderDisplay.vue"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export default {
@@ -42,9 +42,9 @@ export default {
     SideBar,
     AddLog,
     LogDisplay,
-    // Login,
+    Login,
     AddReminders,
-    ReminderDisplay
+    // ReminderDisplay
   },
 
   data() {
