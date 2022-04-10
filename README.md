@@ -49,6 +49,6 @@ a. Hover over the event to view the full event
 10. Users can then log out on the top bar and it will bring them back to the Login page
 ```
 ## Contributing
-## Contributors
+### Contributors
 @yx055 @melissaoyl @mltnsia @High325 @joeyylow
 
