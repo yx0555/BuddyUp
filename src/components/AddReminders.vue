@@ -77,11 +77,11 @@ export default {
                     date: this.a, reminder: this.b, userID: uid, buddyID: this.buddyId, buddyName: this.buddyName,
                     });
                 this.a = this.b = ""
-                // this.$emit("added");
+                this.$emit("added");
                 alert("Reminder has been added")
-                setTimeout(function () {
-                  window.location.reload();
-                }, 1000);
+                // setTimeout(function () {
+                //   window.location.reload();
+                // }, 1000);
             } catch (error) {
                 console.error("Error adding document: ", error);
             }

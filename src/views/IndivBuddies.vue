@@ -58,6 +58,9 @@ export default {
   methods: {
     change() {
       this.refreshComp += 1;
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
     },
   },
 
@@ -71,6 +74,7 @@ export default {
       }
     });
   },
+  
 };
 </script>
 
